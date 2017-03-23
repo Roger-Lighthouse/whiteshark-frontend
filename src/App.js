@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Login from './login.js';
 
 const BeerList = (props) => {
   return (
@@ -20,6 +21,11 @@ class App extends Component {
     super()
     this.state = {beers: []}
   }
+
+  handleSubmitMessage = (msg) => {
+    console.log("login submitting...");
+  }
+
   componentDidMount() {
     fetch('http://localhost:3000/beers')
     .then( resp => {
@@ -35,6 +41,9 @@ class App extends Component {
       <div className="App">
         <h1>Beers</h1>
         <BeerList beers={this.state.beers} />
+        {/* <div>Login
+          <Login/>
+        </div> */}
       </div>
     );
   }
