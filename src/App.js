@@ -2,17 +2,39 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const BeerList = (props) => {
+  return (
+    <ul>
+      { props.beers.map ( beer => { return <Beer key={beer.id} {...beer} /> } ) }
+    </ul>
+  )
+}
+const Beer = (props) => {
+  return (
+    <li>{props.name}</li>
+  )
+}
+
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {beers: []}
+  }
+  componentDidMount() {
+    fetch('http://localhost:3000/beers')
+    .then( resp => {
+      return resp.json()
+    })
+    .then( json => {
+      var beers = json.beers;
+      this.setState({beers})
+    })
+  }
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Beers</h1>
+        <BeerList beers={this.state.beers} />
       </div>
     );
   }
