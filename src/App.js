@@ -3,13 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './login.js';
 
-const BeerList = (props) => {
-  return (
-    <ul>
-      { props.beers.map ( beer => { return <Beer key={beer.id} {...beer} /> } ) }
-    </ul>
-  )
-}
+const BeerList = ({ beers }) => (
+  <ul>
+    { beers.map((beer) => <Beer key={beer.id} {...beer} />) }
+  </ul>
+)
+
 const Beer = (props) => {
   return (
     <li>{props.name}</li>
@@ -17,43 +16,40 @@ const Beer = (props) => {
 }
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {beers: []}
-  }
+
+  state = { beers: [], user: null }
 
   handleSubmitMessage = (cred) => {
     console.log("login submitting...");
     console.log("Cred:", cred);
-    fetch('http://localhost:3000/users/login', {
+    fetch('http://localhost:3000/users', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
+       'Accept': 'application/json',
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: cred.username,
-        password: cred.password,
+       },
+       body: JSON.stringify({
+         username: cred.username,
+         password: cred.password
       })
     })
+    .then(resp => resp.json())
+    .then(({ user }) => this.setState({user: user.name}))
   }
 
   componentDidMount() {
     fetch('http://localhost:3000/beers')
-    .then( resp => {
-      return resp.json()
-    })
-    .then( json => {
-      var beers = json.beers;
-      this.setState({beers})
-    })
+    .then(resp => resp.json())
+    .then(({ beers }) => this.setState({ beers }))
   }
+
+
   render() {
     return (
       <div className="App">
         <h1>Beers</h1>
         <BeerList beers={this.state.beers} />
-        <div>Login
+        <div>Login is {this.state.user}
           <Login onSubmitMessage={this.handleSubmitMessage}/>
         </div>
       </div>
