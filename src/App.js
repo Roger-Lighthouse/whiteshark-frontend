@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Home from './home'
 import BookJob from './bookJob'
-import myProfile from './myProfile'
-import myJobs from './myJobs'
+import MyProfile from './myProfile'
+// import myJobs from './myJobs'
 import Login from './login'
 import './App.css'
 import {
@@ -11,17 +11,68 @@ import {
   Link
 } from 'react-router-dom'
 
-const BeerList = ({ beers }) => (
-  <ul>
-    { beers.map((beer) => <Beer key={beer.id} {...beer} />) }
-  </ul>
+const Upcoming = () => <h2>Upcoming jobs</h2>
+const InProgress = () => <h2>In progress jobs</h2>
+const Completed = () => <h2>Completed jobs</h2>
+
+const MyJobs = ({ routes }) => (
+  <div>
+    <h2>My Jobs</h2>
+    <ul>
+      <li><Link to="/myJobs/upcoming">Upcoming jobs</Link></li>
+      <li><Link to="/myJobs/inProgress">Jobs in progress</Link></li>
+      <li><Link to="/myJobs/completed">Completed jobs</Link></li>
+    </ul>
+
+    {routes.map((route, i) => (
+      <RouteWithSubRoutes key={i} {...route}/>
+    ))}
+  </div>
 )
 
-const Beer = (props) => {
-  return (
-    <li>{props.name}</li>
-  )
-}
+const routes = [
+  { path: '/',
+    component: Home
+  },
+  { path: '/bookJob',
+    component: BookJob
+  },
+  { path: '/myProfile',
+    component: MyProfile
+  },
+  { path: '/myJobs',
+    component: MyJobs,
+    routes: [
+      { path: '/myJobs/upcoming',
+        component: Upcoming
+      },
+      { path: '/myJobs/inprogress',
+        component: InProgress
+      },
+      { path: '/myJobs/completed',
+        component: Completed
+      }
+    ]
+  }
+]
+// const BeerList = ({ beers }) => (
+//   <ul>
+//     { beers.map((beer) => <Beer key={beer.id} {...beer} />) }
+//   </ul>
+// )
+//
+// const Beer = (props) => {
+//   return (
+//     <li>{props.name}</li>
+//   )
+// }
+
+const RouteWithSubRoutes = (route) => (
+  <Route path={route.path} render={props => (
+    // pass the sub-routes down to keep nesting
+    <route.component {...props} routes={route.routes}/>
+  )}/>
+)
 
 const Links = () => (
   <Router>
@@ -33,12 +84,9 @@ const Links = () => (
         <li><Link to="/myJobs">My Jobs</Link></li>
       </ul>
 
-      <hr/>
-
-      <Route exact path="/" component={Home}/>
-      <Route path="/bookJob" component={BookJob}/>
-      <Route path="/myProfile" component={myProfile}/>
-      <Route path="/myJobs" component={myJobs}/>
+      {routes.map((route, i) => (
+        <RouteWithSubRoutes key={i} {...route}/>
+      ))}
     </div>
   </Router>
 )
@@ -75,15 +123,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav>Login
+        <nav>Login is {this.state.user}
           <Login onSubmitMessage={this.handleSubmitMessage}/>
         </nav>
         <h1>Beers</h1>
-        <BeerList beers={this.state.beers} />
+        {/* <BeerList beers={this.state.beers} /> */}
         <Links/>
-        <div>Login is {this.state.user}
-          <Login onSubmitMessage={this.handleSubmitMessage}/>
-        </div>
       </div>
     );
   }
