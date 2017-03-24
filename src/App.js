@@ -22,8 +22,20 @@ class App extends Component {
     this.state = {beers: []}
   }
 
-  handleSubmitMessage = (msg) => {
+  handleSubmitMessage = (cred) => {
     console.log("login submitting...");
+    console.log("Cred:", cred);
+    fetch('http://localhost:3000/users/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: cred.username,
+        password: cred.password,
+      })
+    })
   }
 
   componentDidMount() {
@@ -41,9 +53,9 @@ class App extends Component {
       <div className="App">
         <h1>Beers</h1>
         <BeerList beers={this.state.beers} />
-        {/* <div>Login
-          <Login/>
-        </div> */}
+        <div>Login
+          <Login onSubmitMessage={this.handleSubmitMessage}/>
+        </div>
       </div>
     );
   }
