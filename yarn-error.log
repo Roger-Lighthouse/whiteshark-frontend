@@ -1,5 +1,5 @@
 Arguments: 
-  /home/vagrant/.nvm/versions/node/v6.3.1/bin/node /home/vagrant/.yarn/bin/yarn.js -v
+  /home/vagrant/.nvm/versions/node/v6.3.1/bin/node /home/vagrant/.yarn/bin/yarn.js add react-router-dom
 
 PATH: 
   /home/vagrant/.rvm/gems/ruby-2.3.0/bin:/home/vagrant/.rvm/gems/ruby-2.3.0@global/bin:/home/vagrant/.rvm/rubies/ruby-2.3.0/bin:/home/vagrant/.yarn/bin:/home/vagrant/.nvm/versions/node/v6.3.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/vagrant/.rvm/bin:/home/vagrant/.rvm/bin:/home/vagrant/.rvm/bin:/home/vagrant/.rvm/bin
@@ -26,7 +26,7 @@ npm manifest:
       "react-scripts": "0.9.5"
     },
     "scripts": {
-      "start": "react-scripts start",
+      "start": "PORT=3001 react-scripts start",
       "build": "react-scripts build",
       "test": "react-scripts test --env=jsdom",
       "eject": "react-scripts eject"
@@ -5328,5 +5328,5 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: EPROTO: protocol error, symlink '../../../babylon/bin/babylon.js' -> '/vagrant/Final-project/whiteshark-frontend/node_modules/babel-core/node_modules/.bin/babylon'
+  Error: EPROTO: protocol error, symlink '../../../webpack/node_modules/acorn/bin/acorn' -> '/vagrant/Final-project/whiteshark-frontend/node_modules/acorn-jsx/node_modules/.bin/acorn'
       at Error (native)

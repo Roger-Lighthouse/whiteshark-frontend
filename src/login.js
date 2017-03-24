@@ -29,11 +29,12 @@ class Login extends Component {
             onSubmit={this.handleSubmit}>
             <input className="username"
               placeholder="Username"
+              value={this.state.username}
               onChange={this.handleUserChange} />
             <input type="password"
               className="password"
               placeholder="password"
-              value={this.state.message}
+              value={this.state.password}
               onChange={this.handleChange} />
             <input className="login-btn" type="submit" value="Login" />
           </form>

@@ -1,7 +1,15 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Login from './login.js';
+import React, { Component } from 'react'
+import Home from './home'
+import BookJob from './bookJob'
+import myProfile from './myProfile'
+import myJobs from './myJobs'
+import Login from './login'
+import './App.css'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
 const BeerList = (props) => {
   return (
@@ -15,6 +23,26 @@ const Beer = (props) => {
     <li>{props.name}</li>
   )
 }
+
+const Links = () => (
+  <Router>
+    <div>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/bookJob">Book a job</Link></li>
+        <li><Link to="/myProfile">My Profile</Link></li>
+        <li><Link to="/myJobs">My Jobs</Link></li>
+      </ul>
+
+      <hr/>
+
+      <Route exact path="/" component={Home}/>
+      <Route path="/bookJob" component={BookJob}/>
+      <Route path="/myProfile" component={myProfile}/>
+      <Route path="/myJobs" component={myJobs}/>
+    </div>
+  </Router>
+)
 
 class App extends Component {
   constructor() {
@@ -51,11 +79,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <nav>Login
+          <Login onSubmitMessage={this.handleSubmitMessage}/>
+        </nav>
         <h1>Beers</h1>
         <BeerList beers={this.state.beers} />
-        <div>Login
-          <Login onSubmitMessage={this.handleSubmitMessage}/>
-        </div>
+        <Links/>
       </div>
     );
   }
