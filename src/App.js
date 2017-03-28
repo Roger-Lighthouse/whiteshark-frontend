@@ -1,27 +1,30 @@
 import React from 'react'
+import { Provider } from 'react-redux'
+import { Route } from 'react-router-dom'
+import { ConnectedRouter } from 'react-router-redux'
+import { store, history } from './store'
+// -------------------------------------
 import BookJob from './routes/bookJob'
 import MyJobs from './routes/myJobs'
 import W1 from './routes/W1'
 import MyProfile from './routes/myProfile'
-
-import { createStore } from "redux"
-
 import './App.css'
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom'
+import '../node_modules/react-datetime/css/react-datetime.css'
+const App = () => {
+  return (
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <div>
+          <Route exact path='/' component={BookJob}/>
+          <Route exact path='/bookJob/w1' component={W1}/>
+          <Route exact path='/myJobs' component={MyJobs}/>
+          <Route path='/myProfile' component={MyProfile}/>
+        </div>
+      </ConnectedRouter>
+    </Provider>
+  )
+}
 
-const App = (props) => (
-    <Router>
-      <div>
-        <Route exact path='/' component={BookJob}/>
-        <Route exact path='/myJobs' component={MyJobs}/>
-        <Route exact path='/myJobs/w1' component={W1}/>
-        <Route path='/myProfile' component={MyProfile}/>
-      </div>
-    </Router>
-)
 export default App;
 
 // const BeerList = ({ beers }) => (

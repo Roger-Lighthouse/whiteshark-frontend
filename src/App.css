@@ -14,8 +14,20 @@
   color: white;
 }
 
+.form-control {
+  width: 21%;
+  min-width: 160px;
+}
+
 .App-intro {
   font-size: large;
+}
+
+.modal-container {
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
 }
 
 @keyframes App-logo-spin {
