@@ -10,6 +10,7 @@ import W1 from './routes/W1'
 import MyProfile from './routes/myProfile'
 import './App.css'
 import '../node_modules/react-datetime/css/react-datetime.css'
+
 const App = () => {
   return (
     <Provider store={store}>
@@ -24,7 +25,6 @@ const App = () => {
     </Provider>
   )
 }
-
 export default App;
 
 // const BeerList = ({ beers }) => (
@@ -38,8 +38,6 @@ export default App;
 //     <li>{props.name}</li>
 //   )
 // }
-
-
 
 // class App extends Component {
 //
@@ -68,7 +66,6 @@ export default App;
 //     .then(resp => resp.json())
 //     .then(({ beers }) => this.setState({ beers }))
 //   }
-
 
 //   render() {
 //     return (

@@ -10,8 +10,6 @@ const W1 = (props) => (
       <div className="col-sm-4">col-sm-4</div>
     </div>
   </div>
-
 )
-
 
 export default W1;
