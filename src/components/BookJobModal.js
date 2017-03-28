@@ -1,7 +1,9 @@
 import React from 'react';
 import AddTodo from '../containers/AddTodo'
 import DateTime from 'react-datetime'
-import { Popover, Tooltip, Button, Modal, OverlayTrigger } from 'react-bootstrap'
+import {
+  Button, Modal
+} from 'react-bootstrap'
 
 const BookJobModal = React.createClass({
   getInitialState() {
@@ -17,41 +19,34 @@ const BookJobModal = React.createClass({
   },
 
   render() {
-    const popover = (
-      <Popover id="modal-popover" title="popover">
-        very popover. such engagement
-      </Popover>
-    );
-    const tooltip = (
-      <Tooltip id="modal-tooltip">
-        wow.
-      </Tooltip>
-    );
-
     return (
       <div>
         <Button
           bsStyle="primary"
           bsSize="large"
+          block
           onClick={this.open}>
           Book Job
         </Button>
 
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>
+              Book an External Window Cleaning
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Text in a modal</h4>
-            <div>
+            <strong>
+              No removal of window, storm or screen. Remove loose dirt and water from sills.
+            </strong>
+            <p>
               <AddTodo />
+            </p>
+            <p>
+              <strong>Select A date and Time:</strong>
+              <br></br>
               <DateTime />
-            </div>
-            <h4>Popover in a modal</h4>
-            <p>there is a <OverlayTrigger overlay={popover}><a href="#">popover</a></OverlayTrigger> here</p>
-
-            <h4>Tooltips in a modal</h4>
-            <p>there is a <OverlayTrigger overlay={tooltip}><a href="#">tooltip</a></OverlayTrigger> here</p>
+            </p>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>

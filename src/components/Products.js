@@ -1,20 +1,26 @@
 import React from 'react';
 import img_W1 from '../images/W1.jpg'
 import BookJobModal from './BookJobModal'
-
+import { Link } from 'react-router-dom'
+import {
+  Image
+} from 'react-bootstrap'
 const Products = () => (
   <div>
     {/* Page Content */}
      <div className="container">
        <div className="row">
 
-            <div className="col-md-3">
+            <div id="side-bar" className="col-md-3">
                 <p className="lead">White Shark Services</p>
                 <div className="list-group">
-                    <a href="#" className="list-group-item">Window Cleaning</a>
-                    <a href="#" className="list-group-item">Eavestrough Cleaning</a>
-                    <a href="#" className="list-group-item">Exra Mile Painting</a>
-                    <a href="#" className="list-group-item">Request Odd Job</a>
+                  <Link to="/window-cleaning" className="list-group-item">
+                    Window Cleaning
+                  </Link>
+                  <a href="#" className="list-group-item">Eavestrough Cleaning</a>
+                  <a href="#" className="list-group-item">Exra Mile Painting</a>
+                  <a href="#" className="list-group-item">Lawn Care</a>
+                  <a href="#" className="list-group-item">Request Odd Job</a>
                 </div>
             </div>
 
@@ -55,13 +61,13 @@ const Products = () => (
 
                     <div className="col-sm-4 col-lg-4 col-md-4">
                         <div className="thumbnail">
-                            <img src={img_W1} height="150" width="320" alt=""></img>
+                            <Image src={img_W1} height="150" width="320" rounded></Image>
                             <div className="caption">
-                                <h4 className="pull-right">$24.99</h4>
                                 <h4><a href="#">Exterior only [W1]</a>
                                 </h4>
                                 <p>No removal of window, storm or screen.
                                   Remove loose dirt and water from sills.</p>
+                                  <h2 className="pull-right">$75</h2>
                             </div>
                           <BookJobModal jobType="W1"/>
                         </div>

@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {
+  Badge
+} from 'react-bootstrap'
 
 const Navbar = () => {
   return (
     <div>
-      <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <nav id="navbar" className="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div className="container">
           {/* <!-- Brand and toggle get grouped for better mobile display --> */}
           <div className="navbar-header">
@@ -27,6 +30,7 @@ const Navbar = () => {
               <li>
                 <Link to="/myJobs">
                   My Jobs
+                  <Badge id="myJobsBadge">4</Badge>
                 </Link>
               </li>
               <li>

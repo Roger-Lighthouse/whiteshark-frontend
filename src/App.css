@@ -23,11 +23,34 @@
   font-size: large;
 }
 
+#navbar {
+  background-color: #001f70;
+  color: white;
+}
+
+#navbar:hover {
+  color: #0000ff;
+}
 .modal-container {
   position: relative;
 }
+
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute;
+}
+
+#myJobsBadge {
+  margin: 2px;
+  background-color: white;
+  color: #001f70;
+}
+
+#side-bar {
+  margin-top: 15px;
+}
+
+.thumbnail {
+  padding: 3px;
 }
 
 @keyframes App-logo-spin {
