@@ -1,11 +1,12 @@
 import React from 'react';
 import AddJob from '../containers/AddJob'
-import DateTime from 'react-datetime'
 import {
   Button, Modal
 } from 'react-bootstrap'
+import BookW1Form from './bookW1Form.js'
 
 const BookJobModal = React.createClass({
+
   getInitialState() {
     return { showModal: false };
   },
@@ -37,16 +38,14 @@ const BookJobModal = React.createClass({
           </Modal.Header>
           <Modal.Body>
             <strong>
-              No removal of window, storm or screen. Remove loose dirt and water from sills.
+              No removal of window, storm or screen.
+              Remove loose dirt and water from sills.
             </strong>
             <p>
+              <BookW1Form />
               <AddJob />
             </p>
-            <p>
-              <strong>Select A date and Time:</strong>
-              <br></br>
-              <DateTime />
-            </p>
+
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>
