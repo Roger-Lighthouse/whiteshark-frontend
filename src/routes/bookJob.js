@@ -12,6 +12,8 @@ class BookJob extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+
   componentWillMount () {
     let s=this.props.location.pathname;
     var r = /\d+/;
@@ -19,7 +21,7 @@ class BookJob extends Component {
     this.props.dispatch(getClient(cfid));
   }
 
- componentDidMount () {
+  componentDidMount () {
     console.log("****", this.props.client.current_client)
 
   }

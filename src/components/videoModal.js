@@ -6,7 +6,8 @@ import {
 const MyLargeModal = React.createClass({
   render() {
     return (
-      <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
+      <Modal {...this.props} bsSize="large"
+        aria-labelledby="contained-modal-title-lg">
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-lg">White Shark Video</Modal.Title>
         </Modal.Header>
@@ -32,7 +33,8 @@ const videoModal = React.createClass({
 
     return (
       <ButtonToolbar>
-        <Button bsStyle="primary large" onClick={()=>this.setState({ lgShow: true })}>
+        <Button bsStyle="primary" bsStyle="large"
+          onClick={()=>this.setState({ lgShow: true })}>
           Watch the White Shark video
         </Button>
         <MyLargeModal show={this.state.lgShow} onHide={lgClose} />

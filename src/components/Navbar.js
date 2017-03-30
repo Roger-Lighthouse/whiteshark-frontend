@@ -18,7 +18,7 @@ const Navbar = () => {
                   <span className="icon-bar"></span>
                 </button>
                 <Link to="/" className="navbar-brand">
-                  <Image src={ WhiteShark }></Image>
+                  <Image height="80px" width="80px" src={ WhiteShark }></Image>
                   <h2 id="brand">White Shark</h2>
                 </Link>
               </div>

@@ -29,24 +29,6 @@
   font-family: "Merriweather", Georgia, serif;
 }
 
-/*.example3 .navbar-brand {
-  height: 80px;
-}
-
-.example3 .nav >li >a {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.example3 .navbar-toggle {
-  padding: 10px;
-  margin: 25px 15px 25px 0;
-}
-
-.row .carousel-holder {
-  margin-top: 36px;
-}*/
-
 #navbar {
   background-color: #001f70;
 }
@@ -90,4 +72,8 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+#videoModal {
+  margin: 15px;
 }

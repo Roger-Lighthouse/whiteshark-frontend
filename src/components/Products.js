@@ -22,11 +22,7 @@ const Products = () => (
                   <a href="#" className="list-group-item">Request Odd Job</a>
                 </div>
                 <div>
-                  <VideoModal className="col-md-3"/>
-                  {/* <ResponsiveEmbed a16by9>
-                    <embed className="col-md-3"
-                    src="https://player.vimeo.com/video/182019446" allowFullScreen />
-                  </ResponsiveEmbed> */}
+                  <VideoModal id="VideoModal" className="col-md-3"/>
                 </div>
             </div>
 
@@ -70,10 +66,10 @@ const Products = () => (
                             <Image src={img_W1} height="150" width="320" rounded></Image>
                             <div className="caption">
                                 <h4><a href="#">Exterior only [W1]</a>
+                                <h2 className="pull-right">$75</h2>
                                 </h4>
                                 <p>No removal of window, storm or screen.
                                   Remove loose dirt and water from sills.</p>
-                                  <h2 className="pull-right">$75</h2>
                             </div>
                           <BookJobModal data-jobType="W1"/>
                         </div>
@@ -182,7 +178,7 @@ const Products = () => (
         <hr></hr>
 
               {/* <!-- Footer --> */}
-              <footer>
+              <footer id="footer">
                   <div className="row">
                       <div className="col-lg-12">
                           <p>Copyright &copy; 2015 White Shark LTD.</p>
