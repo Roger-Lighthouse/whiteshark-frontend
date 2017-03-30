@@ -1,6 +1,6 @@
 import React from 'react'
-// import { connect } from 'react-redux'
-// import { addJob } from '../actions'
+import { connect } from 'react-redux'
+import { addJob } from '../actions'
 import { store } from '../store'
 import DateTime from 'react-datetime'
 
@@ -71,7 +71,7 @@ const BookW1Form = React.createClass({
 })
 const mapStateToProps = (state) => {
   return {
-    client:  state.client
+    job:  state.job
   }
 }
 
