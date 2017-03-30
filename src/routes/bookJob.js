@@ -12,7 +12,6 @@ class BookJob extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount () {
-    debugger
     // this.props.match.params.id
   }
 
