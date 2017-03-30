@@ -22,8 +22,8 @@ class BookJob extends Component {
   }
 
   componentDidMount () {
-    console.log("****", this.props.client.current_client)
-
+    console.log("****", this.client.current_client.name)
+    debugger
   }
 
 

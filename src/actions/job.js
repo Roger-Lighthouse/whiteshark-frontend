@@ -35,7 +35,7 @@ export function bookJob(job_info){
           // for(var i = 0; i < data5.length; i++){
           //   console.log('Data*****', data5[i])
           // }
-          return dispatch({type: 'COMPLETED_JOBS', payload: {data: data5}})
+          return dispatch({type: 'COMPLETED_JOBS', payload: {data: data}})
         })
         .catch()
    }
@@ -52,7 +52,7 @@ export function bookJob(job_info){
           // for(var i = 0; i < data5.length; i++){
           //   console.log('Data*****', data5[i])
           // }
-          return dispatch({type: 'CURRENT_JOBS', payload: {data: data5}})
+          return dispatch({type: 'CURRENT_JOBS', payload: {data: data}})
         })
         .catch()
    }
@@ -69,7 +69,7 @@ export function bookJob(job_info){
           // for(var i = 0; i < data5.length; i++){
           //   console.log('Data*****', data5[i])
           // }
-          return dispatch({type: 'UPCOMING_JOBS', payload: {data: data5}})
+          return dispatch({type: 'UPCOMING_JOBS', payload: {data: data}})
         })
         .catch()
    }

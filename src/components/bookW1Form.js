@@ -4,6 +4,9 @@ import { addJob } from '../actions'
 import { store } from '../store'
 import DateTime from 'react-datetime'
 import AddJob from '../containers/AddJob'
+import { bookJob } from '../actions/job'
+
+
 
 import {
   Button, FormGroup, FormControl, ControlLabel, HelpBlock
