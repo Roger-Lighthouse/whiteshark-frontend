@@ -1,8 +1,9 @@
-let nextTodoId = 0
-export const addTodo = (text) => ({
-  type: 'ADD_TODO',
-  id: nextTodoId++,
-  text
+//-----------------actions/index.js---------------
+let nextJobId = 10
+export const addJob = (job) => ({
+  type: 'ADD_JOB',
+  JobId: nextJobId++,
+  job
 })
 
 export const setVisibilityFilter = (filter) => ({
@@ -10,7 +11,12 @@ export const setVisibilityFilter = (filter) => ({
   filter
 })
 
-export const toggleTodo = (id) => ({
-  type: 'TOGGLE_TODO',
-  id
+export const updateJobStatus = (vars) => ({
+  type: 'UPDATE_JOB_STATUS',
+  vars
+})
+
+export const fetchMyJobs = (myJobs) => ({
+  type: 'FETCH_MY_JOBS',
+  myJobs
 })

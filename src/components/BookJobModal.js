@@ -1,5 +1,5 @@
 import React from 'react';
-import AddTodo from '../containers/AddTodo'
+import AddJob from '../containers/AddJob'
 import DateTime from 'react-datetime'
 import {
   Button, Modal
@@ -40,7 +40,7 @@ const BookJobModal = React.createClass({
               No removal of window, storm or screen. Remove loose dirt and water from sills.
             </strong>
             <p>
-              <AddTodo />
+              <AddJob />
             </p>
             <p>
               <strong>Select A date and Time:</strong>

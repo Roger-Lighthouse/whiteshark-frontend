@@ -23,14 +23,48 @@
   font-size: large;
 }
 
+#brand {
+  color: White;
+  font-weight: 400;
+  font-family: "Merriweather", Georgia, serif;
+}
+
+/*.example3 .navbar-brand {
+  height: 80px;
+}
+
+.example3 .nav >li >a {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.example3 .navbar-toggle {
+  padding: 10px;
+  margin: 25px 15px 25px 0;
+}
+
+.row .carousel-holder {
+  margin-top: 36px;
+}*/
+
 #navbar {
   background-color: #001f70;
-  color: white;
 }
 
 #navbar:hover {
   color: #0000ff;
 }
+
+.navbar-brand {
+  padding: 0px;
+  height: 80px;
+}
+
+.navbar-brand>img {
+  height: 100%;
+  width: auto;
+}
+
 .modal-container {
   position: relative;
 }
@@ -40,7 +74,7 @@
 }
 
 #myJobsBadge {
-  margin: 2px;
+  margin: 4px;
   background-color: white;
   color: #001f70;
 }

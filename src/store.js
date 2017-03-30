@@ -8,5 +8,6 @@ export const history = createHistory()
 
 export let store = createStore (
   rootReducer,
-  applyMiddleware(thunk, routerMiddleware(history))
+  applyMiddleware(thunk, routerMiddleware(history)),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )

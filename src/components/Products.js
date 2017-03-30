@@ -1,10 +1,9 @@
 import React from 'react';
 import img_W1 from '../images/W1.jpg'
 import BookJobModal from './BookJobModal'
+import VideoModal from './videoModal'
 import { Link } from 'react-router-dom'
-import {
-  Image
-} from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
 const Products = () => (
   <div>
     {/* Page Content */}
@@ -12,7 +11,7 @@ const Products = () => (
        <div className="row">
 
             <div id="side-bar" className="col-md-3">
-                <p className="lead">White Shark Services</p>
+                <p className="lead"></p>
                 <div className="list-group">
                   <Link to="/window-cleaning" className="list-group-item">
                     Window Cleaning
@@ -21,6 +20,13 @@ const Products = () => (
                   <a href="#" className="list-group-item">Exra Mile Painting</a>
                   <a href="#" className="list-group-item">Lawn Care</a>
                   <a href="#" className="list-group-item">Request Odd Job</a>
+                </div>
+                <div>
+                  <VideoModal className="col-md-3"/>
+                  {/* <ResponsiveEmbed a16by9>
+                    <embed className="col-md-3"
+                    src="https://player.vimeo.com/video/182019446" allowFullScreen />
+                  </ResponsiveEmbed> */}
                 </div>
             </div>
 
@@ -69,7 +75,7 @@ const Products = () => (
                                   Remove loose dirt and water from sills.</p>
                                   <h2 className="pull-right">$75</h2>
                             </div>
-                          <BookJobModal jobType="W1"/>
+                          <BookJobModal data-jobType="W1"/>
                         </div>
                     </div>
 
@@ -177,8 +183,8 @@ const Products = () => (
 
               {/* <!-- Footer --> */}
               <footer>
-                  <div class="row">
-                      <div class="col-lg-12">
+                  <div className="row">
+                      <div className="col-lg-12">
                           <p>Copyright &copy; 2015 White Shark LTD.</p>
                       </div>
                   </div>
