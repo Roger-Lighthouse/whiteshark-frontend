@@ -12,8 +12,16 @@ class BookJob extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount () {
-    debugger
     // this.props.match.params.id
+    //this.props.location
+    //this.props.dispatch(testMyJobs());
+    let s=this.props.location.pathname;
+    var r = /\d+/;
+    let cfid = s.match(r);
+
+
+    debugger
+    //this.props.dispatch(push('/bookjob'))
   }
 
   handleChange = (event) => this.setState({name: event.target.value});
@@ -43,6 +51,7 @@ class BookJob extends Component {
     );
   }
 }
+
 // const mapStateToProps = (state) => {
 //     return {}
 // }

@@ -1,5 +1,4 @@
 
-
 let initalState = {
     num_jobs: 0,
     data: [],
@@ -9,7 +8,7 @@ let initalState = {
     loading: false,
 }
 
-function jobReducer(state = initalState, action) {
+function clientReducer(state = initalState, action) {
 
     switch(action.type) {
         case 'BOOK_JOB':
@@ -39,4 +38,4 @@ function jobReducer(state = initalState, action) {
     }
 }
 
-export default jobReducer;
+export default clientReducer;
