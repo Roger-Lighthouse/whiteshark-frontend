@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addJob } from '../actions'
 import { store } from '../store'
 import DateTime from 'react-datetime'
+import AddJob from '../containers/AddJob'
 
 import {
   Button, FormGroup, FormControl, ControlLabel, HelpBlock
@@ -20,11 +21,10 @@ import {
 const jobType = "W1"
 const jobPrice = 75
 
-componentDidMount () {
-  this.props.dispatch(setW1Price(jobType, jobPrice))
-}
-
 const BookW1Form = React.createClass({
+  componentDidMount () {
+    // this.props.dispatch(setW1Price(jobType, jobPrice))
+  },
 
   getInitialState() {
     return { selectedDate: '' };
@@ -61,7 +61,7 @@ const BookW1Form = React.createClass({
             }/>
           <br></br>
         </p>
-
+        <AddJob />
         <Button type="submit">
           Submit
         </Button>

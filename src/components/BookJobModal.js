@@ -1,5 +1,4 @@
 import React from 'react';
-import AddJob from '../containers/AddJob'
 import {
   Button, Modal
 } from 'react-bootstrap'
@@ -41,11 +40,7 @@ const BookJobModal = React.createClass({
               No removal of window, storm or screen.
               Remove loose dirt and water from sills.
             </strong>
-            <p>
-              <BookW1Form />
-              <AddJob />
-            </p>
-
+            <BookW1Form />
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>
