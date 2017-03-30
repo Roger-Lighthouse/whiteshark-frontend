@@ -1,18 +1,15 @@
 import { combineReducers } from 'redux'
 import jobs from './jobs'
-import jobReducer from '../actions/job'
-import clientReducer from '../actions/client'
+import jobReducer from './job'
+import clientReducer from './client'
 import visibilityFilter from './visibilityFilter'
 
-const jobsApp = combineReducers({
+const rootReducer = combineReducers({
   job: jobReducer,
-  client: clientReducer,
-
-  jobs,
-  visibilityFilter
+  client: clientReducer
 })
 
-export default jobsApp
+export default rootReducer
 
 
 
@@ -28,3 +25,12 @@ export default jobsApp
 // })
 
 // export default rootReducer
+
+
+
+
+
+// ,
+
+//   jobs,
+//   visibilityFilter

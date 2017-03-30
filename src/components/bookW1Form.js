@@ -35,7 +35,7 @@ const BookW1Form = React.createClass({
     return (
       <form onSubmit={e => {
         e.preventDefault()
-        this.props.dispatch(setW1Price(jobType, jobPrice))
+        this.props.dispatch(bookJob(jobType))
         console.log('Form Submitted: ',
           "type", jobType, "date", this.state.selectedDate,
           "price", jobPrice)
