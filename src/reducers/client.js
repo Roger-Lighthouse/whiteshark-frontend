@@ -2,7 +2,7 @@
 let initalState = {
     num_jobs: 0,
     data: [],
-    username: '',
+    current_client: '',
     password: '',
     error: null,
     loading: false,
@@ -11,30 +11,13 @@ let initalState = {
 function clientReducer(state = initalState, action) {
 
     switch(action.type) {
-        case 'BOOK_JOB':
+        case 'GET_CLIENT':
             return {
                 ...state,
-                username: action.payload.username
+                current_client: action.payload.data
             }
-
-        case 'COMPLETED_JOBS':
-            return {
-                ...state,
-                username: action.payload.username
-            }
-
-        case 'CURRENT_JOBS':
-            return {
-                ...state,
-                username: action.payload.username
-            }
-        case 'UPCOMING_JOBS':
-            return {
-                ...state,
-                username: action.payload.username
-            }
-            default:
-            return state
+        default:
+        return state
     }
 }
 

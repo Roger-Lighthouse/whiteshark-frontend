@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 // import { push } from 'react-router-redux'
 import Navbar from '../components/Navbar'
 import Products from '../components/Products'
+import { getClient } from '../actions/client'
 
 class BookJob extends Component {
   constructor(props) {
@@ -11,18 +12,19 @@ class BookJob extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount () {
-    // this.props.match.params.id
-    //this.props.location
-    //this.props.dispatch(testMyJobs());
+  componentWillMount () {
     let s=this.props.location.pathname;
     var r = /\d+/;
     let cfid = s.match(r);
-
-
-    debugger
-    //this.props.dispatch(push('/bookjob'))
+    this.props.dispatch(getClient(cfid));
   }
+
+ componentDidMount () {
+    console.log("****", this.props.client.current_client)
+
+  }
+
+
 
   handleChange = (event) => this.setState({name: event.target.value});
 
@@ -52,8 +54,12 @@ class BookJob extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//     return {}
-// }
+ const mapStateToProps = (state) => {
+    return {
+      client: state.client
 
-export default connect()(BookJob)
+
+    }
+ }
+
+export default connect(mapStateToProps)(BookJob)
