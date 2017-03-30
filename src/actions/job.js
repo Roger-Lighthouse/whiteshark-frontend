@@ -17,7 +17,7 @@ export function bookJob(job_info){
           // for(var i = 0; i < data5.length; i++){
           //   console.log('Data*****', data5[i])
           // }
-          return dispatch({type: 'BOOK_JOB', payload: {data: data5}})
+          return dispatch({type: 'BOOK_JOB', payload: {data: data}})
         })
         .catch()
    }
