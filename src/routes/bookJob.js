@@ -41,7 +41,7 @@ class BookJob extends Component {
         <nav>
           <Navbar />
         </nav>
-        {this.props.client ? <Products /> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
+        {this.props.client ? <Products client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
       </div>
     )
   }

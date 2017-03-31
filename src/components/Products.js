@@ -1,12 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux'
+
 import img_W1 from '../images/W1.jpg'
 import BookJobModal from './BookJobModal'
 import VideoModal from './videoModal'
 import { Link } from 'react-router-dom'
 import { Image } from 'react-bootstrap'
-const Products = () => (
+
+
+const Products = (props) => (
   <div>
-    {/* Page Content */}
      <div className="container">
        <div className="row">
 
@@ -66,7 +69,7 @@ const Products = () => (
                             <Image src={img_W1} height="150" width="320" rounded></Image>
                             <div className="caption">
                                 <h4><a href="#">Exterior only [W1]</a>
-                                <h2 className="pull-right">$75</h2>
+                                <h2 className="pull-right">{props.client.current_w1}</h2>
                                 </h4>
                                 <p>No removal of window, storm or screen.
                                   Remove loose dirt and water from sills.</p>
@@ -190,4 +193,6 @@ const Products = () => (
 
   </div>
 )
-export default Products;
+
+export default Products
+

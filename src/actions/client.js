@@ -7,7 +7,8 @@ export function getClient(id){
       fetch(`http://localhost:3000/clients/${id}`)
         .then(resp => resp.json())
         .then(data => {
-           console.log('*****', data.client.name)
+           console.log('**Client***', data.client)
+           console.log('**Prices***', data.prices)
           // var data5 = data.clients
           // console.log("size", data5.length)
           // for(var i = 0; i < data5.length; i++){

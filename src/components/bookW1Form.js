@@ -38,7 +38,14 @@ const BookW1Form = React.createClass({
     return (
       <form onSubmit={e => {
         e.preventDefault()
-        this.props.dispatch(bookJob(this.props.client.current_client))
+        console.log("W1 PRICE>>>>>", this.props.client.current_w1)
+        var job_info={clientId: job_info.client.id,
+            jobDesc: 'W1',
+            jobPrice: this.props.client.current_w1,
+            jobDate: this.state.selectedate
+          }
+        //this.props.dispatch(bookJob(this.props.client.current_client))
+        this.props.dispatch(bookJob(job_info))
         console.log('Form Submitted: ',
           "type", jobType, "date", this.state.selectedDate,
           "price", jobPrice)
@@ -53,7 +60,7 @@ const BookW1Form = React.createClass({
         <FormGroup>
           <ControlLabel>Job Price</ControlLabel>
           <FormControl.Static>
-            $ {jobPrice}
+            { this.props.client.current_w1 }
           </FormControl.Static>
         </FormGroup>
         <p>
@@ -72,11 +79,16 @@ const BookW1Form = React.createClass({
     )
   }
 })
-const mapStateToProps = (state) => {
-  return {
-    job:  state.job,
-    client: state.client
-  }
-}
 
-export default connect(mapStateToProps)(BookW1Form);
+   // $ {this.props.client.current_w1}
+   const mapStateToProps = (state) => {
+     return {
+       client: state.client
+
+
+     }
+  }
+
+export default connect(mapStateToProps)(BookW1Form)
+
+
