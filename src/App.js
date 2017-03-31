@@ -24,7 +24,8 @@ const App = () => {
           <Route path='/myJobs' component={MyJobs}/>
           <Route path='/myProfile' component={MyProfile}/>
           <Route path='/window-cleaning' component={windowCleaning}/>
-          <Route path='/:id' component={BookJob}/>
+          <Route path='/clients/:id' component={BookJob}/>
+
         </div>
       </ConnectedRouter>
     </Provider>
