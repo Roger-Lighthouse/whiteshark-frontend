@@ -4,6 +4,9 @@ import { addJob } from '../actions'
 import { store } from '../store'
 import DateTime from 'react-datetime'
 import AddJob from '../containers/AddJob'
+import { bookJob } from '../actions/job'
+
+
 
 import {
   Button, FormGroup, FormControl, ControlLabel, HelpBlock
@@ -35,7 +38,7 @@ const BookW1Form = React.createClass({
     return (
       <form onSubmit={e => {
         e.preventDefault()
-        // dispatch(addJob(input.value))
+        this.props.dispatch(bookJob(this.props.client.current_client))
         console.log('Form Submitted: ',
           "type", jobType, "date", this.state.selectedDate,
           "price", jobPrice)
@@ -71,7 +74,8 @@ const BookW1Form = React.createClass({
 })
 const mapStateToProps = (state) => {
   return {
-    job:  state.job
+    job:  state.job,
+    client: state.client
   }
 }
 

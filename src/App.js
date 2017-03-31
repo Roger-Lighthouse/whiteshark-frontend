@@ -25,6 +25,7 @@ const App = () => {
           <Route path='/myProfile' component={MyProfile}/>
           <Route path='/window-cleaning' component={windowCleaning}/>
           <Route path='/clients/:id' component={BookJob}/>
+
         </div>
       </ConnectedRouter>
     </Provider>
