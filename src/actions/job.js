@@ -6,8 +6,9 @@ export function bookJob(job_info){
       console.log("JOB INFO M:", job_info)
       fetch('http://localhost:3000/jobs', {
         method: 'POST',
-        body: JSON.stringify({client_id: job_info.clientId, jobdesc: job_info.jobDesc,
-          jobPrice: job_info.jobPrice, jobDate: job_info.jobDate}),
+        body: JSON.stringify({clientId: job_info.clientId, jobDesc: job_info.jobDesc,
+          jobPrice: job_info.jobPrice, jobDate: job_info.jobDate,
+          jobTime: job_info.jobTime}),
         headers: new Headers({'Content-type': 'application/json'})
       })
         .then(resp => resp.json())

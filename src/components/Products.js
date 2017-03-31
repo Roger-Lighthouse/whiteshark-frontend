@@ -6,6 +6,8 @@ import BookJobModal from './BookJobModal'
 import VideoModal from './videoModal'
 import { Link } from 'react-router-dom'
 import { Image } from 'react-bootstrap'
+const Currency = require('react-currency');
+
 
 
 const Products = (props) => (
@@ -69,7 +71,7 @@ const Products = (props) => (
                             <Image src={img_W1} height="150" width="320" rounded></Image>
                             <div className="caption">
                                 <h4><a href="#">Exterior only [W1]</a>
-                                <h2 className="pull-right">{props.client.current_w1}</h2>
+                                <h2 className="pull-right"> <Currency symbol="$" value={ props.client.current_w1 * 100} /></h2>
                                 </h4>
                                 <p>No removal of window, storm or screen.
                                   Remove loose dirt and water from sills.</p>
