@@ -38,7 +38,7 @@ const BookW1Form = React.createClass({
     return (
       <form onSubmit={e => {
         e.preventDefault()
-        this.props.dispatch(bookJob(jobType))
+        this.props.dispatch(bookJob(this.props.client.current_client))
         console.log('Form Submitted: ',
           "type", jobType, "date", this.state.selectedDate,
           "price", jobPrice)
@@ -74,7 +74,8 @@ const BookW1Form = React.createClass({
 })
 const mapStateToProps = (state) => {
   return {
-    job:  state.job
+    job:  state.job,
+    client: state.client
   }
 }
 

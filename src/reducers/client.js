@@ -8,11 +8,11 @@ let initalState = {
     loading: false,
 }
 
-function clientReducer(state = initalState, action) {
+function clientReducer(state = null, action) {
 
     switch(action.type) {
         case 'GET_CLIENT':
-            console.log("In GET CLIENT")
+            console.log("In GET CLIENT", action.payload.data)
             return {
                 ...state,
                 current_client: action.payload.data

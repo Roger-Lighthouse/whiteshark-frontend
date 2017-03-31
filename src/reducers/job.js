@@ -5,17 +5,25 @@ let initalState = {
     data: [],
     username: '',
     password: '',
+    completed_jobs: [],
+    current_jobs: [],
+    upcoming_jobs: [],
+
     error: null,
     loading: false,
 }
 
 function jobReducer(state = initalState, action) {
-
+    console.log(action)
     switch(action.type) {
         case 'BOOK_JOB':
+            let jobs=action.payload.jobs
+            let current_jobs = []
+            let upcoming_jobs = []
+            let completed_jobs = []
             return {
                 ...state,
-                username: action.payload.username
+                current_jobs: current_jobs
             }
 
         case 'COMPLETED_JOBS':

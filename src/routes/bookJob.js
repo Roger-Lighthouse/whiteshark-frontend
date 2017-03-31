@@ -22,8 +22,7 @@ class BookJob extends Component {
   }
 
   componentDidMount () {
-    console.log("****", this.props.client.current_client)
-    debugger
+    // console.log("****", this.props.client.current_client)
   }
 
 
@@ -42,17 +41,9 @@ class BookJob extends Component {
         <nav>
           <Navbar />
         </nav>
-        <Products />
-        {/* <form onSubmit={ () => this.props.dispatch(push('/myJobs'))}>
-          <label>
-            Name:
-            <input type="text" value={this.state.value}
-              onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form> */}
+        {this.props.client ? <Products /> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
       </div>
-    );
+    )
   }
 }
 
