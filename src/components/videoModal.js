@@ -33,7 +33,7 @@ const videoModal = React.createClass({
 
     return (
       <ButtonToolbar>
-        <Button bsStyle="primary" bsStyle="large"
+        <Button bsStyle="primary" block
           onClick={()=>this.setState({ lgShow: true })}>
           Watch the White Shark video
         </Button>

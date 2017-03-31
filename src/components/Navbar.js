@@ -18,13 +18,13 @@ const Navbar = () => {
                   <span className="icon-bar"></span>
                 </button>
                 <Link to="/" className="navbar-brand">
-                  <Image height="80px" width="80px" src={ WhiteShark }></Image>
+                  <Image id="brand-image" src={ WhiteShark }></Image>
                   <h2 id="brand">White Shark</h2>
                 </Link>
               </div>
             {/* <!-- Collect the nav links, forms, and other content for toggling --> */}
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul className="nav navbar-nav navbar-right">
+              <ul id="nav-btns" className="nav navbar-nav navbar-right">
                 <li>
                   <Link to="/">
                     Book Jobs
