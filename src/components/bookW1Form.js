@@ -1,16 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addJob } from '../actions'
-import { store } from '../store'
 import DateTime from 'react-datetime'
-import AddJob from '../containers/AddJob'
-import { bookJob } from '../actions/job'
 const Currency = require('react-currency');
 
-
-
 import {
-  Button, FormGroup, FormControl, ControlLabel, HelpBlock
+  Button, FormGroup, FormControl, ControlLabel
 } from 'react-bootstrap'
 
 // function FieldGroup({ id, label, help, ...props }) {
@@ -22,7 +16,7 @@ import {
 //     </FormGroup>
 //   );
 // }
-const jobType = "W1"
+// const jobType = "W1"
 //const jobPrice = 75
 
 const BookW1Form = React.createClass({
@@ -31,64 +25,95 @@ const BookW1Form = React.createClass({
   },
 
   getInitialState() {
-    return { selectedDate: '' };
+    return {
+      selectedDate: '',
+      selectedTime: '',
+      jobDetails: ''
+    };
   },
+
   render () {
     // let dateChange = () => this.setState({ selectedDate: this.state.value });
 
     return (
-      <form onSubmit={e => {
-        e.preventDefault()
-        console.log("W1 PRICE>>>>>", this.state.selectedTime)
-        var job_info={clientId: this.props.client.current_client.id,
-            jobDesc: 'W1',
+      <div>
+        <form onSubmit={e => {
+          e.preventDefault()
+          console.log(this.state)
+          var job_info = {
+            clientId: this.props.client.current_client.id,
+            jobType: this.props.jobType,
             jobPrice: this.props.client.current_w1,
             jobDate: this.state.selectedDate,
-            jobTime: this.state.selectedTime
+            jobTime: this.state.selectedTime,
+            jobDetails: this.state.jobDetails
           }
-        //this.props.dispatch(bookJob(this.props.client.current_client))
-        this.props.dispatch(bookJob(job_info))
-      //  console.log('Form Submitted: ',
-      //    "type", jobType, "date", this.state.selectedDate,
-      //    "price", jobPrice)
-      }}>
-        <FormGroup>
-          <ControlLabel>Job Type</ControlLabel>
-          <FormControl.Static>
-            {jobType}
-          </FormControl.Static>
-        </FormGroup>
+            // this.props.dispatch(bookJob(job_info)
+    // ----------------------------------------------------
+          //this.props.dispatch(bookJob(this.props.client.current_client))
+        //  console.log('Form Submitted: ',
+        //    "type", jobType, "date", this.state.selectedDate,
+        //    "price", jobPrice)
+        }}>
+          <FormGroup>
+            <ControlLabel>Job Type</ControlLabel>
+            <FormControl.Static>
+              {this.props.jobType}
+            </FormControl.Static>
+          </FormGroup>
 
-        <FormGroup>
-          <ControlLabel>Job Price</ControlLabel>
-          <FormControl.Static>
-            <Currency symbol="$" value={ this.props.client.current_w1 * 100} />
-          </FormControl.Static>
-        </FormGroup>
-        <p>
-          <strong>Select A date and Time:</strong>
-          <DateTime onChange={(d)=>{
-                this.setState({selectedDate: d.toDate()})
-                this.setState({selectedTime: d.getHours()})
+          <FormGroup>
+            <ControlLabel>Job Price</ControlLabel>
+            <FormControl.Static>
+              {/* <Currency symbol="$" value={ this.props.client.current_w1 * 100} /> */}
+            </FormControl.Static>
+          </FormGroup>
+            <strong>Select date:</strong>
+            <DateTime onChange={(d)=>{
+                  this.setState({ selectedDate: d.toDate() })
+                }} timeFormat={false} />
+            {/* <DateTime onChange={(d)=>{
+                  this.setState({selectedTime: d.getHours()})
+                }}
+              timeConstraints={ hours: { min: 8, max: 12, step: 2 }}
+              dateFormat={false}/> */}
+          <FormGroup controlId="formControlsSelect">
+            <ControlLabel>Select time:</ControlLabel>
+            <FormControl componentClass="select" placeholder="select time"
+              value={this.state.value}
+              onChange={ (ev) => {
+                this.setState({selectedTime: ev.target.value})
+              }
+            }>
+              <option value="8">8 AM</option>
+              <option value="10">10 AM</option>
+              <option value="12">12 PM</option>
+              <option value="0">Anytime</option>
+            </FormControl>
+          </FormGroup>
+          <FormGroup controlId="formControlsTextarea">
+            <ControlLabel>Additional job details</ControlLabel>
+            <FormControl componentClass="textarea"
+              placeholder="i.e. call ahead of arrival"
+              value={this.state.value}
+              onChange={ (ev) => {
+                this.setState({jobDetails: ev.target.value})
               }
             }/>
-          <br></br>
-        </p>
-        <AddJob />
-        <Button type="submit">
-          Submit
-        </Button>
-      </form>
+          </FormGroup>
+          <Button type="submit">
+            Submit
+          </Button>
+        </form>
+      </div>
     )
   }
 })
 
-   const mapStateToProps = (state) => {
-     return {
-       client: state.client
-     }
+const mapStateToProps = (state) => {
+  return {
+    client: state.client
   }
+}
 
 export default connect(mapStateToProps)(BookW1Form)
-
-

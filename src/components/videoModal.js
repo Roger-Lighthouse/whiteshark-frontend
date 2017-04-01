@@ -32,13 +32,15 @@ const videoModal = React.createClass({
     let lgClose = () => this.setState({ lgShow: false });
 
     return (
-      <ButtonToolbar>
-        <Button bsStyle="primary" block
-          onClick={()=>this.setState({ lgShow: true })}>
-          Watch the White Shark video
-        </Button>
-        <MyLargeModal show={this.state.lgShow} onHide={lgClose} />
-      </ButtonToolbar>
+      <div>
+        <ButtonToolbar>
+          <Button id="VideoModalBtn" bsStyle="primary" block
+            onClick={()=>this.setState({ lgShow: true })}>
+            Watch the White Shark video
+          </Button>
+          <MyLargeModal show={this.state.lgShow} onHide={lgClose} />
+        </ButtonToolbar>
+      </div>
     );
   }
 });

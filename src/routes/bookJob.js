@@ -6,34 +6,17 @@ import Products from '../components/Products'
 import { getClient } from '../actions/client'
 
 class BookJob extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {name: ''};
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  // componentWillMount () {
+  //   let s=this.props.location.pathname;
+  //   var r = /\d+/;
+  //   let cfid = s.match(r);
+  //   this.props.dispatch(getClient(cfid));
+  // }
 
-
-  componentWillMount () {
-    let s=this.props.location.pathname;
-    var r = /\d+/;
-    let cfid = s.match(r);
-    this.props.dispatch(getClient(cfid));
-  }
-
-  componentDidMount () {
-    // console.log("****", this.props.client.current_client)
-  }
-
-
-
-  handleChange = (event) => this.setState({name: event.target.value});
-
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    alert('A name was submitted: ' + this.state.value);
-  }
+  // componentDidMount () {
+  //   console.log("****", this.props.client.current_client)
+  // }
 
   render() {
     return (
@@ -41,19 +24,18 @@ class BookJob extends Component {
         <nav>
           <Navbar />
         </nav>
-        {this.props.client ? <Products client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
+        {/* {this.props.client ? <Products client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>} */}
+        <Products />
       </div>
     )
   }
 }
 
- const mapStateToProps = (state) => {
-    return {
-      client: state.client
-
-
-    }
- }
+const mapStateToProps = (state) => {
+  return {
+    client: state.client
+  }
+}
 
 export default connect(mapStateToProps)(BookJob)
 
@@ -184,5 +166,3 @@ export default connect(mapStateToProps)(BookJob)
 // // }
 
 // export default connect(mapStateToProps)(MyJobsContainer);
-
-
