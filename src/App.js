@@ -25,11 +25,7 @@ const App = () => {
           <Route path='/myProfile' component={MyProfile}/>
           <Route path='/window-cleaning' component={windowCleaning}/>
           <Route path='/clients/:id' component={BookJob}/>
-<<<<<<< HEAD
-          <Route path='/clients' component={BookJob}/>
-
-=======
->>>>>>> 45637db772f0a4567a9b38a095782f84820757de
+          { /*<Route path='/clients' component={BookJob}/> */}
         </div>
       </ConnectedRouter>
     </Provider>
