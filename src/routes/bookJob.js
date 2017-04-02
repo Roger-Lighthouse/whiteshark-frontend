@@ -7,16 +7,16 @@ import { getClient } from '../actions/client'
 
 class BookJob extends Component {
 
-  // componentWillMount () {
-  //   let s=this.props.location.pathname;
-  //   var r = /\d+/;
-  //   let cfid = s.match(r);
-  //   this.props.dispatch(getClient(cfid));
-  // }
+  componentWillMount () {
+    let s=this.props.location.pathname;
+    var r = /\d+/;
+    let cfid = s.match(r);
+    this.props.dispatch(getClient(cfid));
+  }
 
-  // componentDidMount () {
-  //   console.log("****", this.props.client.current_client)
-  // }
+  componentDidMount () {
+    console.log("****", this.props.client.current_client)
+  }
 
   render() {
     return (
@@ -24,7 +24,7 @@ class BookJob extends Component {
         <nav>
           <Navbar client={this.props.client}/>
         </nav>
-        {/* {this.props.client ? <Products client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>} */}
+        {this.props.client ? <Products client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
         <Products />
       </div>
     )
