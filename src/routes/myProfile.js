@@ -1,7 +1,7 @@
 import React from 'react';
 import Table from 'react-bootstrap'
 import Navbar from '../components/Navbar'
-import { EditProfile } from '../components/editProfile'
+import EditProfile from '../components/editProfile'
 // import { FormGroup, FormControl, ControlLabel, HelpBlock, Button, Collapse
 // } from 'react-bootstrap'
 
@@ -21,13 +21,15 @@ const myProfile = React.createClass ({
   },
   render() {
     return (
-      <div>
+      <div className="container">
         <Navbar />
-        <article>
-          <p><strong>Name:</strong> Mark Walhberg</p>
-          <p><strong>Email:</strong> markyMark@southy.com</p>
-          <p><strong>Address:</strong> 11 Boston Way</p>
-        </article>
+        <div className="center-block">
+          <div className="list-group">
+            <p><strong>Name:</strong> Mark Walhberg</p>
+            <p><strong>Email:</strong> markyMark@southy.com</p>
+            <p><strong>Address:</strong> 11 Boston Way</p>
+          </div>
+        </div>
         <EditProfile />
       </div>
     );

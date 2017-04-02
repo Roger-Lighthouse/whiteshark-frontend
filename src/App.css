@@ -23,6 +23,10 @@
   font-size: large;
 }
 
+#root {
+  margin-top: 50px;
+}
+
 #brand {
   color: White;
   font-weight: 400;
@@ -32,10 +36,16 @@
 #brand-image {
   float: left;
   margin-right: 5px;
+  height: 80px;
+  width: 80px;
 }
 
+#footer {
+  background-color: #00205b;
+}
+/*RGB: 0 32 91*/
 #navbar {
-  background-color: #010f33;
+  background-color: #00205b;
 }
 
 #nav-btns {
@@ -64,8 +74,8 @@
   border: 2px solid transparent;
 }
 
-#main-container {
-  margin-top: 50px;
+#VideoModalBtn {
+  margin-bottom: 15px;
 }
 
 #modal-container {
@@ -74,6 +84,13 @@
 
 .modal-container {
   position: relative;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
 }
 
 .modal-container .modal, .modal-container .modal-backdrop {
@@ -93,8 +110,4 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-#videoModal {
-  margin: 15px;
 }

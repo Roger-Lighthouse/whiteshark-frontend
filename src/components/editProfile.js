@@ -1,5 +1,6 @@
 import React from 'react';
-import { FormGroup, FormControl, ControlLabel, HelpBlock, Button, Collapse
+import {
+  Button, FormGroup, FormControl, ControlLabel, HelpBlock, Collapse, ButtonToolbar
 } from 'react-bootstrap'
 
 function FieldGroup({ id, label, help, ...props }) {
@@ -12,59 +13,65 @@ function FieldGroup({ id, label, help, ...props }) {
   );
 }
 
-const editProfile = () => (
+class editProfile extends React.Component {
+  constructor(props) {
+    super(props)
 
-      <div>
-        <Button onClick={ ()=>!this.props.open }
-          bsStyle="primary" bsSize="xsmall" >
-          Edit Profile
-        </Button>
-        <Collapse in={this.props.open} >
-          <form>
-            <FormGroup>
-              <FieldGroup
-                id="formProfileName"
-                type="text"
-                label="Change Name"
-                placeholder="Name"/>
+    this.state = {};
+  }
+  render() {
+    return (
+      <div className="container">
+        <div className="center-block">
+          <Button onClick={ ()=> this.setState({ open: !this.state.open })}
+            bsStyle="primary" bsSize="xsmall" >
+            Edit Profile
+          </Button>
+          <Collapse in={this.state.open} >
+            <div>
+              <form>
+                  <FieldGroup
+                    id="formControlsName"
+                    type="text"
+                    label="Change Name"
+                    placeholder="Name"/>
 
-              <FieldGroup
-                id="formProfileEmail"
-                type="email"
-                label="Change Email"
-                placeholder="Enter email"/>
+                  <FieldGroup
+                    id="formControlsEmail"
+                    type="email"
+                    label="Change Email"
+                    placeholder="Enter email"/>
 
-              <FieldGroup
-                id="formProfileAddress"
-                type="text"
-                label="ChangeAddress"
-                placeholder="Address"/>
+                  <FieldGroup
+                    id="formControlsPassword"
+                    label="Old Password"
+                    type="password"/>
 
-              <FieldGroup
-                id="formProfilePassword"
-                label="Old Password"
-                type="password"/>
+                  <FieldGroup
+                    id="formControlsPassword"
+                    label="New Password"
+                    type="password"/>
 
-              <FieldGroup
-                id="formProfilePassword"
-                label="New Password"
-                type="password"/>
+                  <FieldGroup
+                    id="formControlsPassword"
+                    label="Confirm New Password"
+                    type="password"/>
 
-              <FieldGroup
-                id="formProfilePassword"
-                label="New Password"
-                type="password"/>
-            </FormGroup>
-
-            <Button bsStyle="primary" type="submit">
-              Submit
-            </Button>
-            <Button bsSize="xsmall" type="reset">
-              Clear changes
-            </Button>
-          </form>
-        </Collapse>
+                <ButtonToolbar>
+                  <Button bsStyle="primary" type="submit">
+                    Submit
+                  </Button>
+                  <Button type="reset">
+                    Clear changes
+                  </Button>
+                </ButtonToolbar>
+              </form>
+            </div>
+          </Collapse>
+        </div>
       </div>
-);
+    );
+  }
+}
 
 export default editProfile;

@@ -63,36 +63,4 @@ export function completedJob(id){
 }
 
 
- // export function getJobs(id){
- //   return dispatch => {
 
- //      fetch('http://localhost:3000/jobs')
- //        .then(resp => resp.json())
- //        .then(data => {
- //           return dispatch({type: 'COMPLETED_JOBS', payload: {data: data}})
- //        })
- //        .catch()
- //   }
- // }
-
- // export function currentJobs(id){
- //   return dispatch => {
- //      fetch('http://localhost:3000/jobs')
- //        .then(resp => resp.json())
- //        .then(data => {
- //           return dispatch({type: 'CURRENT_JOBS', payload: {data: data}})
- //        })
- //        .catch()
- //   }
- // }
-
- //  export function upcomingJobs(id){
- //   return dispatch => {
- //      fetch('http://localhost:3000/jobs')
- //        .then(resp => resp.json())
- //        .then(data => {
- //          return dispatch({type: 'UPCOMING_JOBS', payload: {data: data}})
- //        })
- //        .catch()
- //   }
- // }

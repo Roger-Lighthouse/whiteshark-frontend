@@ -1,5 +1,6 @@
 import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
+import logo from '../images/WhiteShark.png'
 
 export default class TakeMoney extends React.Component {
   onToken = (token) => {
@@ -19,7 +20,7 @@ export default class TakeMoney extends React.Component {
           <StripeCheckout
             name="White Shark Ltd"
             description="Record Payment"
-            //image="localhost:3001//src/images/WhiteShark.png"
+            image={ logo }
             ComponentClass="div"
             amount={ this.props.amount }
             currency="USD"

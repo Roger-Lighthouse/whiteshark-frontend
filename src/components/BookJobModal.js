@@ -32,15 +32,14 @@ const BookJobModal = React.createClass({
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>
-              Book an External Window Cleaning
+              {this.props.jobTitle}
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <strong>
-              No removal of window, storm or screen.
-              Remove loose dirt and water from sills.
+              {this.props.jobDesc}
             </strong>
-            <BookW1Form />
+            <BookW1Form jobType={this.props.jobType}/>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>

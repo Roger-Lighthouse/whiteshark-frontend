@@ -16,20 +16,20 @@ import {
 //     </FormGroup>
 //   );
 // }
-// const jobType = "W1"
-//const jobPrice = 75
+
 const yesterday = DateTime.moment().subtract( 1, 'day' );
 const valid = function( current ){
     return current.isAfter( yesterday );
 };
 
-const BookW1Form = React.createClass({
+const BookEavesForm = React.createClass({
   componentDidMount () {
     // this.props.dispatch(setW1Price(jobType, jobPrice))
   },
 
   getInitialState() {
     return {
+      eavesType: '',
       selectedDate: '',
       selectedTime: '',
       jobDetails: ''
@@ -46,7 +46,7 @@ const BookW1Form = React.createClass({
           console.log(this.state)
           var job_info = {
             clientId: this.props.client.current_client.id,
-            jobType: this.props.jobType,
+            eavesType: this.state.eavesType,
             jobPrice: this.props.client.current_w1,
             jobDate: this.state.selectedDate,
             jobTime: this.state.selectedTime,
@@ -59,19 +59,28 @@ const BookW1Form = React.createClass({
         //    "type", jobType, "date", this.state.selectedDate,
         //    "price", jobPrice)
         }}>
-          <FormGroup>
-            <ControlLabel>Job Type</ControlLabel>
-            <FormControl.Static>
-              {this.props.jobType}
-            </FormControl.Static>
-          </FormGroup>
+        <FormGroup controlId="formControlsSelect">
+          <ControlLabel>Select Job Type:</ControlLabel>
+          <FormControl componentClass="select" placeholder="select Job Type"
+            value={this.state.value}
+            onChange={ (ev) => {
+              this.setState({eavesType: ev.target.value})
+            }
+          } style={{width: '85%'}} >
+            <option value="EH">Clean interior of house eaves [EH]</option>
+            <option value="EG">Clean interior of garage eaves [EG]</option>
+            <option value="DSC">Clean the mouth of down spout and install downspout cage [DSC]</option>
+            <option value="SDS">Snake downspouts and remove any clogs [SDS]</option>
+          </FormControl>
+        </FormGroup>
 
           <FormGroup>
             <ControlLabel>Job Price</ControlLabel>
             <FormControl.Static>
-               <Currency symbol="$" value={ this.props.client.current_w1 * 100} />
+              {/* <Currency symbol="$" value={ this.props.client.current_w1 * 100} /> */}
             </FormControl.Static>
           </FormGroup>
+
             <strong>Select date:</strong>
             <DateTime onChange={(d)=>{
                   this.setState({ selectedDate: d.toDate() })
@@ -95,6 +104,7 @@ const BookW1Form = React.createClass({
               <option value="0">Anytime</option>
             </FormControl>
           </FormGroup>
+
           <FormGroup controlId="formControlsTextarea">
             <ControlLabel>Additional job details</ControlLabel>
             <FormControl componentClass="textarea"
@@ -105,6 +115,7 @@ const BookW1Form = React.createClass({
               }
             }/>
           </FormGroup>
+
           <Button type="submit">
             Submit
           </Button>
@@ -120,4 +131,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(BookW1Form)
+export default connect(mapStateToProps)(BookEavesForm)
