@@ -3,22 +3,29 @@ import { connect } from 'react-redux'
 // import { push } from 'react-router-redux'
 import Navbar from '../components/Navbar'
 import Products from '../components/Products'
-import { getClient } from '../actions/client'
+import { getClient, editClient, getAllClients } from '../actions/client'
+import { deleteJob } from '../actions/job'
 
 class BookJob extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {name: ''};
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {name: ''};
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  //   this.handleSubmit = this.handleSubmit.bind(this);
+  // }
 
 
   componentWillMount () {
     let s=this.props.location.pathname;
     var r = /\d+/;
     let cfid = s.match(r);
-    this.props.dispatch(getClient(cfid));
+    if(cfid!=='' && cfid!==null){
+      this.props.dispatch(getClient(cfid));
+      this.props.dispatch(editClient(cfid));
+      //this.props.dispatch(deleteJob(32));
+    }else{
+      this.props.dispatch(getAllClients());
+    }
   }
 
   componentDidMount () {

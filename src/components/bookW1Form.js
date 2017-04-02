@@ -69,7 +69,7 @@ const BookW1Form = React.createClass({
           <strong>Select A date and Time:</strong>
           <DateTime onChange={(d)=>{
                 this.setState({selectedDate: d.toDate()})
-                this.setState({selectedTime: d.getHours()})
+               // this.setState({selectedTime: d.getHours()})
               }
             }/>
           <br></br>

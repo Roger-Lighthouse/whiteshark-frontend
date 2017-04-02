@@ -8,42 +8,30 @@ let initalState = {
     completed_jobs: [],
     current_jobs: [],
     upcoming_jobs: [],
-
     error: null,
     loading: false,
 }
 
 function jobReducer(state = initalState, action) {
-    console.log(action)
     switch(action.type) {
         case 'BOOK_JOB':
-            let jobs=action.payload.jobs
-            let current_jobs = []
-            let upcoming_jobs = []
-            let completed_jobs = []
+            console.log("Payload Data:", action.payload.data)
+            let jobs=action.payload.data
             return {
                 ...state,
-                current_jobs: current_jobs
+                current_jobs: jobs.currentjobs,
+                completed_jobs: jobs.completed_jobs,
+                upcoming_jobs: jobs.upcoming_jobs
             }
-
-        case 'COMPLETED_JOBS':
+        case 'DELETE_JOB':
+            console.log("Payload Data:", action.payload.data)
+            jobs=action.payload.data
             return {
                 ...state,
-                username: action.payload.username
+                upcoming_jobs: jobs.upcoming_jobs
             }
-
-        case 'CURRENT_JOBS':
-            return {
-                ...state,
-                username: action.payload.username
-            }
-        case 'UPCOMING_JOBS':
-            return {
-                ...state,
-                username: action.payload.username
-            }
-            default:
-            return state
+        default:
+        return state
     }
 }
 

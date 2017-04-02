@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import img_W1 from '../images/W1.jpg'
 import BookJobModal from './BookJobModal'
+import TakeMoney from './StripeCheckout'
 import VideoModal from './videoModal'
 import { Link } from 'react-router-dom'
 import { Image } from 'react-bootstrap'
@@ -10,6 +11,7 @@ const Currency = require('react-currency');
 
 const Products = (props) => (
   <div>
+
      <div className="container">
        <div className="row">
 
@@ -26,8 +28,10 @@ const Products = (props) => (
                 </div>
                 <div>
                   <VideoModal id="VideoModal" className="col-md-3"/>
-          </div>
+             <TakeMoney amount="8000"/>
+  </div>
         </div>
+
         <div className="col-md-9">
           <div className="row carousel-holder">
             <div className="col-md-12">
