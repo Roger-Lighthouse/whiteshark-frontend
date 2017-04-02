@@ -3,8 +3,12 @@ import { connect } from 'react-redux'
 import img_W1 from '../images/w1.jpg'
 import img_W2 from '../images/w2.jpg'
 import img_W3 from '../images/w3.jpg'
-import img_W4 from '../images/w4.jpg'
+import img_W4 from '../images/W4.jpg'
+import Eaves from '../images/eaves.jpg'
+import ExtraMilePainting from '../images/extraMilePainting.jpg'
 import BookJobModal from './BookJobModal'
+import BookPaintingModal from './BookPaintingModal'
+import BookEavesModal from './BookEavesModal'
 import VideoModal from './videoModal'
 import { Link } from 'react-router-dom'
 import { Image } from 'react-bootstrap'
@@ -15,7 +19,7 @@ const Currency = require('react-currency');
 //   const listWinJobs = jobArray.map((j) =>
 //     <div className="col-sm-4 col-lg-4 col-md-4" key={j.jobType}>
 //       <div className="thumbnail">
-//         <Image src={img_W1} height="150" width="320" rounded></Image>
+//         <Image src={img_W1} rounded></Image>
 //         <div className="caption">
 //           <h4>
 //             {j.jobTitle}
@@ -39,26 +43,25 @@ const Currency = require('react-currency');
 
 const Products = (props) => (
   <div>
-     <div className="container">
-       <div className="row">
-
-            <div id="side-bar" className="col-md-3">
-                <p className="lead"></p>
-                <div className="list-group">
-                  <Link to="/window-cleaning" className="list-group-item">
-                    Window Cleaning
-                  </Link>
-                  <a href="#" className="list-group-item">Eavestrough Cleaning</a>
-                  <a href="#" className="list-group-item">Exra Mile Painting</a>
-                  <a href="#" className="list-group-item">Lawn Care</a>
-                  <a href="#" className="list-group-item">Request Odd Job</a>
-                </div>
-                <div>
-                  <VideoModal className="col-md-3"/>
+    <div className="container">
+      <div className="row">
+        <div id="side-bar" className="col-md-3">
+          <p className="lead"></p>
+          <div className="list-group">
+            {/* <Link to="/window-cleaning" className="list-group-item">
+              Window Cleaning
+            </Link>
+            <a href="#" className="list-group-item">Eavestrough Cleaning</a>
+            <a href="#" className="list-group-item">Exra Mile Painting</a>
+            <a href="#" className="list-group-item">Lawn Care</a>
+            <a href="#" className="list-group-item">Request Odd Job</a> */}
+          </div>
+          <div>
+            <VideoModal className="col-md-3"/>
           </div>
         </div>
         <div className="col-md-9">
-          <div className="row carousel-holder">
+          {/* <div className="row carousel-holder">
             <div className="col-md-12">
               <div id="carousel-example-generic" className="carousel slide" data-ride="carousel">
                 <ol className="carousel-indicators">
@@ -85,13 +88,13 @@ const Products = (props) => (
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="row">
           {/* <WindowJobs /> */}
 
           <div className="col-sm-4 col-lg-4 col-md-4">
             <div className="thumbnail">
-              <Image src={img_W1} height="150" width="320" rounded></Image>
+              <Image src={img_W1} rounded></Image>
               <div className="caption">
                 <h4>
                   Exterior only [W1]
@@ -109,7 +112,7 @@ const Products = (props) => (
 
           <div className="col-sm-4 col-lg-4 col-md-4">
             <div className="thumbnail">
-              <Image src={img_W2} height="150" width="320" rounded></Image>
+              <Image src={img_W2} rounded></Image>
               <div className="caption">
                 <h4>
                   Two-sided job [W2]
@@ -127,7 +130,7 @@ const Products = (props) => (
 
           <div className="col-sm-4 col-lg-4 col-md-4">
             <div className="thumbnail">
-              <Image src={img_W3} height="150" width="320" rounded></Image>
+              <Image src={img_W3} rounded></Image>
               <div className="caption">
                 <h4>
                   Three sided job [W3]
@@ -143,40 +146,59 @@ const Products = (props) => (
             </div>
           </div>
 
-          <div className="col-sm-4 col-lg-4 col-md-4">
-            <div className="thumbnail">
-              <Image src={img_W4} height="150" width="320" rounded></Image>
-              <div className="caption">
-                <h4>
-                  Four sided job [W4]
-                </h4>
-                <h2 className="pull-right">
-                  {/* <Currency symbol="$" value={ props.client.current_w1 * 100} /> */}
-                </h2>
-                <p>Remove storm, clean both sides. Clean both sides of window. Brush screens to remove loose dirt. Replace storm. Remove loose dirt and water from sills.</p>
+            <div className="col-sm-4 col-lg-4 col-md-4">
+              <div className="thumbnail">
+                <Image src={img_W4} rounded></Image>
+                <div className="caption">
+                  <h4>
+                    Four sided job [W4]
+                  </h4>
+                  <h2 className="pull-right">
+                    {/* <Currency symbol="$" value={ props.client.current_w1 * 100} /> */}
+                  </h2>
+                  <p>Remove storm, clean both sides. Clean both sides of window. Brush screens to remove loose dirt. Replace storm. Remove loose dirt and water from sills.</p>
+                </div>
+                <BookJobModal jobTitle="Four sided job [W4]"
+                  jobDesc="Remove storm, clean both sides. Clean both sides of window. Brush screens to remove loose dirt. Replace storm. Remove loose dirt and water from sills."
+                  jobType="W4"/>
               </div>
-              <BookJobModal jobTitle="Four sided job [W4]"
-                jobDesc="Remove storm, clean both sides. Clean both sides of window. Brush screens to remove loose dirt. Replace storm. Remove loose dirt and water from sills."
-                jobType="W4"/>
             </div>
-          </div>
 
+            <div className="col-sm-4 col-lg-4 col-md-4">
+              <div className="thumbnail">
+                <Image src={Eaves} rounded></Image>
+                <div className="caption">
+                  <h4>
+                    Eavestrough Cleaning
+                  </h4>
+                  <h2 className="pull-right">
+                    {/* <Currency symbol="$" value={ props.client.current_w1 * 100} /> */}
+                  </h2>
+                  <p>We clean thousands of eavestroughs every year.</p>
+                </div>
+                <BookEavesModal />
+              </div>
+            </div>
+
+            <div className="col-sm-4 col-lg-4 col-md-4">
+              <div className="thumbnail">
+                <Image src={ExtraMilePainting} rounded></Image>
+                <div className="caption">
+                  <h4>
+                    Extra Mile Painting
+                  </h4>
+                  <h2 className="pull-right">
+                    {/* <Currency symbol="$" value={ props.client.current_w1 * 100} /> */}
+                  </h2>
+                  <p>The crews are comprised of full time painters who have years of experience in residential homes. We have painted over 2,500 homes in the Greater Toronto Area.</p>
+                </div>
+                <BookPaintingModal />
+              </div>
+            </div>
 
           </div>
         </div>
       </div>
-    </div>
-      {/* /.container */}
-    <div className="container">
-      <hr></hr>
-      {/* <!-- Footer --> */}
-      <footer id="footer">
-        <div className="row">
-          <div className="col-lg-12">
-            <p>Copyright &copy; 2015 White Shark LTD.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   </div>
 )

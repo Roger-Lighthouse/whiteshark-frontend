@@ -16,14 +16,13 @@ import {
 //     </FormGroup>
 //   );
 // }
-// const jobType = "W1"
-//const jobPrice = 75
+
 const yesterday = DateTime.moment().subtract( 1, 'day' );
 const valid = function( current ){
     return current.isAfter( yesterday );
 };
 
-const BookW1Form = React.createClass({
+const BookPaintingForm = React.createClass({
   componentDidMount () {
     // this.props.dispatch(setW1Price(jobType, jobPrice))
   },
@@ -46,8 +45,6 @@ const BookW1Form = React.createClass({
           console.log(this.state)
           var job_info = {
             clientId: this.props.client.current_client.id,
-            jobType: this.props.jobType,
-            jobPrice: this.props.client.current_w1,
             jobDate: this.state.selectedDate,
             jobTime: this.state.selectedTime,
             jobDetails: this.state.jobDetails
@@ -59,28 +56,11 @@ const BookW1Form = React.createClass({
         //    "type", jobType, "date", this.state.selectedDate,
         //    "price", jobPrice)
         }}>
-          <FormGroup>
-            <ControlLabel>Job Type</ControlLabel>
-            <FormControl.Static>
-              {this.props.jobType}
-            </FormControl.Static>
-          </FormGroup>
+          <strong>Select date:</strong>
+          <DateTime onChange={(d)=>{
+            this.setState({ selectedDate: d.toDate() })
+          }} timeFormat={false} isValidDate={ valid } />
 
-          <FormGroup>
-            <ControlLabel>Job Price</ControlLabel>
-            <FormControl.Static>
-              {/* <Currency symbol="$" value={ this.props.client.current_w1 * 100} /> */}
-            </FormControl.Static>
-          </FormGroup>
-            <strong>Select date:</strong>
-            <DateTime onChange={(d)=>{
-                  this.setState({ selectedDate: d.toDate() })
-                }} timeFormat={false} isValidDate={ valid } />
-            {/* <DateTime onChange={(d)=>{
-                  this.setState({selectedTime: d.getHours()})
-                }}
-              timeConstraints={ hours: { min: 8, max: 12, step: 2 }}
-              dateFormat={false}/> */}
           <FormGroup controlId="formControlsSelect">
             <ControlLabel>Select time:</ControlLabel>
             <FormControl componentClass="select" placeholder="select time"
@@ -98,12 +78,15 @@ const BookW1Form = React.createClass({
           <FormGroup controlId="formControlsTextarea">
             <ControlLabel>Additional job details</ControlLabel>
             <FormControl componentClass="textarea"
-              placeholder="i.e. call ahead of arrival"
+              placeholder="i.e. interior or exterior, best number to reach you at, etc"
               value={this.state.value}
               onChange={ (ev) => {
                 this.setState({jobDetails: ev.target.value})
               }
             }/>
+            <FormControl.Static>
+              A representative will call you shortly to confirm your booking details.
+            </FormControl.Static>
           </FormGroup>
           <Button type="submit">
             Submit
@@ -120,4 +103,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(BookW1Form)
+export default connect(mapStateToProps)(BookPaintingForm)
