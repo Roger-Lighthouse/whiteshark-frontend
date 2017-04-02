@@ -11,7 +11,7 @@ class myJobs extends React.Component {
   render() {
     return (
       <div className="main-container">
-        <Navbar current_client={} />
+        <Navbar current_client = 'Alex' />
         <h2>My Jobs</h2>
         <Tabs defaultActiveKey={1} animation={false} id="noanim-tab-example">
           <Tab eventKey={1} title="Upcoming Jobs">

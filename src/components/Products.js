@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import img_W1 from '../images/w1.jpg'
+import img_W1 from '../images/W1.jpg'
 import img_W2 from '../images/w2.jpg'
 import img_W3 from '../images/w3.jpg'
-import img_W4 from '../images/W4.jpg'
+import img_W4 from '../images/w4.jpg'
 import Eaves from '../images/eaves.jpg'
 import ExtraMilePainting from '../images/extraMilePainting.jpg'
 import BookJobModal from './BookJobModal'
+import TakeMoney from './StripeCheckout'
 import BookPaintingModal from './BookPaintingModal'
 import BookEavesModal from './BookEavesModal'
 import VideoModal from './videoModal'
@@ -14,32 +15,6 @@ import { Link } from 'react-router-dom'
 import { Image } from 'react-bootstrap'
 const Currency = require('react-currency');
 
-// import jobArray from './jobArray'
-// const WindowJobs = () => {
-//   const listWinJobs = jobArray.map((j) =>
-//     <div className="col-sm-4 col-lg-4 col-md-4" key={j.jobType}>
-//       <div className="thumbnail">
-//         <Image src={img_W1} rounded></Image>
-//         <div className="caption">
-//           <h4>
-//             {j.jobTitle}
-//           </h4>
-//           <h2 className="pull-right">
-//             {/* <Currency symbol="$" value={ props.client.current_w1 * 100} /> */}
-//           </h2>
-//           <p>{j.jobDesc}</p>
-//         </div>
-//         <BookJobModal jobTitle={j.jobTitle} jobDesc={j.jobDesc}
-//           jobType={j.jobType} />
-//       </div>
-//     </div>
-//   );
-//   return (
-//     <div>
-//       <WindowJobs />
-//     </div>
-//   )
-// }
 
 const Products = (props) => (
   <div>
@@ -58,8 +33,10 @@ const Products = (props) => (
           </div>
           <div>
             <VideoModal className="col-md-3"/>
+             <TakeMoney amount="8000"/>
           </div>
         </div>
+
         <div className="col-md-9">
           {/* <div className="row carousel-holder">
             <div className="col-md-12">

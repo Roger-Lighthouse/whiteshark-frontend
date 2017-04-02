@@ -69,7 +69,7 @@ const BookW1Form = React.createClass({
           <FormGroup>
             <ControlLabel>Job Price</ControlLabel>
             <FormControl.Static>
-              {/* <Currency symbol="$" value={ this.props.client.current_w1 * 100} /> */}
+               <Currency symbol="$" value={ this.props.client.current_w1 * 100} />
             </FormControl.Static>
           </FormGroup>
             <strong>Select date:</strong>

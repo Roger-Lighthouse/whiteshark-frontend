@@ -20,36 +20,47 @@ export function bookJob(job_info){
    }
  }
 
- export function completedJobs(id){
+ export function deleteJob(id){
    return dispatch => {
 
-      fetch('http://localhost:3000/jobs')
+      fetch(`http://localhost:3000/jobs/${id}`, {
+        method: 'DELETE'
+      })
         .then(resp => resp.json())
         .then(data => {
-           return dispatch({type: 'COMPLETED_JOBS', payload: {data: data}})
+           console.log('**Deleted Job***', data)
+          // console.log('**Prices***', data.prices)
+          // var data5 = data.clients
+          // console.log("size", data5.length)
+          // for(var i = 0; i < data5.length; i++){
+          //   console.log('Data*****', data5[i])
+          // }
+          return dispatch({type: 'DELETE_JOB', payload: {data: data}})
         })
         .catch()
    }
- }
+}
 
- export function currentJobs(id){
+export function completedJob(id){
    return dispatch => {
-      fetch('http://localhost:3000/jobs')
+
+      fetch(`http://localhost:3000/jobs/${id}`, {
+        method: 'PUT'
+       })
         .then(resp => resp.json())
         .then(data => {
-           return dispatch({type: 'CURRENT_JOBS', payload: {data: data}})
+           console.log('**Completed Job***', data)
+          // console.log('**Prices***', data.prices)
+          // var data5 = data.clients
+          // console.log("size", data5.length)
+          // for(var i = 0; i < data5.length; i++){
+          //   console.log('Data*****', data5[i])
+          // }
+          return dispatch({type: 'COMPLETED_JOB', payload: {data: data}})
         })
         .catch()
    }
- }
+}
 
-  export function upcomingJobs(id){
-   return dispatch => {
-      fetch('http://localhost:3000/jobs')
-        .then(resp => resp.json())
-        .then(data => {
-          return dispatch({type: 'UPCOMING_JOBS', payload: {data: data}})
-        })
-        .catch()
-   }
- }
+
+
