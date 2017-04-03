@@ -10,6 +10,7 @@ import BookJobModal from './BookJobModal'
 import TakeMoney from './StripeCheckout'
 import BookPaintingModal from './BookPaintingModal'
 import BookEavesModal from './BookEavesModal'
+
 import VideoModal from './videoModal'
 import { Link } from 'react-router-dom'
 import { Image } from 'react-bootstrap'
@@ -17,6 +18,7 @@ const Currency = require('react-currency');
 
 
 const Products = (props) => (
+
   <div>
     <div className="container">
       <div className="row">
@@ -33,7 +35,8 @@ const Products = (props) => (
           </div>
           <div>
             <VideoModal className="col-md-3"/>
-             <TakeMoney amount="8000"/>
+             <TakeMoney amount="8000" jobid='36'/>
+
           </div>
         </div>
 

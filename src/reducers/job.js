@@ -30,7 +30,44 @@ function jobReducer(state = initalState, action) {
                 ...state,
                 upcoming_jobs: jobs.upcoming_jobs
             }
-        default:
+        case 'COMPLETED_JOB':
+            console.log("Payload Data:", action.payload.data)
+            jobs=action.payload.data
+            return {
+                ...state,
+                completed_jobs: jobs.completed_jobs
+            }
+
+        case 'LOG_ITEM':
+            console.log("Payload Data Log Item:", action.payload.data)
+            jobs=action.payload.data
+            return {
+                ...state,
+                completed_jobs: jobs.completed_jobs
+            }
+
+        case 'EDIT_JOB':
+            console.log("Payload Data:", action.payload.data)
+            jobs=action.payload.data
+            return {
+                ...state,
+                upcoming_jobs: jobs.upcoming_jobs
+            }
+
+        case 'PAID_JOB':
+            console.log("Payload Data:", action.payload.data)
+            jobs=action.payload.data
+            return {
+                ...state,
+                completed_jobs: jobs.completed_jobs
+            }
+
+        case 'INVOICE_PDF':
+            console.log("Payload Data:", action.payload.data)
+            //jobs=action.payload.data
+            return state
+
+    default:
         return state
     }
 }

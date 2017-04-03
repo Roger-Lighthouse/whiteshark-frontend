@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 // import { push } from 'react-router-redux'
 import Navbar from '../components/Navbar'
 import Products from '../components/Products'
+import TestDB from '../components/TestDB'
+
 import { getClient, editClient, getAllClients } from '../actions/client'
-import { deleteJob } from '../actions/job'
+import { deleteJob, invoicePdf, editJob, paidJob, logItem } from '../actions/job'
 
 class BookJob extends Component {
 
@@ -14,8 +16,25 @@ class BookJob extends Component {
     let cfid = s.match(r);
     if(cfid!=='' && cfid!==null){
       this.props.dispatch(getClient(cfid));
-      this.props.dispatch(editClient(cfid));
+      //this.props.dispatch(editClient(cfid));
       //this.props.dispatch(deleteJob(32));
+      var edit_info = {
+        jobID: 33,
+        logDate: '2017-04-04',
+        logType: 'Quality Issue',
+        logComments: 'Test Job Details'
+      }
+      //this.props.dispatch(editJob(edit_info));
+      //this.props.dispatch(paidJob(33));
+
+      var log_info = {
+        jobID: 35,
+        logType: 'Quality Issue',
+        logComments: 'Test Log'
+      }
+
+      this.props.dispatch(logItem(log_info))
+      //this.props.dispatch(invoicePdf(33));
     }else{
       this.props.dispatch(getAllClients());
     }
@@ -27,14 +46,17 @@ class BookJob extends Component {
 
   handleChange = (event) => this.setState({name: event.target.value});
 
+
+
   render() {
     return (
       <div>
         <nav>
           <Navbar client={this.props.client}/>
         </nav>
-        {this.props.client ? <Products client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
+        {this.props.client ? <Products  client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
         <Products />
+
       </div>
     )
   }

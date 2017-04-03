@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import DateTime from 'react-datetime'
+import { bookJob } from '../actions/client'
+
 const Currency = require('react-currency');
 
 import {
@@ -41,7 +43,7 @@ const BookW1Form = React.createClass({
 
     return (
       <div>
-        <form onSubmit={e => {
+        <form onSubmit = {(e) => {
           e.preventDefault()
           console.log(this.state)
           var job_info = {
@@ -52,13 +54,13 @@ const BookW1Form = React.createClass({
             jobTime: this.state.selectedTime,
             jobDetails: this.state.jobDetails
           }
-            // this.props.dispatch(bookJob(job_info)
-    // ----------------------------------------------------
+          this.props.dispatch(bookJob(job_info))
           //this.props.dispatch(bookJob(this.props.client.current_client))
         //  console.log('Form Submitted: ',
         //    "type", jobType, "date", this.state.selectedDate,
         //    "price", jobPrice)
         }}>
+
           <FormGroup>
             <ControlLabel>Job Type</ControlLabel>
             <FormControl.Static>

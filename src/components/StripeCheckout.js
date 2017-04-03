@@ -1,14 +1,23 @@
 import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import logo from '../images/WhiteShark.png'
+import { connect } from 'react-redux'
+import { completedJob } from '../actions/job'
 
-export default class TakeMoney extends React.Component {
+
+class TakeMoney extends React.Component {
+
+
   onToken = (token) => {
+    console.log(token)
     fetch('/save-stripe-token', {
       method: 'POST',
-      body: JSON.stringify(token),
+      body: JSON.stringify(token)
     }).then(token => {
-      alert(`We are in business, ${token.email}`);
+      //alert(`We are in business, ${token}`);
+      //console.log({ this.props.jobid })
+      this.props.dispatch(completedJob(this.props.jobid));
+
     });
   }
 
@@ -52,12 +61,14 @@ export default class TakeMoney extends React.Component {
 
    // Use your own child component, which gets wrapped in whatever
    //            component you pass into as "ComponentClass" (defaults to span)
-
-
-
-
-
-
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    job: state.job
+  }
+}
+
+export default connect(mapStateToProps)(TakeMoney)

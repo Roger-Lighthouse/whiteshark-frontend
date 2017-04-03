@@ -19,6 +19,7 @@
     "dotenv": "^2.0.0",
     "twilio": "^2.11.1",
     "mailgun-js": "^0.8.2"
+
     },
   "devDependencies": {
     "react-scripts": "0.9.5"
