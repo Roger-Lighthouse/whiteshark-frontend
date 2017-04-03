@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import { ConnectedRouter } from 'react-router-redux'
 import { store, history } from './store'
 // -------------------------------------
+import Admin from './routes/Admin'
 import BookJob from './routes/bookJob'
 import MyJobs from './routes/myJobs'
 import W1 from './routes/W1'
@@ -25,7 +26,7 @@ const App = () => {
           <Route path='/myProfile' component={MyProfile}/>
           <Route path='/window-cleaning' component={windowCleaning}/>
           <Route path='/clients/:id' component={BookJob}/>
-          { /*<Route path='/clients' component={BookJob}/> */}
+          <Route path='/admin/login' component={Admin}/>
         </div>
       </ConnectedRouter>
     </Provider>

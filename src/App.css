@@ -15,12 +15,27 @@
 }
 
 .form-control {
-  width: 21%;
+  width: 75%;
   min-width: 160px;
 }
 
 .App-intro {
   font-size: large;
+}
+
+body{
+    margin-bottom:50px;
+}
+
+#admin-container {
+  background-color: #00205b;
+  color: white;
+  padding: 10%;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 100px;
+  border-radius: 15px;
+  padding: 7%;
 }
 
 #root {
@@ -40,8 +55,21 @@
   width: 80px;
 }
 
+#currentClient {
+  color: white;
+  position: fixed;
+  right: 10%;
+}
+
 #footer {
   background-color: #00205b;
+  color: white;
+  position:fixed;
+  height:50px;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  margin-bottom:0px;
 }
 /*RGB: 0 32 91*/
 #navbar {
@@ -52,9 +80,14 @@
   margin-top: 15px;
 }
 
-#navbar:hover {
-  color: #0000ff;
+#myJobsContainer {
+
 }
+
+/*#navbar:hover {
+  color: #0000ff;
+  background-color: #00205b;
+}*/
 
 .navbar-brand {
   padding: 0px;

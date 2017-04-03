@@ -4,21 +4,22 @@ import { connect } from 'react-redux'
 import Navbar from '../components/Navbar'
 import Products from '../components/Products'
 import { getClient, editClient, getAllClients } from '../actions/client'
-import { deleteJob } from '../actions/job'
+// import { deleteJob } from '../actions/job'
+import Footer from '../components/Footer'
 
 class BookJob extends Component {
 
   componentWillMount () {
-    let s=this.props.location.pathname;
-    var r = /\d+/;
-    let cfid = s.match(r);
-    if(cfid!=='' && cfid!==null){
-      this.props.dispatch(getClient(cfid));
-      this.props.dispatch(editClient(cfid));
-      //this.props.dispatch(deleteJob(32));
-    }else{
-      this.props.dispatch(getAllClients());
-    }
+    // let s=this.props.location.pathname;
+    // var r = /\d+/;
+    // let cfid = s.match(r);
+    // if(cfid!=='' && cfid!==null){
+    //   this.props.dispatch(getClient(cfid));
+    //   // this.props.dispatch(editClient(cfid));
+    //   //this.props.dispatch(deleteJob(32));
+    // }else{
+    //   this.props.dispatch(getAllClients());
+    // }
   }
 
   componentDidMount () {
@@ -31,10 +32,11 @@ class BookJob extends Component {
     return (
       <div>
         <nav>
-          <Navbar client={this.props.client}/>
+          <Navbar current_client="Kasperi Kapanen"/>
         </nav>
-        {this.props.client ? <Products client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
+        {/* {this.props.client ? <Products client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>} */}
         <Products />
+        <Footer />
       </div>
     )
   }

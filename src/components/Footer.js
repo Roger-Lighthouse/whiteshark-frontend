@@ -7,15 +7,15 @@ const Footer = () => {
 
   return (
     <div>
-      <div className="container">
       <footer id="footer">
+        <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <p>Copyright &copy; 2015 White Shark LTD.</p>
             </div>
           </div>
-        </footer>
-      </div>
+        </div>
+      </footer>
     </div>
   );
 }
