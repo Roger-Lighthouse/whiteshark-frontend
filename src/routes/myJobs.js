@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import EditMyJobForm from '../components/EditMyJobForm'
 import { deleteJob } from '../actions/job'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import {
@@ -39,8 +40,20 @@ const upcomingJobs = [
 const currentJobs = []
 
 class myJobs extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      signPickUp : false
+    }
+  }
+
+  handleClick() {
+    this.setState({signPickUp: true});
+  }
 
   render() {
+    let signPickUp = this.state.signPickUp;
     return (
       <div id="myJobsContainer">
         <Navbar current_client='Alex' />
@@ -97,7 +110,17 @@ class myJobs extends React.Component {
             }
           </Tab>
           <Tab eventKey={3} title="Completed jobs">
-            Enter table here
+            <ButtonGroup vertical>
+              <Button
+                bsStyle="primary"
+                disabled={signPickUp}
+                onClick={() => }
+                onClick={!signPickUp ? this.handleClick : null}>
+                {signPickUp ? 'Sign Pick-Up Requested' : 'Request Sign Pick-Up'}
+              </Button>
+              <Button>Quality Issue</Button>
+              <Button>Job Feedback</Button>
+            </ButtonGroup>
           </Tab>
         </Tabs>
       </div>
@@ -105,4 +128,10 @@ class myJobs extends React.Component {
   }
 }
 
-export default (myJobs);
+const mapStateToProps = (state) => {
+  return {
+    client: state.job
+  }
+}
+
+export default connect(mapStateToProps)(myJobs);
