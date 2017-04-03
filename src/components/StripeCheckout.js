@@ -16,9 +16,8 @@ class TakeMoney extends React.Component {
     }).then(token => {
       //alert(`We are in business, ${token}`);
       //console.log({ this.props.jobid })
-      this.props.dispatch(completedJob(this.props.jobid));
-
-    });
+      this.props.dispatch(paidJob(this.props.jobid));    // >>> Marks Job Paid(use in Stripe Checkout)
+    });                                       //Called from line 38 in Products with jobid 36(example)
   }
 
   // ...

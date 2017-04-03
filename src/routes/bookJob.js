@@ -17,16 +17,26 @@ class BookJob extends Component {
     let cfid = s.match(r);
     if(cfid!=='' && cfid!==null){
       this.props.dispatch(getClient(cfid));
-      //this.props.dispatch(editClient(cfid));
-      //this.props.dispatch(deleteJob(32));
-      var edit_info = {
-        jobID: 33,
-        logDate: '2017-04-04',
-        logType: 'Quality Issue',
-        logComments: 'Test Job Details'
+
+      var edit_client{   //     >>> Test Data for editClient()
+        name: 'Alex The Great',
+        phone: '555-555-5555',
+        email: 'alex@great.com'
       }
-      //this.props.dispatch(editJob(edit_info));
-      //this.props.dispatch(paidJob(33));
+      //this.props.dispatch(editClient(edit_client))  >>> pass edit_client object here
+      //this.props.dispatch(deleteJob(32))   >>> pass jobid here.
+      var edit_job = {     //  >>> Test Data for editJob()
+        jobID: 33,
+        jobDate: '2017-04-04',
+        jobTime: '8 AM',
+        jobDetails: 'Test Job Details'
+      }
+
+      //this.props.dispatch(editJob(edit_job));    >>> pass edit_job object here
+      //this.props.dispatch(completedJob(this.props.jobid));  >>> pass jobid here
+      //this.props.dispatch(paidJob(33));     >>> Marks Job Paid(use in Stripe Checkout)
+
+
 
       var log_info = {
         jobID: 35,

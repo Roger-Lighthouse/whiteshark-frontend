@@ -21,13 +21,13 @@ export function getClient(id){
 }
 
 
-export function editClient(id){
+export function editClient(edit_client){
    return dispatch => {
 
       fetch(`http://localhost:3000/clients/${id}`,{
         method: 'PUT',
-        body: JSON.stringify({name: 'Nut Weiner', phone: '555-555-5555',
-          email: 'aa@bbbb.com'}),
+        body: JSON.stringify({name: edit_client.name, phone: edit_client.phone,
+          email: edit_client.email}),
         headers: new Headers({'Content-type': 'application/json'})
 
       })
