@@ -18,7 +18,7 @@ const Currency = require('react-currency');
 
 const Products = (props) => (
   <div>
-    <div className="container">
+    <div id="productsContainer">
       <div className="row">
         <div id="side-bar" className="col-md-3">
           <p className="lead"></p>

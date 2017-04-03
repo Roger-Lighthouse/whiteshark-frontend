@@ -40,7 +40,8 @@ class editProfile extends React.Component {
             bsStyle="primary" bsSize="xsmall" >
             Edit Profile
           </Button>
-          <Collapse in={this.state.open} >
+          <Collapse id="editProfileContainer"
+            in={this.state.open} >
             <div>
               <form
                 onSubmit={e => {

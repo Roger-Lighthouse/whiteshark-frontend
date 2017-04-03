@@ -45,6 +45,7 @@ const BookPaintingForm = React.createClass({
           console.log(this.state)
           var job_info = {
             clientId: this.props.client.current_client.id,
+            jobType: "Painting",
             jobDate: this.state.selectedDate,
             jobTime: this.state.selectedTime,
             jobDetails: this.state.jobDetails
@@ -69,10 +70,10 @@ const BookPaintingForm = React.createClass({
                 this.setState({selectedTime: ev.target.value})
               }
             }>
-              <option value="8">8 AM</option>
-              <option value="10">10 AM</option>
-              <option value="12">12 PM</option>
-              <option value="0">Anytime</option>
+              <option value="Anytime">Anytime</option>
+              <option value="8 AM">8 AM</option>
+              <option value="10 AM">10 AM</option>
+              <option value="12 PM">12 PM</option>
             </FormControl>
           </FormGroup>
           <FormGroup controlId="formControlsTextarea">

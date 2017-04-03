@@ -30,9 +30,9 @@ const BookW1Form = React.createClass({
 
   getInitialState() {
     return {
-      selectedDate: '',
-      selectedTime: '',
-      jobDetails: ''
+      selectedDate: null,
+      selectedTime: '0',
+      jobDetails: null
     };
   },
 
@@ -74,8 +74,8 @@ const BookW1Form = React.createClass({
           </FormGroup>
             <strong>Select date:</strong>
             <DateTime onChange={(d)=>{
-                  this.setState({ selectedDate: d.toDate() })
-                }} timeFormat={false} isValidDate={ valid } />
+                this.setState({ selectedDate: d.toDate() })
+              }} timeFormat={false} isValidDate={ valid } />
             {/* <DateTime onChange={(d)=>{
                   this.setState({selectedTime: d.getHours()})
                 }}
@@ -84,15 +84,15 @@ const BookW1Form = React.createClass({
           <FormGroup controlId="formControlsSelect">
             <ControlLabel>Select time:</ControlLabel>
             <FormControl componentClass="select" placeholder="select time"
-              value={this.state.value}
+              value={this.state.value} defaultValue={this.state.selectedTime}
               onChange={ (ev) => {
                 this.setState({selectedTime: ev.target.value})
               }
             }>
-              <option value="8">8 AM</option>
-              <option value="10">10 AM</option>
-              <option value="12">12 PM</option>
-              <option value="0">Anytime</option>
+              <option value="Anytime">Anytime</option>
+              <option value="8 AM">8 AM</option>
+              <option value="10 AM">10 AM</option>
+              <option value="12 PM">12 PM</option>
             </FormControl>
           </FormGroup>
           <FormGroup controlId="formControlsTextarea">

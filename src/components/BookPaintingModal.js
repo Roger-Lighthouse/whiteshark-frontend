@@ -4,7 +4,7 @@ import {
 } from 'react-bootstrap'
 import BookPaintingForm from './BookPaintingForm'
 
-const BookEavesModal = React.createClass({
+const BookPaintingModal = React.createClass({
 
   getInitialState() {
     return { showModal: false };
@@ -56,4 +56,4 @@ const BookEavesModal = React.createClass({
   }
 });
 
-export default BookEavesModal;
+export default BookPaintingModal;
