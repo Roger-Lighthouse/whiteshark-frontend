@@ -30,7 +30,7 @@ class BookJob extends Component {
 
       var log_info = {
         jobID: 35,
-        logType: 'Quality Issue',
+        logType: 'Quality Issue',     // Sign Pick Up, Job Feedback
         logComments: 'Test Log'
       }
 
