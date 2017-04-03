@@ -7,6 +7,7 @@ import TestDB from '../components/TestDB'
 
 import { getClient, editClient, getAllClients } from '../actions/client'
 import { deleteJob, invoicePdf, editJob, paidJob, logItem } from '../actions/job'
+import Footer from '../components/Footer'
 
 class BookJob extends Component {
 
@@ -52,11 +53,11 @@ class BookJob extends Component {
     return (
       <div>
         <nav>
-          <Navbar client={this.props.client}/>
+          <Navbar current_client="Kasperi Kapanen"/>
         </nav>
         {this.props.client ? <Products  client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
-        <Products />
 
+        <Footer />
       </div>
     )
   }

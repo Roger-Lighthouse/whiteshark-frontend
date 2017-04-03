@@ -1,7 +1,10 @@
 import React from 'react';
-import Table from 'react-bootstrap'
+import { Table, Well } from 'react-bootstrap'
 import Navbar from '../components/Navbar'
 import EditProfile from '../components/editProfile'
+import Footer from '../components/Footer'
+// import { connect } from 'react-redux'
+
 // import { FormGroup, FormControl, ControlLabel, HelpBlock, Button, Collapse
 // } from 'react-bootstrap'
 
@@ -22,18 +25,38 @@ const myProfile = React.createClass ({
   render() {
     return (
       <div className="container">
-        <Navbar />
+        <Navbar current_client="Kasperi Kapanen"/>
         <div className="center-block">
           <div className="list-group">
-            <p><strong>Name:</strong> Mark Walhberg</p>
-            <p><strong>Email:</strong> markyMark@southy.com</p>
-            <p><strong>Address:</strong> 11 Boston Way</p>
+            <p><strong>Name:</strong></p>
+            <Well bsSize="small">
+              Mark Walhberg
+            </Well>
+            <p><strong>Email:</strong></p>
+            <Well bsSize="small">
+            markyMark@southy.com
+            </Well>
+            <p><strong>Phone Number:</strong></p>
+            <Well bsSize="small">
+              416-222-2345
+            </Well>
+            <p><strong>Address:</strong></p>
+            <Well bsSize="small">
+              11 Boston Way
+            </Well>
           </div>
         </div>
         <EditProfile />
+        <Footer />
       </div>
     );
   }
 });
+
+// const mapStateToProps = (state) => {
+//   return {
+//     client: state.client
+//   }
+// }
 
 export default myProfile;

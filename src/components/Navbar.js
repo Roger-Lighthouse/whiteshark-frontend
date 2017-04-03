@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Badge, Image } from 'react-bootstrap'
+import { Badge, Image, Label } from 'react-bootstrap'
 import WhiteShark from '../images/WhiteShark.png'
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div>
       <div className="wrapper">
@@ -17,11 +17,16 @@ const Navbar = () => {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <Link to="/" className="navbar-brand">
+                <div>
+                  <Link to="/" className="navbar-brand">
                   <Image id="brand-image" src={ WhiteShark }></Image>
                   <h2 id="brand">White Shark</h2>
-                </Link>
+                  </Link>
+                </div>
               </div>
+              <Label id="currentClient" className="text-center">
+                {props.current_client}
+              </Label>
             {/* <!-- Collect the nav links, forms, and other content for toggling --> */}
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul id="nav-btns" className="nav navbar-nav navbar-right">
@@ -39,6 +44,11 @@ const Navbar = () => {
                 <li>
                   <Link to="/myProfile">
                     My Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/admin/login">
+                    Admin
                   </Link>
                 </li>
               </ul>
