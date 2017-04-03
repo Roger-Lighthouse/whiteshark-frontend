@@ -40,20 +40,8 @@ const upcomingJobs = [
 const currentJobs = []
 
 class myJobs extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      signPickUp : false
-    }
-  }
-
-  handleClick() {
-    this.setState({signPickUp: true});
-  }
 
   render() {
-    let signPickUp = this.state.signPickUp;
     return (
       <div id="myJobsContainer">
         <Navbar current_client='Alex' />
@@ -111,15 +99,18 @@ class myJobs extends React.Component {
           </Tab>
           <Tab eventKey={3} title="Completed jobs">
             <ButtonGroup vertical>
-              <Button
-                bsStyle="primary"
-                disabled={signPickUp}
-                onClick={() => }
-                onClick={!signPickUp ? this.handleClick : null}>
-                {signPickUp ? 'Sign Pick-Up Requested' : 'Request Sign Pick-Up'}
-              </Button>
-              <Button>Quality Issue</Button>
-              <Button>Job Feedback</Button>
+              <jobLogModal title="Sign Pick Up"
+                commentTitle="Additional notes: i.e. if the sign was moved"
+                btnName="Request Sign Pick Up" jobId={job.jobId}
+              />
+              <jobLogModal title="Quality Issue"
+                commentTitle="We are very sorry if you are not satified with our service, please tell us more about your experience"
+                btnName="Send Quality Issue" jobId={job.jobId}
+              />
+              <jobLogModal title="Job Feedback"
+                commentTitle="Please tell us how we did"
+                btnName="Send Feedback" jobId={job.jobId}
+              />
             </ButtonGroup>
           </Tab>
         </Tabs>
@@ -127,6 +118,8 @@ class myJobs extends React.Component {
     )
   }
 }
+
+
 
 const mapStateToProps = (state) => {
   return {

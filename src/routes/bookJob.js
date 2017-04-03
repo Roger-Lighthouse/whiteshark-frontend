@@ -19,12 +19,12 @@ class BookJob extends Component {
       this.props.dispatch(getClient(cfid));
       //this.props.dispatch(editClient(cfid));
       //this.props.dispatch(deleteJob(32));
-      var edit_info = {
-        jobID: 33,
-        logDate: '2017-04-04',
-        logType: 'Quality Issue',
-        logComments: 'Test Job Details'
-      }
+      // var edit_info = {
+      //   jobID: 33,
+      //   logDate: '2017-04-04',
+      //   logType: 'Quality Issue',
+      //   logComments: 'Test Job Details'
+      // }
       //this.props.dispatch(editJob(edit_info));
       //this.props.dispatch(paidJob(33));
 
