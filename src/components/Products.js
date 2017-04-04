@@ -7,7 +7,6 @@ import img_W4 from '../images/w4.jpg'
 import Eaves from '../images/eaves.jpg'
 import ExtraMilePainting from '../images/extraMilePainting.jpg'
 import BookJobModal from './BookJobModal'
-import TakeMoney from './StripeCheckout'
 import BookPaintingModal from './BookPaintingModal'
 import BookEavesModal from './BookEavesModal'
 
@@ -35,8 +34,6 @@ const Products = (props) => (
           </div>
           <div>
             <VideoModal className="col-md-3"/>
-             <TakeMoney amount="8000" jobid='36'/>
-
           </div>
         </div>
 

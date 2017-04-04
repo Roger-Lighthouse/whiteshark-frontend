@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 // import { push } from 'react-router-redux'
 import Navbar from '../components/Navbar'
 import Products from '../components/Products'
-import TestDB from '../components/TestDB'
+// import TestDB from '../components/TestDB'
 
 import { getClient, editClient, getAllClients, adminLogIn, adminLogOut} from '../actions/client'
 import { clearJobs, deleteJob, invoicePdf, editJob, paidJob, logItem } from '../actions/job'
@@ -25,8 +25,8 @@ class BookJob extends Component {
         phone: '555-555-5555',
         email: 'alex@great.com'
       }
-      //this.props.dispatch(editClient(edit_client))  >>> pass edit_client object here
-      //this.props.dispatch(deleteJob(32))   >>> pass jobid here.
+      this.props.dispatch(editClient(edit_client))  >>> pass edit_client object here
+      this.props.dispatch(deleteJob(32))   >>> pass jobid here.
       var edit_job = {     //  >>> Test Data for editJob()
         jobID: 33,
         jobDate: '2017-04-04',
@@ -34,10 +34,15 @@ class BookJob extends Component {
         jobDetails: 'Test Job Details'
       }
 
-      //this.props.dispatch(editJob(edit_job));    >>> pass edit_job object here
-      //this.props.dispatch(completedJob(this.props.jobid));  >>> pass jobid here
-      //this.props.dispatch(paidJob(33));     >>> Marks Job Paid(use in Stripe Checkout)
+      this.props.dispatch(editJob(edit_job));    >>> pass edit_job object here
+      this.props.dispatch(completedJob(this.props.jobid));  >>> pass jobid here
+      this.props.dispatch(paidJob(33));     >>> Marks Job Paid(use in Stripe Checkout)
 
+      var log_info = {
+        jobID: 35,
+        logType: 'Quality Issue',     // Sign Pick Up, Job Feedback
+        logComments: 'Test Log'
+      }
 
 
       var log_info = {
@@ -62,18 +67,14 @@ class BookJob extends Component {
 
   }
 
-  handleChange = (event) => this.setState({name: event.target.value});
-
-
-
   render() {
    return (
       <div>
         <nav>
           <Navbar current_client="Kasperi Kapanen"/>
         </nav>
-        {this.props.client ? <Products  client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
-
+        {/* {this.props.client ? <Products  client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>} */}
+        <Products />
         <Footer />
       </div>
     )

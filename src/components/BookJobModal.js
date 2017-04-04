@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Button, Modal
 } from 'react-bootstrap'
 import BookW1Form from './bookW1Form.js'
 
-const BookJobModal = React.createClass({
+class BookJobModal extends Component {
+  constructor(props) {
+    super(props)
 
-  getInitialState() {
-    return { showModal: false };
-  },
+    this.state = {
+      showModal: false
+    };
+  }
 
-  close() {
+  close = () => {
     this.setState({ showModal: false });
-  },
+  }
 
-  open() {
+  open = () => {
     this.setState({ showModal: true });
-  },
+  }
 
   render() {
     return (
@@ -39,7 +42,7 @@ const BookJobModal = React.createClass({
             <strong>
               {this.props.jobDesc}
             </strong>
-            <BookW1Form jobType={this.props.jobType}/>
+            <BookW1Form jobType={this.props.jobType} closeModal={this.close}/>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>
@@ -48,6 +51,6 @@ const BookJobModal = React.createClass({
       </div>
     );
   }
-});
+};
 
 export default BookJobModal;

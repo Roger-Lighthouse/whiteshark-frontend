@@ -12,9 +12,6 @@ import MyProfile from './routes/myProfile'
 import './App.css'
 import '../node_modules/react-datetime/css/react-datetime.css'
 
-const windowCleaning = () => <h2>Display W1-W4</h2>
-
-
 const App = () => {
   return (
     <Provider store={store}>
@@ -24,7 +21,6 @@ const App = () => {
           <Route path='/bookJob/w1' component={W1}/>
           <Route path='/myJobs' component={MyJobs}/>
           <Route path='/myProfile' component={MyProfile}/>
-          <Route path='/window-cleaning' component={windowCleaning}/>
           <Route path='/clients/:id' component={BookJob}/>
           <Route path='/admin/login' component={Admin}/>
         </div>
