@@ -5,10 +5,12 @@ let initalState = {
     clientList: null,
     current_client: 'alex',
     current_w1: null,
+    current_w2: null,
     current_eh: null,
     password: '',
     error: null,
     loading: false,
+    admin: false
 }
 
 function clientReducer(state = null, action) {
@@ -20,20 +22,34 @@ function clientReducer(state = null, action) {
                 ...state,
                 current_client: action.payload.data.client,
                 current_w1: action.payload.data.prices[0].w1,
+                current_w2: (action.payload.data.prices[0].w1) * 2,
                 current_eh: action.payload.data.prices[0].eh
             }
         case 'EDIT_CLIENT':
            // console.log("In GET CLIENT W1::", action.payload.data.prices[0].w1)
             return {
                 ...state,
-                current_client: action.payload.data.client,
+                current_client: action.payload.data.client
             }
         case 'GET_ALL_CLIENTS':
            // console.log("In GET CLIENT W1::", action.payload.data.prices[0].w1)
             return {
                 ...state,
-                clientList: action.payload.data.client,
+                clientList: action.payload.data.client
             }
+
+        case 'ADMIN_LOG_IN':
+            return {
+                ...state,
+                admin: true
+            }
+        case 'ADMIN_LOG_OUT':
+            return {
+                ...state,
+                admin: false
+            }
+
+
         default:
         return state
     }

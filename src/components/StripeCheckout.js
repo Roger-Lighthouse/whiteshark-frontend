@@ -2,7 +2,7 @@ import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import logo from '../images/WhiteShark.png'
 import { connect } from 'react-redux'
-import { completedJob } from '../actions/job'
+import { paidJob } from '../actions/job'
 
 
 class TakeMoney extends React.Component {

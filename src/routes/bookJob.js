@@ -5,8 +5,8 @@ import Navbar from '../components/Navbar'
 import Products from '../components/Products'
 import TestDB from '../components/TestDB'
 
-import { getClient, editClient, getAllClients } from '../actions/client'
-import { deleteJob, invoicePdf, editJob, paidJob, logItem } from '../actions/job'
+import { getClient, editClient, getAllClients, adminLogIn, adminLogOut} from '../actions/client'
+import { clearJobs, deleteJob, invoicePdf, editJob, paidJob, logItem } from '../actions/job'
 import Footer from '../components/Footer'
 
 class BookJob extends Component {
@@ -17,8 +17,10 @@ class BookJob extends Component {
     let cfid = s.match(r);
     if(cfid!=='' && cfid!==null){
       this.props.dispatch(getClient(cfid));
+      this.props.dispatch(clearJobs());
 
-      var edit_client{   //     >>> Test Data for editClient()
+      var edit_client = {   //     >>> Test Data for editClient()
+        id: cfid,
         name: 'Alex The Great',
         phone: '555-555-5555',
         email: 'alex@great.com'
@@ -43,16 +45,21 @@ class BookJob extends Component {
         logType: 'Quality Issue',     // Sign Pick Up, Job Feedback
         logComments: 'Test Log'
       }
-
       this.props.dispatch(logItem(log_info))
       //this.props.dispatch(invoicePdf(33));
+
+      this.props.dispatch(adminLogIn())
+      //this.props.dispatch(adminLogOut())
+
     }else{
       this.props.dispatch(getAllClients());
     }
+
   }
 
   componentDidMount () {
     // console.log("****", this.props.client.current_client)
+
   }
 
   handleChange = (event) => this.setState({name: event.target.value});
@@ -60,7 +67,7 @@ class BookJob extends Component {
 
 
   render() {
-    return (
+   return (
       <div>
         <nav>
           <Navbar current_client="Kasperi Kapanen"/>

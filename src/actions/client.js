@@ -1,5 +1,5 @@
 //import { push } from 'react-redux'
-
+adminLogIn, adminLogOut
 
 export function getClient(id){
    return dispatch => {
@@ -9,14 +9,21 @@ export function getClient(id){
         .then(data => {
            console.log('**Client***', data.client)
            console.log('**Prices***', data.prices)
-          // var data5 = data.clients
-          // console.log("size", data5.length)
-          // for(var i = 0; i < data5.length; i++){
-          //   console.log('Data*****', data5[i])
-          // }
           return dispatch({type: 'GET_CLIENT', payload: {data: data}})
         })
         .catch()
+   }
+}
+
+export function adminLogIn(){
+   return dispatch => {
+          return dispatch({type: 'ADMIN_LOG_IN', payload: {data: null}})
+   }
+}
+
+export function adminLogOut(){
+   return dispatch => {
+          return dispatch({type: 'ADMIN_LOG_OUT', payload: {data: null}})
    }
 }
 
@@ -24,7 +31,7 @@ export function getClient(id){
 export function editClient(edit_client){
    return dispatch => {
 
-      fetch(`http://localhost:3000/clients/${id}`,{
+      fetch(`http://localhost:3000/clients/${edit_client.id}`,{
         method: 'PUT',
         body: JSON.stringify({name: edit_client.name, phone: edit_client.phone,
           email: edit_client.email}),
