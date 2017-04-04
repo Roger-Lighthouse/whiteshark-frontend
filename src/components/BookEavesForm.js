@@ -43,15 +43,16 @@ const BookEavesForm = React.createClass({
       <div>
         <form onSubmit={e => {
           e.preventDefault()
-          console.log(this.state)
           var job_info = {
-            clientId: this.props.client.current_client.id,
+            // clientId: this.props.client.current_client.id,
             eavesType: this.state.eavesType,
-            jobPrice: this.props.client.current_w1,
+            // jobPrice: this.props.client.current_w1,
             jobDate: this.state.selectedDate,
             jobTime: this.state.selectedTime,
             jobDetails: this.state.jobDetails
           }
+          this.props.closeModal()
+          console.log(job_info)
             // this.props.dispatch(bookJob(job_info)
     // ----------------------------------------------------
           //this.props.dispatch(bookJob(this.props.client.current_client))

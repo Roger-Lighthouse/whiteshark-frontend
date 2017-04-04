@@ -45,7 +45,7 @@ const BookPaintingModal = React.createClass({
             <p>
               We have painted over 2,500 homes in the Greater Toronto Area. Specializing in interior and exterior painting, staining, paint removal and wallpaper stripping.
             </p>
-            <BookPaintingForm />
+            <BookPaintingForm closeModal={this.close}/>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>

@@ -44,12 +44,13 @@ const BookPaintingForm = React.createClass({
           e.preventDefault()
           console.log(this.state)
           var job_info = {
-            clientId: this.props.client.current_client.id,
+            // clientId: this.props.client.current_client.id,
             jobType: "Painting",
             jobDate: this.state.selectedDate,
             jobTime: this.state.selectedTime,
             jobDetails: this.state.jobDetails
           }
+          this.props.closeModal()
             // this.props.dispatch(bookJob(job_info)
     // ----------------------------------------------------
           //this.props.dispatch(bookJob(this.props.client.current_client))
