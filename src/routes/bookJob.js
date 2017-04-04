@@ -12,19 +12,19 @@ import Footer from '../components/Footer'
 class BookJob extends Component {
 
   componentWillMount () {
-    let s=this.props.location.pathname;
-    var r = /\d+/;
-    let cfid = s.match(r);
-    if(cfid!=='' && cfid!==null){
-      this.props.dispatch(getClient(cfid));
-      this.props.dispatch(clearJobs());
+    // let s=this.props.location.pathname;
+    // var r = /\d+/;
+    // let cfid = s.match(r);
+    // if(cfid!=='' && cfid!==null){
+    //   this.props.dispatch(getClient(cfid));
+    //   this.props.dispatch(clearJobs());
 
-      var edit_client = {   //     >>> Test Data for editClient()
-        id: cfid,
-        name: 'Alex The Great',
-        phone: '555-555-5555',
-        email: 'alex@great.com'
-      }
+      // var edit_client = {   //     >>> Test Data for editClient()
+      //   id: cfid,
+      //   name: 'Alex The Great',
+      //   phone: '555-555-5555',
+      //   email: 'alex@great.com'
+      // }
       //this.props.dispatch(editClient(edit_client))  >>> pass edit_client object here
       //this.props.dispatch(deleteJob(32))   >>> pass jobid here.
       var edit_job = {     //  >>> Test Data for editJob()
@@ -50,16 +50,15 @@ class BookJob extends Component {
         logType: 'Quality Issue',     // Sign Pick Up, Job Feedback
         logComments: 'Test Log'
       }
-      this.props.dispatch(logItem(log_info))
+      // this.props.dispatch(logItem(log_info))
       //this.props.dispatch(invoicePdf(33));
 
-      this.props.dispatch(adminLogIn())
+      // this.props.dispatch(adminLogIn())
       //this.props.dispatch(adminLogOut())
 
-    }else{
-      this.props.dispatch(getAllClients());
-    }
-
+    // }else{
+      // this.props.dispatch(getAllClients());
+    // }
   }
 
   componentDidMount () {

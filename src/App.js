@@ -22,7 +22,7 @@ const App = () => {
           <Route path='/myJobs' component={MyJobs}/>
           <Route path='/myProfile' component={MyProfile}/>
           <Route path='/clients/:id' component={BookJob}/>
-          <Route path='/admin/login' component={Admin}/>
+          <Route path='/admin' component={Admin}/>
         </div>
       </ConnectedRouter>
     </Provider>

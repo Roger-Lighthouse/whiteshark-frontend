@@ -71,15 +71,17 @@ body{
 #footer {
   background-color: #00205b;
   color: white;
-  position:fixed;
-  height:50px;
+  height:150px;
   bottom:0px;
   left:0px;
   right:0px;
   margin-bottom:0px;
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
+}
 
+.facebook-link {
+  float: right;
 }
 
 .fa-facebook {

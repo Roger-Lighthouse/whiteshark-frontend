@@ -1,44 +1,60 @@
 import React, {Component} from 'react';
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {username: '', password: ''};
-  }
-
-  handleChange = (event) => {
-    this.setState({password: event.target.value});
-  }
-
-  handleUserChange = (event) => {
-      this.setState({username: event.target.value});
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.props.onSubmitMessage({
-      username: this.state.username,
-      password: this.state.password
-    })
-    this.setState({username: '', password: ''})
-  }
+const LoginForm = () => {
   render() {
-    console.log("Rendering <login/>");
     return (
       <div>
-          <form className="login"
-            onSubmit={this.handleSubmit}>
-            <input className="username"
-              placeholder="Username"
-              value={this.state.username}
-              onChange={this.handleUserChange} />
-            <input type="password"
-              className="password"
-              placeholder="password"
-              value={this.state.password}
-              onChange={this.handleChange} />
-            <input className="login-btn" type="submit" value="Login" />
-          </form>
+        <Form horizontal
+          onSubmit={e => {
+            e.preventDefault()
+            console.log(this.state)
+            const admin_cred = {
+              // clientId,
+              email: this.state.email,
+              password: this.state.password
+            }
+            this.signIn(admin_cred)
+            this.setState({
+              email: null,
+              password: null
+            })
+          }}>
+          <FormGroup controlId="formHorizontalEmail">
+            <Col componentClass={ControlLabel} sm={2}>
+              Email
+            </Col>
+            <Col sm={10}>
+              <FormControl type="email" placeholder="Email"
+                value={this.state.value}
+                onChange={ (ev) => {
+                  this.setState({email: ev.target.value})
+                }}
+              />
+            </Col>
+          </FormGroup>
+
+          <FormGroup controlId="formHorizontalPassword">
+            <Col componentClass={ControlLabel} sm={2}>
+              Password
+            </Col>
+            <Col sm={10}>
+              <FormControl type="password" placeholder="Password"
+                value={this.state.value}
+                onChange={ (ev) => {
+                  this.setState({password: ev.target.value})
+                }}
+              />
+            </Col>
+          </FormGroup>
+
+          <FormGroup>
+            <Col smOffset={2} sm={10}>
+              <Button type="submit">
+                Sign in as Admin
+              </Button>
+            </Col>
+          </FormGroup>
+        </Form>
       </div>
     )
   }

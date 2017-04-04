@@ -6,7 +6,9 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Logo from '../images/WhiteShark.png'
 import { connect } from 'react-redux'
+import { getAllClients, adminLogIn, adminLogOut} from '../actions/client'
 
+const Clients = () => <h1>All Clients</h1>
 
 class Admin extends Component {
   constructor(props) {
@@ -14,19 +16,31 @@ class Admin extends Component {
 
     this.state = {
       email: null,
-      password: null
+      password: null,
+      showLogin: true
     };
   }
-
   componentWillMount () {
+    this.props.client.admin ? this.setState({
+      showLogin: false,
+      showClients: true
+    }) : null
     //   this.props.dispatch(getAllClients());
+  }
+
+  signIn = (admin_cred) => {
+    if (admin_cred.email === "bobTheBuilder@yeswecan.io"
+    && admin_cred.password === "password123") {
+      this.props.dispatch(adminLogIn())
+    }
+    else { alert("Your credentials are incorrect.") }
   }
 
   render() {
     return (
       <div id="admin-container">
         <Navbar />
-        <Form horizontal
+        <Form horizontal show={this.state.showLogin}
           onSubmit={e => {
             e.preventDefault()
             console.log(this.state)
@@ -35,6 +49,7 @@ class Admin extends Component {
               email: this.state.email,
               password: this.state.password
             }
+            this.signIn(admin_cred)
             this.setState({
               email: null,
               password: null
@@ -77,6 +92,7 @@ class Admin extends Component {
           </FormGroup>
         </Form>
         <Footer />
+        <Clients show={this.state.showClients}/>
       </div>
     )
   }
