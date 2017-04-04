@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import EditMyJobForm from '../components/EditMyJobForm'
 import SignPickUpModal from '../components/signPickUpModal'
 import JobLogModal from '../components/JobLogModal'
+import ShowJobLogs from '../components/ShowJobLogs'
 import { deleteJob } from '../actions/job'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -50,9 +51,23 @@ const completedJobs = [
     jobType: 'W4',
     jobPrice: "$150",
     jobDate: "April 3, 2017",
-    jobCrew: "Big Test Icicles"
+    jobCrew: "Big Bob",
+    recStatus: "Paid",
+    jobLogs: [
+      {
+      logId: 111,
+      logType: "Job Feedback",
+      logComments: "Big Roger is the best",
+      logDate: "September 21, 2016"
+      }
+    ]
   }
 ]
+// Receiveable, PAID
+const MarkCompleted = (jobId) => {
+  console.log(`Job ${jobId} completed!`);
+  // this.props.dispatch(completedJob(jobId))
+}
 
 class myJobs extends React.Component {
 
@@ -60,7 +75,7 @@ class myJobs extends React.Component {
     return (
       <div id="myJobsContainer">
         <Navbar current_client='Alex' />
-        <Tabs defaultActiveKey={1} animation={false} id="noanim-tab-example">
+        <Tabs defaultActiveKey={1} animation={false} id="myJobsContainer">
           <Tab eventKey={1} title="Upcoming Jobs">
             <MyJobsJumbotron title="Upcoming Jobs" jobs={upcomingJobs} />
               {
@@ -116,6 +131,7 @@ class myJobs extends React.Component {
                       <th>Job Price</th>
                       <th>Job Date</th>
                       <th>Job Time</th>
+                      {this.props.client.admin ? <th>Admin Only</th> : null}
                     </tr>
                   </thead>
                   <tbody>
@@ -128,6 +144,16 @@ class myJobs extends React.Component {
                           <td>{job.jobPrice ? job.jobPrice : "TBD"}</td>
                           <td>{job.jobDate}</td>
                           <td>{job.jobTime}</td>
+                          {
+                            this.props.client.admin ?
+                            <td>
+                              <Button bsStyle="success" bsSize="small"
+                                onClick={() => MarkCompleted(job.jobId)}>
+                                Mark Completed
+                              </Button>
+                            </td>
+                            : null
+                          }
                         </tr>
                       )
                     })}
@@ -148,6 +174,7 @@ class myJobs extends React.Component {
                         <th>Job Price</th>
                         <th>Date Completed</th>
                         <th>Job Crew</th>
+                        <th>Rec Status</th>
                         <th>Job Actions</th>
                       </tr>
                     </thead>
@@ -161,6 +188,7 @@ class myJobs extends React.Component {
                             <td>{job.jobPrice}</td>
                             <td>{job.jobDate}</td>
                             <td>{job.jobCrew}</td>
+                            <td>{job.recStatus}</td>
                             <td>
                               <ButtonGroup vertical>
                                 <TakeMoney amount="8000" jobid='36'/>
@@ -178,6 +206,7 @@ class myJobs extends React.Component {
                                     btnName="Send Feedback" jobId={job.jobId}
                                   />
                                 </DropdownButton>
+                                <ShowJobLogs jobId={job.jobId} jobLogs={job.jobLogs}/>
                               </ButtonGroup>
                             </td>
                           </tr>
@@ -198,7 +227,8 @@ class myJobs extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    client: state.job
+    job: state.job,
+    client: state.client
   }
 }
 

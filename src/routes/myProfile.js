@@ -24,29 +24,31 @@ const myProfile = React.createClass ({
   },
   render() {
     return (
-      <div className="container">
-        <Navbar current_client="Kasperi Kapanen"/>
-        <div className="center-block">
-          <div className="list-group">
-            <p><strong>Name:</strong></p>
-            <Well bsSize="small">
-              Mark Walhberg
-            </Well>
-            <p><strong>Email:</strong></p>
-            <Well bsSize="small">
-            markyMark@southy.com
-            </Well>
-            <p><strong>Phone Number:</strong></p>
-            <Well bsSize="small">
-              416-222-2345
-            </Well>
-            <p><strong>Address:</strong></p>
-            <Well bsSize="small">
-              11 Boston Way
-            </Well>
+      <div>
+        <div className="container">
+          <Navbar current_client="Kasperi Kapanen"/>
+          <div className="center-block">
+            <div className="list-group">
+              <p><strong>Name:</strong></p>
+              <Well bsSize="small">
+                Mark Walhberg
+              </Well>
+              <p><strong>Email:</strong></p>
+              <Well bsSize="small">
+              markyMark@southy.com
+              </Well>
+              <p><strong>Phone Number:</strong></p>
+              <Well bsSize="small">
+                416-222-2345
+              </Well>
+              <p><strong>Address:</strong></p>
+              <Well bsSize="small">
+                11 Boston Way
+              </Well>
+            </div>
           </div>
+          <EditProfile />
         </div>
-        <EditProfile />
         <Footer />
       </div>
     );

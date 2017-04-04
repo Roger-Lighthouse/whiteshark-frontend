@@ -7,9 +7,9 @@ const Footer = () => {
       <footer id="footer">
         <div className="container">
           <div className="row">
-            <div className="footer-social-icons">
+            <div className="facebook-link">
               <h4 className="_14">Visit our Facebook page</h4>
-              <a href="https://www.facebook.com/whitesharkwindows/" className="social-icon">
+              <a href="https://www.facebook.com/whitesharkwindows/" className="center-block">
                 <i className="fa fa-facebook"></i>
               </a>
             </div>
@@ -20,7 +20,7 @@ const Footer = () => {
               </a>
             </div>
             <div className="col-lg-12">
-              <p>Copyright &copy; 2015 White Shark LTD.</p>
+              <p className="text-center">Copyright &copy; 2015 White Shark LTD.</p>
             </div>
           </div>
         </div>
