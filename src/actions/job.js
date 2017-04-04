@@ -34,6 +34,13 @@ export function bookJob(job_info){
    }
 }
 
+export function clearJobs(){
+   return dispatch => {
+           console.log('**Clear Jobs***')
+          return dispatch({type: 'CLEAR_JOBS', payload: {data: null}})
+   }
+}
+
 export function completedJob(id){
    return dispatch => {
       fetch(`http://localhost:3000/jobs/${id}`, {

@@ -30,6 +30,14 @@ function jobReducer(state = initalState, action) {
                 ...state,
                 upcoming_jobs: jobs.upcoming_jobs
             }
+        case 'CLEAR_JOBS':
+            console.log("Payload Data in Clear Jobs:")
+            return {
+                ...state,
+                upcoming_jobs: [],
+                completed_jobs: [],
+                current_jobs: []
+            }
         case 'COMPLETED_JOB':
             console.log("Payload Data:", action.payload.data)
             jobs=action.payload.data
