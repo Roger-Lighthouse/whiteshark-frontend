@@ -38,20 +38,15 @@ class BookJob extends Component {
       //this.props.dispatch(completedJob(this.props.jobid));  >>> pass jobid here
       //this.props.dispatch(paidJob(33));     >>> Marks Job Paid(use in Stripe Checkout)
 
-      var log_info = {
-        jobID: 35,
-        logType: 'Quality Issue',     // Sign Pick Up, Job Feedback
-        logComments: 'Test Log'
-      }
 
 
-      var log_info = {
-        jobID: 35,
-        logType: 'Quality Issue',     // Sign Pick Up, Job Feedback
-        logComments: 'Test Log'
-      }
-      this.props.dispatch(logItem(log_info))
-      //this.props.dispatch(invoicePdf(33));
+      // var log_info = {
+      //   jobID: 35,
+      //   logType: 'Quality Issue',     // Sign Pick Up, Job Feedback
+      //   logComments: 'Test Log'
+      // }
+      // this.props.dispatch(logItem(log_info))
+      // //this.props.dispatch(invoicePdf(33));
 
       this.props.dispatch(adminLogIn())
       //this.props.dispatch(adminLogOut())
@@ -68,10 +63,11 @@ class BookJob extends Component {
   }
 
   render() {
+    console.log(this.props)
    return (
       <div>
         <nav>
-          <Navbar current_client="Kasperi Kapanen"/>
+          <Navbar current_client="Kasperi Kapanen" />
         </nav>
         {/* {this.props.client ? <Products  client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>} */}
         <Products />
@@ -83,7 +79,8 @@ class BookJob extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    client: state.client
+    client: state.client,
+    job: state.job
   }
 }
 
