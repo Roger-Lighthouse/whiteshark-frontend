@@ -25,8 +25,8 @@ class BookJob extends Component {
         phone: '555-555-5555',
         email: 'alex@great.com'
       }
-      this.props.dispatch(editClient(edit_client))  >>> pass edit_client object here
-      this.props.dispatch(deleteJob(32))   >>> pass jobid here.
+      //this.props.dispatch(editClient(edit_client))  >>> pass edit_client object here
+      //this.props.dispatch(deleteJob(32))   >>> pass jobid here.
       var edit_job = {     //  >>> Test Data for editJob()
         jobID: 33,
         jobDate: '2017-04-04',
@@ -34,9 +34,9 @@ class BookJob extends Component {
         jobDetails: 'Test Job Details'
       }
 
-      this.props.dispatch(editJob(edit_job));    >>> pass edit_job object here
-      this.props.dispatch(completedJob(this.props.jobid));  >>> pass jobid here
-      this.props.dispatch(paidJob(33));     >>> Marks Job Paid(use in Stripe Checkout)
+      //this.props.dispatch(editJob(edit_job));    >>> pass edit_job object here
+      //this.props.dispatch(completedJob(this.props.jobid));  >>> pass jobid here
+      //this.props.dispatch(paidJob(33));     >>> Marks Job Paid(use in Stripe Checkout)
 
       var log_info = {
         jobID: 35,
