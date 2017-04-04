@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import DateTime from 'react-datetime'
 import { bookJob } from '../actions/client'
@@ -25,41 +25,46 @@ const valid = function( current ){
     return current.isAfter( yesterday );
 };
 
-const BookW1Form = React.createClass({
+class BookW1Form extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+        selectedDate: null,
+        selectedTime: '0',
+        jobDetails: null
+    }
+  }
+
   componentDidMount () {
     // this.props.dispatch(setW1Price(jobType, jobPrice))
-  },
+  }
 
-  getInitialState() {
-    return {
-      selectedDate: null,
-      selectedTime: '0',
-      jobDetails: null
-    };
-  },
-
+  handleOnSubmit = (e) => {
+    e.preventDefault()
+    var job_info = {
+      // clientId: this.props.client.current_client.id,
+      jobType: this.props.jobType,
+      // jobPrice: this.props.client.current_w1,
+      jobDate: this.state.selectedDate,
+      jobTime: this.state.selectedTime,
+      jobDetails: this.state.jobDetails
+    }
+    console.log(job_info, this.props)
+    // this.props.dispatch(bookJob(job_info))
+    this.props.closeModal()
+  }
   render () {
     // let dateChange = () => this.setState({ selectedDate: this.state.value });
 
     return (
       <div>
-        <form onSubmit = {(e) => {
-          e.preventDefault()
-          console.log(this.state)
-          var job_info = {
-            clientId: this.props.client.current_client.id,
-            jobType: this.props.jobType,
-            jobPrice: this.props.client.current_w1,
-            jobDate: this.state.selectedDate,
-            jobTime: this.state.selectedTime,
-            jobDetails: this.state.jobDetails
-          }
-          this.props.dispatch(bookJob(job_info))
+        <form onSubmit={this.handleOnSubmit}
           //this.props.dispatch(bookJob(this.props.client.current_client))
         //  console.log('Form Submitted: ',
         //    "type", jobType, "date", this.state.selectedDate,
         //    "price", jobPrice)
-        }}>
+        >
 
           <FormGroup>
             <ControlLabel>Job Type</ControlLabel>
@@ -114,7 +119,7 @@ const BookW1Form = React.createClass({
       </div>
     )
   }
-})
+}
 
 const mapStateToProps = (state) => {
   return {

@@ -3,6 +3,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import logo from '../images/WhiteShark.png'
 import { connect } from 'react-redux'
 import { completedJob } from '../actions/job'
+import { paidJob } from '../actions/job'
 
 
 class TakeMoney extends React.Component {
@@ -16,9 +17,8 @@ class TakeMoney extends React.Component {
     }).then(token => {
       //alert(`We are in business, ${token}`);
       //console.log({ this.props.jobid })
-      this.props.dispatch(completedJob(this.props.jobid));
-
-    });
+      this.props.dispatch(paidJob(this.props.jobid));    // >>> Marks Job Paid(use in Stripe Checkout)
+    });                                       //Called from line 38 in Products with jobid 36(example)
   }
 
   // ...

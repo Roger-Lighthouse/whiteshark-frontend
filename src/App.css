@@ -1,3 +1,6 @@
+@import url(http://fonts.googleapis.com/css?family=Lato);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+
 .App {
   text-align: center;
 }
@@ -74,6 +77,22 @@ body{
   left:0px;
   right:0px;
   margin-bottom:0px;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+
+}
+
+.fa-facebook {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    color: #fff;
+}
+.fa-facebook:hover {
+    background-color: #3d5b99;
 }
 /*RGB: 0 32 91*/
 #navbar {
@@ -88,10 +107,9 @@ body{
   padding: 2%;
 }
 
-/*#navbar:hover {
-  color: #0000ff;
-  background-color: #00205b;
-}*/
+.jumbotron {
+  padding-left: 10%;
+}
 
 .navbar-brand {
   padding: 0px;

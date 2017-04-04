@@ -22,9 +22,6 @@ class Admin extends Component {
     //   this.props.dispatch(getAllClients());
   }
 
-  componentDidMount () {
-  }
-
   render() {
     return (
       <div id="admin-container">
@@ -38,7 +35,10 @@ class Admin extends Component {
               email: this.state.email,
               password: this.state.password
             }
-            e.reset()
+            this.setState({
+              email: null,
+              password: null
+            })
           }}>
           <FormGroup controlId="formHorizontalEmail">
             <Col componentClass={ControlLabel} sm={2}>

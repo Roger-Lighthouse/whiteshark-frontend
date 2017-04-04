@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import {
   Modal, FormGroup, FormControl, ControlLabel, Button
 } from 'react-bootstrap'
 import { logItem } from '../actions/job'
 
-class signPickUp extends React.Component {
+class signPickUp extends Component {
   constructor(props) {
     super(props)
 
@@ -16,7 +16,7 @@ class signPickUp extends React.Component {
     }
   }
 
-  reqSignPU = (jobId) => {
+  jobLogSumbit = (jobId) => {
     let log_info = {
       jobID: jobId,
       logType: this.props.title,     // Sign Pick Up, Job Feedback
@@ -25,10 +25,13 @@ class signPickUp extends React.Component {
     console.log(log_info)
     // this.props.dispatch(logItem(log_info))
     this.setState({
-      signPickUp: true,
       showModal: false
     })
   }
+
+  // handleClick() {
+  //   this.setState({signPickUp: true});
+  // }
 
   close = () => {
     this.setState({ showModal: false });
@@ -39,15 +42,12 @@ class signPickUp extends React.Component {
   }
 
   render() {
-    let signPickUp = this.state.signPickUp;
     return (
       <div>
         <Button
           bsStyle="primary" bsSize="small" block
-          disabled={signPickUp}
-          // onClick={!signPickUp ? this.handleClick : null}
           onClick={this.open}>
-          {signPickUp ? 'Sign Pick-Up Requested' : 'Request Sign Pick-Up'}
+          {this.props.title}
         </Button>
 
         <Modal show={this.state.showModal} onHide={this.close}>
@@ -59,7 +59,7 @@ class signPickUp extends React.Component {
           <Modal.Body>
             <form onSubmit={(e) => {
               e.preventDefault()
-              this.reqSignPU(this.props.jobId)
+              this.jobLogSumbit(this.props.jobId)
             }}>
               <FormGroup controlId="formControlsTextarea">
                 <ControlLabel>{this.props.commentTitle}</ControlLabel>

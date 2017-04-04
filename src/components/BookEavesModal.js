@@ -62,7 +62,7 @@ const BookEavesModal = React.createClass({
                 If we are unable to clean your downspouts, we will not charge for this.
               </li>
             </ul>
-            <BookEavesForm />
+            <BookEavesForm closeModal={this.close} />
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>
