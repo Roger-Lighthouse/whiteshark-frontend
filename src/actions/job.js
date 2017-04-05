@@ -21,7 +21,7 @@
 //  }
 export function bookJob(job_info){
    return dispatch => {
-      console.log("JOB INFO M:", job_info)
+      console.log("ACTION 1>>> Book Job:", job_info)
       fetch('http://localhost:3000/jobs', {
         method: 'POST',
         body: JSON.stringify({clientId: job_info.clientId, jobDesc: job_info.jobType,
@@ -31,7 +31,7 @@ export function bookJob(job_info){
       })
         .then(resp => resp.json())
         .then(data => {
-           console.log("Job return: ", data)
+           console.log("ACTION 2>>> Book Job:", data)
            return dispatch({type: 'BOOK_JOB', payload: {data: data}})
         })
         .catch()
@@ -60,13 +60,14 @@ export function clearJobs(){
 }
 
 export function completedJob(id){
-   return dispatch => {
+    console.log("ACTION 1>>> Completed Job:", id)
+    return dispatch => {
       fetch(`http://localhost:3000/jobs/${id}`, {
         method: 'PUT'
        })
         .then(resp => resp.json())
         .then(data => {
-           console.log('**Completed Job***', data)
+          console.log("ACTION 2>>> Completed Job:", data)
           return dispatch({type: 'COMPLETED_JOB', payload: {data: data}})
         })
         .catch()

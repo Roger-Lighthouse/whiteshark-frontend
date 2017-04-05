@@ -15,11 +15,11 @@ let initialState = {
 function jobReducer(state = initialState, action) {
     switch(action.type) {
         case 'BOOK_JOB':
-            console.log("Payload Data:", action.payload.data)
+            console.log("Reducer 1 >>> Book Job:", action.payload.data)
             let jobs=action.payload.data
             return {
                 ...state,
-                current_jobs: jobs.currentjobs,
+                current_jobs: jobs.current_jobs,
                 completed_jobs: jobs.completed_jobs,
                 upcoming_jobs: jobs.upcoming_jobs
             }
@@ -43,8 +43,9 @@ function jobReducer(state = initialState, action) {
             jobs=action.payload.data
             return {
                 ...state,
-                completed_jobs: jobs.completed_jobs
-            }
+                completed_jobs: jobs.completed_jobs,
+                current_jobs: jobs.current_jobs
+                    }
 
         case 'LOG_ITEM':
             console.log("Payload Data Log Item:", action.payload.data)

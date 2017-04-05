@@ -27,7 +27,12 @@
 }
 
 body{
-    margin-bottom:50px;
+  margin-bottom:50px;
+}
+
+footer {
+  bottom: 0px;
+  margin-top: 150px;
 }
 
 #admin-container {
@@ -45,6 +50,10 @@ body{
   margin: 5% 0 25%;
 }
 
+#myProfileContainer {
+  margin: 10% 5% 15%;
+}
+
 #root {
   margin-top: 50px;
 }
@@ -60,6 +69,11 @@ body{
   margin-right: 5px;
   height: 80px;
   width: 80px;
+}
+
+#loadingGif {
+  display: block;
+  margin: 20% auto 25%;
 }
 
 #currentClient {
@@ -129,6 +143,10 @@ body{
 
 .navbar-inverse .navbar-toggle {
   border: 2px solid transparent;
+}
+
+.main-container {
+  padding: 1%;
 }
 
 #VideoModalBtn {

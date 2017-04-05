@@ -7,7 +7,7 @@ import {
 const MyJobsJumbotron = (props) => {
   return (
     <div>
-      {props.jobs!=null && props.jobs.length === 0 &&
+      {props.jobs!==null && props.jobs.length === 0 &&
         <Jumbotron>
           <h1>{props.title}</h1>
           <p>To book a job, please click the button below.</p>

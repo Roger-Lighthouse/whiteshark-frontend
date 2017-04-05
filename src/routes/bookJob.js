@@ -1,32 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-// import { push } from 'react-router-redux'
 import Navbar from '../components/Navbar'
 import Products from '../components/Products'
-// import TestDB from '../components/TestDB'
-
-import { getClient, editClient, getAllClients, adminLogIn, adminLogOut} from '../actions/client'
-import { clearJobs, deleteJob, invoicePdf, editJob, paidJob, logItem, getJobs } from '../actions/job'
+import {
+  getClient, editClient, getAllClients, adminLogIn, adminLogOut
+} from '../actions/client'
+import {
+  clearJobs, deleteJob, invoicePdf, editJob, paidJob, logItem, getJobs
+} from '../actions/job'
 import Footer from '../components/Footer'
 import { store, history } from '../store'
 
-
 class BookJob extends Component {
-
 
  constructor(props) {
     super(props)
   }
 
   componentWillMount () {
-    let s=this.props.location.pathname;
-    var r = /\d+/;
-    let cfid = s.match(r);
+    let s=this.props.location.pathname
+    var r = /\d+/
+    let cfid1 = s.match(r)
+    let cfid2
+    if(this.props.current_client !== null){
+      cfid2 = this.props.current_client.id
+    }
+    let cfid
+    if(cfid1!=='' && cfid1!==null){
+      cfid=cfid1
+    }else{
+      cfid=cfid2
+    }
     if(cfid!=='' && cfid!==null){
-      // this.props.dispatch(clearJobs());
+      this.props.dispatch(clearJobs());
       this.props.dispatch(getClient(cfid));
       this.props.dispatch(getJobs(cfid));
-
+    }
       // var edit_client = {   //     >>> Test Data for editClient()
       //   id: cfid,
       //   name: 'Alex The Great',
@@ -35,17 +44,15 @@ class BookJob extends Component {
       // }
       //this.props.dispatch(editClient(edit_client))  >>> pass edit_client object here
       //this.props.dispatch(deleteJob(32))   >>> pass jobid here.
-      var edit_job = {     //  >>> Test Data for editJob()
-        jobID: 33,
-        jobDate: '2017-04-04',
-        jobTime: '8 AM',
-        jobDetails: 'Test Job Details'
-      }
-
+      // var edit_job = {     //  >>> Test Data for editJob()
+      //   jobID: 33,
+      //   jobDate: '2017-04-04',
+      //   jobTime: '8 AM',
+      //   jobDetails: 'Test Job Details'
+      // }
       //this.props.dispatch(editJob(edit_job));    >>> pass edit_job object here
       //this.props.dispatch(completedJob(this.props.jobid));  >>> pass jobid here
       //this.props.dispatch(paidJob(33));     >>> Marks Job Paid(use in Stripe Checkout)
-
       // var log_info = {
       //   jobID: 35,
       //   logType: 'Quality Issue',     // Sign Pick Up, Job Feedback
@@ -53,26 +60,36 @@ class BookJob extends Component {
       // }
       // this.props.dispatch(logItem(log_info))
       // //this.props.dispatch(invoicePdf(33));
-
       // this.props.dispatch(adminLogIn())
       //this.props.dispatch(adminLogOut())
-
-     }else{
+     // }else{
       // this.props.dispatch(getAllClients());
-     }
-  }
-
-  componentDidMount () {
+     // }
   }
 
   render() {
+    let current_client = this.props.current_client
    return (
       <div>
         <nav>
-          <Navbar current_client="Kasperi Kapanen" />
+          <Navbar />
         </nav>
-         {(this.props.loading1 && this.props.loading2) ? <Products  w1={this.props.current_w1} eh={this.props.current_eh} w2={this.props.current_w2} client={ this.props.current_client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
-        <Footer />
+        <div className="main-container">
+          {
+            (this.props.loading1 && this.props.loading2) ?
+            <Products
+            w1={this.props.current_w1}
+            eh={this.props.current_eh}
+            w2={this.props.current_w2}
+            current_client={ this.props.current_client }/> :
+            <img id="loadingGif"
+            src="http://www.lmholiday.com/images/loading.gif"
+            alt="HTML5 Icon" width="128" height="128"/>
+          }
+        </div>
+        <footer>
+          <Footer />
+        </footer>
       </div>
     )
   }
@@ -101,14 +118,12 @@ export default connect(mapStateToProps)(BookJob)
 // import NumJobs from '../components/NumJobs'
 // import { testMyJobs, addOne, getClients, changeUserName, changePassword, verifyPassword } from '../actions/myjobs'
 
-
 // const ClientList = (props) => {
 //   console.log("Props in component: ", props.clients)
 //   return (
 //     <ul>
 
 //    { props.clients.map( client => { return <Client name={client.name} address={client.address} /> } ) }
-
 
 //     </ul>
 //   )
@@ -120,7 +135,6 @@ export default connect(mapStateToProps)(BookJob)
 //     </li>
 //   )
 // }
-
 
 // class MyJobsContainer extends Component{
 
@@ -158,7 +172,6 @@ export default connect(mapStateToProps)(BookJob)
 //      //name = event["username"].value;
 //    //debugger
 //   }
-
 //   render(){
 //     console.log("this.props.num_jobs:" + this.props.myJobs.num_jobs)
 //      console.log("this.props.myJobs.data:" + this.props.myJobs.data)
@@ -168,7 +181,6 @@ export default connect(mapStateToProps)(BookJob)
 
 //      return(
 //       <div>
-
 //         <NumJobs num_jobs={this.props.myJobs.num_jobs}/>
 //         <button onClick={this._increment}>Increment: +</button>
 
@@ -190,12 +202,8 @@ export default connect(mapStateToProps)(BookJob)
 //               onChange={this._handlePasswordChange}
 //               //value={this.props.myJobs.password}
 //               />
-
-
 //             <input type="submit" value="Login" />
 //           </form>
-
-
 //       </div>
 
 //     )

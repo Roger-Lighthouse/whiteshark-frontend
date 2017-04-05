@@ -23,9 +23,9 @@ class editProfile extends React.Component {
     super(props)
 
     this.state = {
-      nameChange: null,
-      emailChange: null,
-      numberChange: null,
+      nameChange: this.props.client.name,
+      emailChange: this.props.client.email,
+      numberChange: this.props.client.phone,
     };
   }
   render() {
@@ -43,13 +43,13 @@ class editProfile extends React.Component {
               <form
                 onSubmit={e => {
                   e.preventDefault()
-                  console.log(this.state)
-                  var client_info = {
+                  let client_info = {
+                    id: client.id,
                     name: this.state.nameChange,
                     email: this.state.emailChange,
                     phone: this.state.numberChange
                   }
-                  this.props.dispatch(editClient(client.id));
+                  this.props.handleOnSubmit(client_info)
                   this.setState({ open: !this.state.open })
                 }}>
 
@@ -99,11 +99,5 @@ class editProfile extends React.Component {
     );
   }
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//        client: state.client
-//   }
-// }
 
 export default editProfile;

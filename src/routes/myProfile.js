@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Table, Well } from 'react-bootstrap'
 import Navbar from '../components/Navbar'
 import EditProfile from '../components/editProfile'
 import Footer from '../components/Footer'
 import { connect } from 'react-redux'
+import { editClient } from "../actions/client"
 
 // import { FormGroup, FormControl, ControlLabel, HelpBlock, Button, Collapse
 // } from 'react-bootstrap'
@@ -18,15 +19,24 @@ import { connect } from 'react-redux'
 //   );
 // }
 
-const myProfile = React.createClass ({
-  getInitialState() {
-    return { open: false };
-  },
+class myProfile extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      open: false
+    }
+  }
+
+  handleOnSubmit = (client_info) => {
+    this.props.dispatch(editClient(client_info))
+  }
+
   render() {
     let current_client = this.props.client.current_client
     return (
       <div>
-        <div className="container">
+        <div id="myProfileContainer">
           <Navbar current_client={current_client.name}/>
           <div className="center-block">
             <div className="list-group">
@@ -48,13 +58,14 @@ const myProfile = React.createClass ({
               </Well>
             </div>
           </div>
-          <EditProfile client={current_client} />
+          <EditProfile client={current_client}
+            handleOnSubmit={this.handleOnSubmit} />
         </div>
         <Footer />
       </div>
     );
   }
-});
+}
 
 const mapStateToProps = (state) => {
   return {

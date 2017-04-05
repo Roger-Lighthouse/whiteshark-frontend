@@ -20,136 +20,29 @@ const DeleteJob = (jobId) => {
   this.props.dispatch(deleteJob(jobId))
 }
 
-// const UpdateJob = (job) => {
-//   return <EditMyJobForm job={job} />
-// }
-
-// const upcomingJobs = () =>{
-//   console.log('%%%%%', this.props.job.upcoming_jobs)
-//   return this.props.job.upcoming_jobs
-// }
-
-// const currentJobs = () => {
-//   this.props.job.current_jobs
-// }
-
-// const completedJobs = () =>{
-//   this.props.job.completed_jobs
-// }
-
-
 class myJobs extends React.Component {
-
   MarkCompleted = (jobId) => {
     console.log(`Job ${jobId} completed!`);
     this.props.dispatch(completedJob(jobId))
   }
 
-
   handleOnSubmit = (job_info) => {
-
-              // console.log(this.state)
-
-              this.props.dispatch(editJob(job_info))
-            }
+    this.props.dispatch(editJob(job_info))
+  }
 
   render() {
+    console.log('myJobs show jobs from store', this.props.job)
     return (
-      <div id="myJobsContainer">
-        <Navbar current_client='Alex' />
-        <Tabs defaultActiveKey={1} animation={false} id="myJobsContainer">
-          <Tab eventKey={1} title="Upcoming Jobs">
-            <MyJobsJumbotron title="Upcoming Jobs" jobs={this.props.job.upcoming_jobs} />
-              {
-                this.props.job.upcoming_jobs.length > 0 &&
-                <Table striped bordered condensed hover>
-                  <thead>
-                    <tr>
-                      <th>Job Id</th>
-                      <th>Address</th>
-                      <th>Job Type</th>
-                      <th>Job Price</th>
-                      <th>Job Date</th>
-                      <th>Job Time</th>
-                      <th>Job Notes</th>
-                      <th>Modify Job</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    { this.props.job.upcoming_jobs.map((job) => {
-                      return (
-                        <tr key={job.id}>
-                          <td>JB{job.id}</td>
-                          <td>{job.address}</td>
-                          <td>{job.jobdesc}</td>
-                          <td>{job.price!=null ? <Currency symbol="$" value={ job.price * 100} /> : "TBD"}</td>
-                          <td>{job.sdate}</td>
-                          <td>{job.stime}</td>
-                          <td>{job.notes}</td>
-                          <td>
-                            <ButtonGroup vertical>
-                              <Button bsStyle="danger" bsSize="xsmall"
-                                onClick={
-                                  ()=>this.props.dispatch(deleteJob(job.id))}>
-                                Delete Job
-                              </Button>
-                              <EditMyJobForm job={job} onSubmit={this.handleOnSubmit} />
-                            </ButtonGroup>
-                          </td>
-                        </tr>
-                      )
-                    })}
-                  </tbody>
-                </Table>
-              }
-            </Tab>
-            <Tab eventKey={2} title="Current Jobs">
-              <MyJobsJumbotron title="Current Jobs" jobs={this.props.job.current_jobs} />
-              {
-                this.props.job.current_jobs!=null &&  this.props.job.current_jobs.length > 0 &&
-                <Table striped bordered condensed hover>
-                  <thead>
-                    <tr>
-                      <th>Job Id</th>
-                      <th>Address</th>
-                      <th>Job Type</th>
-                      <th>Job Price</th>
-                      <th>Job Date</th>
-                      <th>Job Time</th>
-                      {this.props.client.admin ? <th>Admin Only</th> : null}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    { this.props.job.current_jobs.map((job) => {
-                      return (
-                        <tr key={job.id}>
-                          <td>JB{job.id}</td>
-                          <td>{job.address}</td>
-                          <td>{job.jobdesc}</td>
-                          <td>{job.price ? <Currency symbol="$" value={ job.price * 100} /> : "TBD"}</td>
-                          <td>{job.sdate}</td>
-                          <td>{job.stime}</td>
-                          {
-                            this.props.client.admin ?
-                            <td>
-                              <Button bsStyle="success" bsSize="small"
-                                onClick={() => this.MarkCompleted(job.id)}>
-                                Mark Completed
-                              </Button>
-                            </td>
-                            : null
-                          }
-                        </tr>
-                      )
-                    })}
-                  </tbody>
-                </Table>
-              }
-            </Tab>
-            <Tab eventKey={3} title="Completed jobs">
-              <MyJobsJumbotron title="Completed Jobs" jobs={this.props.job.completed_jobs} />
+      <div>
+        <nav>
+          <Navbar />
+        </nav>
+        <div id="myJobsContainer">
+          <Tabs defaultActiveKey={1} animation={false} id="myJobsContainer">
+            <Tab eventKey={1} title="Upcoming Jobs">
+              <MyJobsJumbotron title="Upcoming Jobs" jobs={this.props.job.upcoming_jobs} />
                 {
-                  this.props.job.completed_jobs.length > 0 &&
+                  this.props.job.upcoming_jobs.length > 0 &&
                   <Table striped bordered condensed hover>
                     <thead>
                       <tr>
@@ -157,41 +50,31 @@ class myJobs extends React.Component {
                         <th>Address</th>
                         <th>Job Type</th>
                         <th>Job Price</th>
-                        <th>Date Completed</th>
-                        <th>Job Crew</th>
-                        <th>Rec Status</th>
-                        <th>Job Actions</th>
+                        <th>Job Date</th>
+                        <th>Job Time</th>
+                        <th>Job Notes</th>
+                        <th>Modify Job</th>
                       </tr>
                     </thead>
                     <tbody>
-                      { this.props.job.completed_jobs.map((job) => {
+                      { this.props.job.upcoming_jobs.map((job) => {
                         return (
                           <tr key={job.id}>
                             <td>JB{job.id}</td>
                             <td>{job.address}</td>
                             <td>{job.jobdesc}</td>
-                            <td><Currency symbol="$" value={ job.price * 100} /></td>
-                            <td>{job.datebi}</td>
-                            <td>{job.crew}</td>
-                            <td>{job.recstatus}</td>
+                            <td>{job.price!=null ? <Currency symbol="$" value={ job.price * 100} /> : "TBD"}</td>
+                            <td>{job.sdate}</td>
+                            <td>{job.stime}</td>
+                            <td>{job.notes}</td>
                             <td>
                               <ButtonGroup vertical>
-                                <TakeMoney amount={job.price * 100} jobid={job.id}/>
-                                <DropdownButton title="Job Actions" id="jobActionsDropDown">
-                                  <SignPickUpModal title="Sign Pick Up"
-                                    commentTitle="Additional notes: i.e. if the sign was moved"
-                                    btnName="Request Sign Pick Up" jobId={job.id}
-                                  />
-                                  <JobLogModal title="Quality Issue"
-                                    commentTitle="We are very sorry if you are not satified with our service, please tell us more about your experience"
-                                    btnName="Send Quality Issue" jobId={job.id}
-                                  />
-                                  <JobLogModal title="Job Feedback"
-                                    commentTitle="Please tell us how we did"
-                                    btnName="Send Feedback" jobId={job.id}
-                                  />
-                                </DropdownButton>
-                                <ShowJobLogs jobId={job.id} jobLogs={job.job_logs}/>
+                                <Button bsStyle="danger" bsSize="xsmall"
+                                  onClick={
+                                    ()=>this.props.dispatch(deleteJob(job.id))}>
+                                  Delete Job
+                                </Button>
+                                <EditMyJobForm job={job} onSubmit={this.handleOnSubmit} />
                               </ButtonGroup>
                             </td>
                           </tr>
@@ -200,9 +83,110 @@ class myJobs extends React.Component {
                     </tbody>
                   </Table>
                 }
-            </Tab>
-          </Tabs>
-        <Footer/>
+              </Tab>
+              <Tab eventKey={2} title="Current Jobs">
+                <MyJobsJumbotron title="Current Jobs" jobs={this.props.job.current_jobs} />
+                {
+                  this.props.job.current_jobs!=null &&  this.props.job.current_jobs.length > 0 &&
+                  <Table striped bordered condensed hover>
+                    <thead>
+                      <tr>
+                        <th>Job Id</th>
+                        <th>Address</th>
+                        <th>Job Type</th>
+                        <th>Job Price</th>
+                        <th>Job Date</th>
+                        <th>Job Time</th>
+                        {this.props.client.admin ? <th>Admin Only</th> : null}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      { this.props.job.current_jobs.map((job) => {
+                        return (
+                          <tr key={job.id}>
+                            <td>JB{job.id}</td>
+                            <td>{job.address}</td>
+                            <td>{job.jobdesc}</td>
+                            <td>{job.price ? <Currency symbol="$" value={ job.price * 100} /> : "TBD"}</td>
+                            <td>{job.sdate}</td>
+                            <td>{job.stime}</td>
+                            {
+                              this.props.client.admin ?
+                              <td>
+                                <Button bsStyle="success" bsSize="small"
+                                  onClick={() => this.MarkCompleted(job.id)}>
+                                  Mark Completed
+                                </Button>
+                              </td>
+                              : null
+                            }
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </Table>
+                }
+              </Tab>
+              <Tab eventKey={3} title="Completed jobs">
+                <MyJobsJumbotron title="Completed Jobs" jobs={this.props.job.completed_jobs} />
+                  {
+                    this.props.job.completed_jobs.length > 0 &&
+                    <Table striped bordered condensed hover>
+                      <thead>
+                        <tr>
+                          <th>Job Id</th>
+                          <th>Address</th>
+                          <th>Job Type</th>
+                          <th>Job Price</th>
+                          <th>Date Completed</th>
+                          <th>Job Crew</th>
+                          <th>Rec Status</th>
+                          <th>Job Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        { this.props.job.completed_jobs.map((job) => {
+                          return (
+                            <tr key={job.id}>
+                              <td>JB{job.id}</td>
+                              <td>{job.address}</td>
+                              <td>{job.jobdesc}</td>
+                              <td><Currency symbol="$" value={ job.price * 100} /></td>
+                              <td>{job.datebi}</td>
+                              <td>{job.crew}</td>
+                              <td>{job.recstatus}</td>
+                              <td>
+                                <ButtonGroup vertical>
+                                  <TakeMoney amount={job.price * 100} jobid={job.id}/>
+                                  <DropdownButton title="Job Actions" id="jobActionsDropDown">
+                                    <SignPickUpModal title="Sign Pick Up"
+                                      commentTitle="Additional notes: i.e. if the sign was moved"
+                                      btnName="Request Sign Pick Up" jobId={job.id}
+                                    />
+                                    <JobLogModal title="Quality Issue"
+                                      commentTitle="We are very sorry if you are not satified with our service, please tell us more about your experience"
+                                      btnName="Send Quality Issue" jobId={job.id}
+                                    />
+                                    <JobLogModal title="Job Feedback"
+                                      commentTitle="Please tell us how we did"
+                                      btnName="Send Feedback" jobId={job.id}
+                                    />
+                                  </DropdownButton>
+                                  <ShowJobLogs jobId={job.id} jobLogs={job.job_logs}/>
+                                </ButtonGroup>
+                              </td>
+                            </tr>
+                          )
+                        })}
+                      </tbody>
+                    </Table>
+                  }
+              </Tab>
+            </Tabs>
+        </div>
+        <footer>
+          <Footer/>
+        </footer>
       </div>
     )
   }
