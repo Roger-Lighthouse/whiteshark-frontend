@@ -36,7 +36,7 @@ class ShowJobLogs extends Component {
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>
-              All Job Logs for Job {this.props.jobId}
+              All Job Logs for Job JB{this.props.jobId}
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -52,11 +52,11 @@ class ShowJobLogs extends Component {
               <tbody>
                 { this.props.jobLogs.map((log) => {
                   return (
-                    <tr key={log.logId}>
-                      <td>{log.logId}</td>
-                      <td>{log.logType}</td>
-                      <td>{log.logComments}</td>
-                      <td>{log.logDate}</td>
+                    <tr key={log.id}>
+                      <td>{log.id}</td>
+                      <td>{log.log_type}</td>
+                      <td>{log.comments}</td>
+                      <td>{log.log_date}</td>
                     </tr>
                   )
                 })}
@@ -74,3 +74,5 @@ class ShowJobLogs extends Component {
 
 
 export default ShowJobLogs;
+
+

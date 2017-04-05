@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import DateTime from 'react-datetime'
-import { bookJob } from '../actions/client'
+import { bookJob } from '../actions/job'
 
 const Currency = require('react-currency');
 
@@ -25,6 +25,7 @@ const valid = function( current ){
     return current.isAfter( yesterday );
 };
 
+
 class BookW1Form extends Component {
   constructor(props) {
     super(props)
@@ -40,18 +41,26 @@ class BookW1Form extends Component {
     // this.props.dispatch(setW1Price(jobType, jobPrice))
   }
 
+  // price = (props) => {
+  //   if (props.price === "TBD") {
+  //     return "TBD"
+  //   } else {
+  //     return <Currency symbol="$" value={ this.props.price * 100} />
+  //   }
+  // }
+
   handleOnSubmit = (e) => {
     e.preventDefault()
     var job_info = {
-      // clientId: this.props.client.current_client.id,
+      clientId: this.props.client.current_client.id,
       jobType: this.props.jobType,
-      // jobPrice: this.props.client.current_w1,
+      jobPrice: this.props.price,  //this.props.client.current_w1,
       jobDate: this.state.selectedDate,
       jobTime: this.state.selectedTime,
       jobDetails: this.state.jobDetails
     }
     console.log(job_info, this.props)
-    // this.props.dispatch(bookJob(job_info))
+    this.props.dispatch(bookJob(job_info))
     this.props.closeModal()
   }
   render () {
@@ -76,7 +85,7 @@ class BookW1Form extends Component {
           <FormGroup>
             <ControlLabel>Job Price</ControlLabel>
             <FormControl.Static>
-               {/* <Currency symbol="$" value={ this.props.client.current_w1 * 100} /> */}
+              {this.props.price === "TBD" ? "TBD" : <Currency symbol="$" value={ this.props.price * 100} />}
             </FormControl.Static>
           </FormGroup>
             <strong>Select date:</strong>

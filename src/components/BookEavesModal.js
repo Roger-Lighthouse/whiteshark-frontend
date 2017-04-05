@@ -43,7 +43,7 @@ const BookEavesModal = React.createClass({
                 </strong><br></br>
                 Does NOT include repairs, installation of cages, removal of screens, or check downspouts.
               </li>
-              <li>
+              {/* <li>
                 <strong>
                   Clean interior of garage eaves [EG]
                 </strong><br></br>
@@ -60,9 +60,9 @@ const BookEavesModal = React.createClass({
                   Snake downspouts and remove any clogs [SDS]
                 </strong><br></br>
                 If we are unable to clean your downspouts, we will not charge for this.
-              </li>
+              </li> */}
             </ul>
-            <BookEavesForm closeModal={this.close} />
+            <BookEavesForm closeModal={this.close} eh={this.props.price} />
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>

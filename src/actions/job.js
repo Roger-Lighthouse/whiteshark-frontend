@@ -1,12 +1,30 @@
 
 
-
+// export function bookJob(job_info){
+//   dispatch({type: 'BOOK_JOB', payload: {data: data}})
+//    return dispatch => {
+//       console.log("JOB INFO M:", job_info)
+//       fetch('http://localhost:3000/jobs', {
+//         method: 'POST',
+//         body: JSON.stringify({clientId: job_info.clientId, jobDesc: job_info.jobType,
+//           jobPrice: job_info.jobPrice, jobDate: job_info.jobDate,
+//           jobTime: job_info.jobTime, jobDetails: job_info.jobDetails}),
+//         headers: new Headers({'Content-type': 'application/json'})
+//       })
+//         .then(resp => resp.json())
+//         .then(data => {
+//            console.log("Job return: ", data)
+//            return
+//         })
+//         .catch()
+//    }
+//  }
 export function bookJob(job_info){
    return dispatch => {
       console.log("JOB INFO M:", job_info)
       fetch('http://localhost:3000/jobs', {
         method: 'POST',
-        body: JSON.stringify({clientId: job_info.clientId, jobDesc: job_info.jobDesc,
+        body: JSON.stringify({clientId: job_info.clientId, jobDesc: job_info.jobType,
           jobPrice: job_info.jobPrice, jobDate: job_info.jobDate,
           jobTime: job_info.jobTime, jobDetails: job_info.jobDetails}),
         headers: new Headers({'Content-type': 'application/json'})
@@ -57,7 +75,7 @@ export function completedJob(id){
 
 export function editJob(job_info){
    return dispatch => {
-      fetch(`http://localhost:3000/jobs/${job_info.jobID}/edit`, {
+      fetch(`http://localhost:3000/jobs/${job_info.jobId}/edit`, {
         method: 'POST',
           body: JSON.stringify({jobDate: job_info.jobDate,
           jobTime: job_info.jobTime, jobDetails: job_info.jobDetails}),
@@ -78,8 +96,8 @@ export function logItem(log_info){
    return dispatch => {
       fetch(`http://localhost:3000/job_logs`, {
         method: 'POST',
-          body: JSON.stringify({jobID: log_info.jobID,
-          logType: log_info.logType, logComments: log_info.logComments}),
+          body: JSON.stringify({jobID: log_info.job_id,
+          logType: log_info.log_type, logComments: log_info.comments}),
           headers: new Headers({'Content-type': 'application/json'})
        })
         .then(resp => resp.json())
@@ -91,6 +109,17 @@ export function logItem(log_info){
    }
 }
 
+export function getJobs(id){
+   return dispatch => {
+      fetch(`http://localhost:3000/jobs/${id}/get_jobs`)
+        .then(resp => resp.json())
+        .then(data => {
+           console.log('**Get Jobs***', data)
+          return dispatch({type: 'GET_JOBS', payload: {data: data}})
+        })
+        .catch()
+   }
+}
 
 
 export function paidJob(id){

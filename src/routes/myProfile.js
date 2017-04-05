@@ -3,7 +3,7 @@ import { Table, Well } from 'react-bootstrap'
 import Navbar from '../components/Navbar'
 import EditProfile from '../components/editProfile'
 import Footer from '../components/Footer'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 
 // import { FormGroup, FormControl, ControlLabel, HelpBlock, Button, Collapse
 // } from 'react-bootstrap'
@@ -23,31 +23,32 @@ const myProfile = React.createClass ({
     return { open: false };
   },
   render() {
+    let current_client = this.props.client.current_client
     return (
       <div>
         <div className="container">
-          <Navbar current_client="Kasperi Kapanen"/>
+          <Navbar current_client={current_client.name}/>
           <div className="center-block">
             <div className="list-group">
               <p><strong>Name:</strong></p>
               <Well bsSize="small">
-                Mark Walhberg
+                {current_client.name}
               </Well>
               <p><strong>Email:</strong></p>
               <Well bsSize="small">
-              markyMark@southy.com
+              {current_client.email}
               </Well>
               <p><strong>Phone Number:</strong></p>
               <Well bsSize="small">
-                416-222-2345
+                {current_client.phone}
               </Well>
               <p><strong>Address:</strong></p>
               <Well bsSize="small">
-                11 Boston Way
+                {current_client.address}
               </Well>
             </div>
           </div>
-          <EditProfile />
+          <EditProfile client={current_client} />
         </div>
         <Footer />
       </div>
@@ -55,10 +56,10 @@ const myProfile = React.createClass ({
   }
 });
 
-// const mapStateToProps = (state) => {
-//   return {
-//     client: state.client
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    client: state.client
+  }
+}
 
-export default myProfile;
+export default connect(mapStateToProps)(myProfile);

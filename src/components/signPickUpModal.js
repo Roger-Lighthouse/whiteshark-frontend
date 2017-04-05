@@ -18,12 +18,12 @@ class signPickUp extends React.Component {
 
   reqSignPU = (jobId) => {
     let log_info = {
-      jobID: jobId,
-      logType: this.props.title,     // Sign Pick Up, Job Feedback
-      logComments: this.state.logComments
+      job_id: jobId,
+      log_type: this.props.title,     // Sign Pick Up, Job Feedback
+      comments: this.state.logComments
     }
     console.log(log_info)
-    // this.props.dispatch(logItem(log_info))
+    this.props.dispatch(logItem(log_info))
     this.setState({
       signPickUp: true,
       showModal: false

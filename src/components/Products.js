@@ -15,10 +15,9 @@ import { Link } from 'react-router-dom'
 import { Image } from 'react-bootstrap'
 const Currency = require('react-currency');
 
-
 const Products = (props) => (
-
   <div>
+    {console.log('products444', props.w2)}
     <div id="productsContainer">
       <div className="row">
         <div id="side-bar" className="col-md-3">
@@ -83,7 +82,7 @@ const Products = (props) => (
               </div>
               <BookJobModal jobTitle="Exterior only [W1]"
                 jobDesc="No removal of window, storm or screen. Remove loose dirt and water from sills."
-                jobType="W1"/>
+                jobType="W1" price={props.w1}/>
             </div>
           </div>
 
@@ -101,7 +100,7 @@ const Products = (props) => (
               </div>
               <BookJobModal jobTitle="Two-sided job [W2]"
                 jobDesc="Interior and exterior of window or storm. No removal of window, storm or screen. Remove loose dirt and water from sills."
-                jobType="W2"/>
+                jobType="W2" price={props.w2}/>
             </div>
           </div>
 
@@ -119,7 +118,7 @@ const Products = (props) => (
               </div>
               <BookJobModal jobTitle="Three sided job [W3]"
                 jobDesc="Brush screens to remove loose dirt. Remove storm, clean both sides. Clean exterior window. Replace storm. Remove loose dirt and water form sills."
-                jobType="W3"/>
+                jobType="W3" price="TBD"/>
             </div>
           </div>
 
@@ -137,7 +136,7 @@ const Products = (props) => (
                 </div>
                 <BookJobModal jobTitle="Four sided job [W4]"
                   jobDesc="Remove storm, clean both sides. Clean both sides of window. Brush screens to remove loose dirt. Replace storm. Remove loose dirt and water from sills."
-                  jobType="W4"/>
+                  jobType="W4" price="TBD"/>
               </div>
             </div>
 
@@ -153,7 +152,7 @@ const Products = (props) => (
                   </h2>
                   <p>We clean thousands of eavestroughs every year.</p>
                 </div>
-                <BookEavesModal />
+                <BookEavesModal price={props.eh}/>
               </div>
             </div>
 

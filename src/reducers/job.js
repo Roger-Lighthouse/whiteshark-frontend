@@ -1,6 +1,6 @@
 
 
-let initalState = {
+let initialState = {
     num_jobs: 0,
     data: [],
     username: '',
@@ -12,7 +12,7 @@ let initalState = {
     loading: false,
 }
 
-function jobReducer(state = initalState, action) {
+function jobReducer(state = initialState, action) {
     switch(action.type) {
         case 'BOOK_JOB':
             console.log("Payload Data:", action.payload.data)
@@ -68,6 +68,17 @@ function jobReducer(state = initalState, action) {
             return {
                 ...state,
                 completed_jobs: jobs.completed_jobs
+            }
+
+        case 'GET_JOBS':
+            console.log("Payload Data:", action.payload.data)
+            jobs=action.payload.data
+            return {
+                ...state,
+                completed_jobs: jobs.completed_jobs,
+                current_jobs: jobs.current_jobs,
+                upcoming_jobs: jobs.upcoming_jobs,
+                loading: true
             }
 
         case 'INVOICE_PDF':
