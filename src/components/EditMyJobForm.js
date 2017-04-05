@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import DateTime from 'react-datetime'
 const Currency = require('react-currency');
+import {editJob} from '../actions/job'
 
 import {
   Button, FormGroup, FormControl, ControlLabel, Modal
@@ -20,9 +21,9 @@ const EditMyJobForm = React.createClass({
   getInitialState() {
     return {
       showModal: false,
-      selectedDate: this.props.job.jobDate,
-      selectedTime: this.props.job.jobTime,
-      jobDetails: this.props.job.jobDetails
+      selectedDate: this.props.job.sdate,
+      selectedTime: this.props.job.stime,
+      jobDetails: this.props.job.notes
     };
   },
 
@@ -35,6 +36,15 @@ const EditMyJobForm = React.createClass({
   },
 
   render () {
+    let job_info = {
+                clientId: this.props.job.client_id,
+                jobId: this.props.job.id,
+                jobType: this.props.job.jobdesc,
+                jobPrice: this.props.job.price,
+                jobDate: this.state.selectedDate,
+                jobTime: this.state.selectedTime,
+                jobDetails: this.state.jobDetails
+              }
 
     return (
       <div>
@@ -51,19 +61,10 @@ const EditMyJobForm = React.createClass({
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form onSubmit={e => {
+            <form onSubmit={ (e) => {
               e.preventDefault()
-              console.log(this.state)
-              var job_info = {
-                clientId: this.props.client.current_client.id,
-                jobId: this.props.job.jobId,
-                jobType: this.props.job.jobType,
-                jobPrice: this.props.job.jobPrice,
-                jobDate: this.state.selectedDate,
-                jobTime: this.state.selectedTime,
-                jobDetails: this.state.jobDetails
-              }
-                // this.props.dispatch(bookJob(job_info)
+              this.props.onSubmit(job_info)
+              this.close()
         // ----------------------------------------------------
               //this.props.dispatch(bookJob(this.props.client.current_client))
             //  console.log('Form Submitted: ',
@@ -73,15 +74,15 @@ const EditMyJobForm = React.createClass({
               <FormGroup>
                 <ControlLabel>Job Type</ControlLabel>
                 <FormControl.Static>
-                  {this.props.job.jobType}
+                  {this.props.job.jobdesc}
                 </FormControl.Static>
               </FormGroup>
 
-              { this.props.job.jobPrice &&
+              { this.props.job.price &&
               <FormGroup>
                 <ControlLabel>Job Price</ControlLabel>
                 <FormControl.Static>
-                   <Currency symbol="$" value={ this.props.job.jobPrice * 100} />
+                   <Currency symbol="$" value={ this.props.job.price * 100} />
                 </FormControl.Static>
               </FormGroup>
               }
@@ -91,7 +92,7 @@ const EditMyJobForm = React.createClass({
                   <DateTime onChange={(d)=>{
                       this.setState({ selectedDate: d.toDate() })
                     }} timeFormat={false} isValidDate={ valid }
-                  defaultValue={this.props.job.jobDate}/>
+                  defaultValue={this.props.job.sdate}/>
               {/* <DateTime onChange={(d)=>{
                     this.setState({selectedTime: d.getHours()})
                   }}
@@ -102,7 +103,7 @@ const EditMyJobForm = React.createClass({
               <FormGroup controlId="formControlsSelectTime">
                 <ControlLabel>Select time:</ControlLabel>
                 <FormControl componentClass="select"
-                  placeholder={this.props.job.jobTime}
+                  defaultValue={this.props.job.stime}
                   onChange={ (ev) => {
                     this.setState({selectedTime: ev.target.value})
                   }
@@ -117,8 +118,8 @@ const EditMyJobForm = React.createClass({
               <FormGroup controlId="formControlsAddJobDetails">
                 <ControlLabel>Additional job details</ControlLabel>
                 <FormControl componentClass="textarea"
-                  placeholder={this.props.job.jobDetails ? null : "i.e. call ahead of arrival" }
-                  defaultValue={this.props.job.jobDetails}
+                  placeholder={this.props.job.notes ? null : "i.e. call ahead of arrival" }
+                  defaultValue={this.props.job.notes}
                   onChange={ (ev) => {
                     this.setState({jobDetails: ev.target.value})
                   }
@@ -138,10 +139,12 @@ const EditMyJobForm = React.createClass({
   }
 })
 
-const mapStateToProps = (state) => {
-  return {
-    client: state.job
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     job: state.job,
+//   }
+// }
 
-export default connect(mapStateToProps)(EditMyJobForm)
+// export default connect(mapStateToProps)(EditMyJobForm);
+
+export default EditMyJobForm;

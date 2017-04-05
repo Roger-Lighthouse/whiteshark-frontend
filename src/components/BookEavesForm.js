@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import DateTime from 'react-datetime'
 const Currency = require('react-currency');
+import { bookJob } from '../actions/job'
 
 import {
   Button, FormGroup, FormControl, ControlLabel
@@ -31,7 +32,7 @@ const BookEavesForm = React.createClass({
     return {
       eavesType: '',
       selectedDate: '',
-      selectedTime: '',
+      selectedTime: 'Anytime',
       jobDetails: ''
     };
   },
@@ -44,16 +45,16 @@ const BookEavesForm = React.createClass({
         <form onSubmit={e => {
           e.preventDefault()
           var job_info = {
-            // clientId: this.props.client.current_client.id,
-            eavesType: this.state.eavesType,
-            // jobPrice: this.props.client.current_w1,
+            clientId: this.props.client.current_client.id,
+            jobType: 'EH',
+            jobPrice: this.props.eh,
             jobDate: this.state.selectedDate,
             jobTime: this.state.selectedTime,
             jobDetails: this.state.jobDetails
           }
           this.props.closeModal()
           console.log(job_info)
-            // this.props.dispatch(bookJob(job_info)
+            this.props.dispatch(bookJob(job_info))
     // ----------------------------------------------------
           //this.props.dispatch(bookJob(this.props.client.current_client))
         //  console.log('Form Submitted: ',
@@ -69,16 +70,16 @@ const BookEavesForm = React.createClass({
             }
           } style={{width: '85%'}} >
             <option value="EH">Clean interior of house eaves [EH]</option>
-            <option value="EG">Clean interior of garage eaves [EG]</option>
+            {/*<option value="EG">Clean interior of garage eaves [EG]</option>
             <option value="DSC">Clean the mouth of down spout and install downspout cage [DSC]</option>
-            <option value="SDS">Snake downspouts and remove any clogs [SDS]</option>
+            <option value="SDS">Snake downspouts and remove any clogs [SDS]</option>*/}
           </FormControl>
         </FormGroup>
 
           <FormGroup>
             <ControlLabel>Job Price</ControlLabel>
             <FormControl.Static>
-              {/* <Currency symbol="$" value={ this.props.client.current_w1 * 100} /> */}
+              { <Currency symbol="$" value={ this.props.eh * 100} /> }
             </FormControl.Static>
           </FormGroup>
 

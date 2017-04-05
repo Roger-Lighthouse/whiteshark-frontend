@@ -42,7 +42,9 @@ class BookJobModal extends Component {
             <strong>
               {this.props.jobDesc}
             </strong>
-            <BookW1Form jobType={this.props.jobType} closeModal={this.close}/>
+            <BookW1Form jobType={this.props.jobType} closeModal={this.close}
+              price={this.props.price}
+            />
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>

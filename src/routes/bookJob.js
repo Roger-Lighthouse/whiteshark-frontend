@@ -6,18 +6,26 @@ import Products from '../components/Products'
 // import TestDB from '../components/TestDB'
 
 import { getClient, editClient, getAllClients, adminLogIn, adminLogOut} from '../actions/client'
-import { clearJobs, deleteJob, invoicePdf, editJob, paidJob, logItem } from '../actions/job'
+import { clearJobs, deleteJob, invoicePdf, editJob, paidJob, logItem, getJobs } from '../actions/job'
 import Footer from '../components/Footer'
+import { store, history } from '../store'
+
 
 class BookJob extends Component {
 
+
+ constructor(props) {
+    super(props)
+  }
+
   componentWillMount () {
-    // let s=this.props.location.pathname;
-    // var r = /\d+/;
-    // let cfid = s.match(r);
-    // if(cfid!=='' && cfid!==null){
-    //   this.props.dispatch(getClient(cfid));
-    //   this.props.dispatch(clearJobs());
+    let s=this.props.location.pathname;
+    var r = /\d+/;
+    let cfid = s.match(r);
+    if(cfid!=='' && cfid!==null){
+      this.props.dispatch(clearJobs());
+      this.props.dispatch(getClient(cfid));
+      this.props.dispatch(getJobs(cfid));
 
       // var edit_client = {   //     >>> Test Data for editClient()
       //   id: cfid,
@@ -49,25 +57,21 @@ class BookJob extends Component {
       // this.props.dispatch(adminLogIn())
       //this.props.dispatch(adminLogOut())
 
-    // }else{
+     }else{
       // this.props.dispatch(getAllClients());
-    // }
+     }
   }
 
   componentDidMount () {
-    // console.log("****", this.props.client.current_client)
-
   }
 
   render() {
-    console.log(this.props)
    return (
       <div>
         <nav>
           <Navbar current_client="Kasperi Kapanen" />
         </nav>
-        {/* {this.props.client ? <Products  client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>} */}
-        <Products />
+         {(this.props.loading1 && this.props.loading2) ? <Products  w1={this.props.current_w1} eh={this.props.current_eh} w2={this.props.current_w2} client={ this.props.current_client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>}
         <Footer />
       </div>
     )
@@ -76,7 +80,12 @@ class BookJob extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    client: state.client,
+    current_client: state.client.current_client,
+    current_w2: state.client.current_w2,
+    current_w1: state.client.current_w1,
+    current_eh: state.client.current_eh,
+    loading1: state.client.loading,
+    loading2: state.job.loading,
     job: state.job
   }
 }
@@ -84,6 +93,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps)(BookJob)
 
 
+//  <Products client={this.props.client.current_client}/>
 
 // import React, { Component } from 'react';
 // import { connect } from 'react-redux'
