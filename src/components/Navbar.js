@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Badge, Image, Label } from 'react-bootstrap'
 import WhiteShark from '../images/WhiteShark.png'
+import { connect } from 'react-redux'
+
 
 const Navbar = (props) => {
   return (
@@ -59,4 +61,11 @@ const Navbar = (props) => {
     </div>
   )
 }
-export default Navbar;
+
+const mapStateToProps = (state) => {
+  return {
+    client: state.client
+  }
+}
+
+export default connect(mapStateToProps)(Navbar)

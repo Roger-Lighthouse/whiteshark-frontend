@@ -70,7 +70,7 @@ class BookJob extends Component {
    return (
       <div>
         <nav>
-          <Navbar current_client="Kasperi Kapanen"/>
+          <Navbar />
         </nav>
         {/* {this.props.client ? <Products  client={ this.props.client }/> : <img src="http://www.lmholiday.com/images/loading.gif" alt="HTML5 Icon" width="128" height="128"/>} */}
         <Products />
