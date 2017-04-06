@@ -4,7 +4,7 @@ const Footer = () => {
 
   return (
     <div>
-      <footer id="footer">
+      <footer>
         <div className="container">
           <div className="row">
             <div className="facebook-link">

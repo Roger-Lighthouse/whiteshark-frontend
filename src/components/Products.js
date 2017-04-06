@@ -70,7 +70,9 @@ const Products = (props) => (
 
           <div className="col-sm-4 col-lg-4 col-md-4">
             <div className="thumbnail">
-              <Image src={img_W1} rounded></Image>
+              <div className="productImg">
+                <Image src={img_W1} rounded></Image>
+              </div>
               <div className="caption">
                 <h4>
                   Exterior only [W1]
@@ -88,7 +90,9 @@ const Products = (props) => (
 
           <div className="col-sm-4 col-lg-4 col-md-4">
             <div className="thumbnail">
-              <Image src={img_W2} rounded></Image>
+              <div className="productImg">
+                <Image src={img_W2} rounded></Image>
+              </div>
               <div className="caption">
                 <h4>
                   Two-sided job [W2]
@@ -106,7 +110,9 @@ const Products = (props) => (
 
           <div className="col-sm-4 col-lg-4 col-md-4">
             <div className="thumbnail">
-              <Image src={img_W3} rounded></Image>
+              <div className="productImg">
+                <Image src={img_W3} rounded></Image>
+              </div>
               <div className="caption">
                 <h4>
                   Three sided job [W3]
@@ -124,7 +130,9 @@ const Products = (props) => (
 
             <div className="col-sm-4 col-lg-4 col-md-4">
               <div className="thumbnail">
-                <Image src={img_W4} rounded></Image>
+                <div className="productImg">
+                  <Image src={img_W4} rounded></Image>
+                </div>
                 <div className="caption">
                   <h4>
                     Four sided job [W4]
@@ -142,7 +150,9 @@ const Products = (props) => (
 
             <div className="col-sm-4 col-lg-4 col-md-4">
               <div className="thumbnail">
-                <Image src={Eaves} rounded></Image>
+                <div className="productImg">
+                  <Image src={Eaves} rounded></Image>
+                </div>
                 <div className="caption">
                   <h4>
                     Eavestrough Cleaning
@@ -158,7 +168,9 @@ const Products = (props) => (
 
             <div className="col-sm-4 col-lg-4 col-md-4">
               <div className="thumbnail">
-                <Image src={ExtraMilePainting} rounded></Image>
+                <div className="productImg">
+                  <Image src={ExtraMilePainting} rounded></Image>
+                </div>
                 <div className="caption">
                   <h4>
                     Extra Mile Painting

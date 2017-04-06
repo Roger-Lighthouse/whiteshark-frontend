@@ -8,7 +8,7 @@ import Logo from '../images/WhiteShark.png'
 import { connect } from 'react-redux'
 import { getAllClients, adminLogIn, adminLogOut} from '../actions/client'
 
-const Clients = () => <h1>All Clients</h1>
+// const Clients = () => <h1>All Clients</h1>
 
 class Admin extends Component {
   constructor(props) {
@@ -92,7 +92,7 @@ class Admin extends Component {
           </FormGroup>
         </Form>
         <Footer />
-        <Clients show={this.state.showClients}/>
+        {/* <Clients show={this.state.showClients}/> */}
       </div>
     )
   }
