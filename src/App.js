@@ -17,12 +17,12 @@ const App = () => {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <div>
-          <Route exact path='/' component={BookJob}/>
-          <Route path='/bookJob/w1' component={W1}/>
-          <Route path='/myJobs' component={MyJobs}/>
-          <Route path='/myProfile' component={MyProfile}/>
-          <Route path='/clients/:id' component={BookJob}/>
-          <Route path='/admin' component={Admin}/>
+          {/* <Route exact path='/' component={BookJob}/> */}
+          <Route exact path='/clients/:id' component={BookJob}/>
+          {/* <Route path='/bookJob/w1' component={W1}/> */}
+          <Route path='/clients/:id/myJobs' component={MyJobs}/>
+          <Route path='/clients/:id/myProfile' component={MyProfile}/>
+          <Route path='/clients/:id/admin' component={Admin}/>
         </div>
       </ConnectedRouter>
     </Provider>

@@ -71,7 +71,7 @@ class BookJob extends Component {
     let current_client = this.props.current_client
     if (current_client) {
       return (
-      <Navbar current_client={current_client.name} />
+        <Navbar current_client={current_client.name} id={current_client.id} />
       )
     } else {
       <Navbar />

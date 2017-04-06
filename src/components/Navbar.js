@@ -20,7 +20,7 @@ const Navbar = (props) => {
                   <span className="icon-bar"></span>
                 </button>
                 <div>
-                  <Link to="/" className="navbar-brand">
+                  <Link to={`/clients/${props.id}`} className="navbar-brand">
                   <Image id="brand-image" src={ WhiteShark }></Image>
                   <h2 id="brand">White Shark</h2>
                   </Link>
@@ -33,22 +33,22 @@ const Navbar = (props) => {
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul id="nav-btns" className="nav navbar-nav navbar-right">
                 <li>
-                  <Link to="/">
+                  <Link to={`/clients/${props.id}`}>
                     Book Jobs
                   </Link>
                 </li>
                 <li>
-                  <Link to="/myJobs">
+                  <Link to={`/clients/${props.id}/myJobs`}>
                     My Jobs
                   </Link>
                 </li>
                 <li>
-                  <Link to="/myProfile">
+                  <Link to={`/clients/${props.id}/myProfile`}>
                     My Profile
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin/login">
+                  <Link to={`/clients/${props.id}/admin`}>
                     Admin
                   </Link>
                 </li>

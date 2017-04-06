@@ -37,9 +37,10 @@ class Admin extends Component {
   }
 
   render() {
+    let current_client = this.props.client.current_client
     return (
       <div id="admin-container">
-        <Navbar />
+        <Navbar current_client={current_client.name} id={current_client.id} />
         <Form horizontal show={this.state.showLogin}
           onSubmit={e => {
             e.preventDefault()

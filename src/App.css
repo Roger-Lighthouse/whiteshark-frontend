@@ -109,6 +109,7 @@ footer {
     -webkit-transition:.5s;
     transition: .5s;
     color: #fff;
+    margin: 20%;
 }
 .fa-facebook:hover {
     background-color: #3d5b99;

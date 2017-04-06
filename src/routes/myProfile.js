@@ -36,8 +36,10 @@ class myProfile extends Component {
     let current_client = this.props.client.current_client
     return (
       <div>
+        <nav>
+          <Navbar current_client={current_client.name} id={current_client.id}/>
+        </nav>
         <div id="myProfileContainer">
-          <Navbar current_client={current_client.name}/>
           <div className="center-block">
             <div className="list-group">
               <p><strong>Name:</strong></p>

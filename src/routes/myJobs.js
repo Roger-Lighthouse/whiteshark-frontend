@@ -36,12 +36,13 @@ class myJobs extends React.Component {
     return (
       <div>
         <nav>
-          <Navbar current_client={current_client.name}/>
+          <Navbar current_client={current_client.name} id={current_client.id}/>
         </nav>
         <div id="myJobsContainer">
           <Tabs defaultActiveKey={1} animation={false} id="myJobsContainer">
             <Tab eventKey={1} title="Upcoming Jobs">
-              <MyJobsJumbotron title="Upcoming Jobs" jobs={this.props.job.upcoming_jobs} />
+              <MyJobsJumbotron title="Upcoming Jobs" jobs={this.props.job.upcoming_jobs}
+                id={current_client.id} />
                 {
                   this.props.job.upcoming_jobs.length > 0 &&
                   <Table striped bordered condensed hover>
@@ -172,8 +173,8 @@ class myJobs extends React.Component {
                                       commentTitle="Please tell us how we did"
                                       btnName="Send Feedback" jobId={job.id}
                                     />
+                                    <ShowJobLogs jobId={job.id} jobLogs={job.job_logs}/>
                                   </DropdownButton>
-                                  <ShowJobLogs jobId={job.id} jobLogs={job.job_logs}/>
                                 </ButtonGroup>
                               </td>
                             </tr>
