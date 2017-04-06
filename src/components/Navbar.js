@@ -40,7 +40,6 @@ const Navbar = (props) => {
                 <li>
                   <Link to="/myJobs">
                     My Jobs
-                    <Badge id="myJobsBadge">4</Badge>
                   </Link>
                 </li>
                 <li>
