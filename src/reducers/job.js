@@ -60,7 +60,9 @@ function jobReducer(state = initialState, action) {
             jobs=action.payload.data
             return {
                 ...state,
-                upcoming_jobs: jobs.upcoming_jobs
+                upcoming_jobs: jobs.upcoming_jobs,
+                current_jobs: jobs.current_jobs,
+                completed_jobs: jobs.completed_jobs
             }
 
         case 'PAID_JOB':
