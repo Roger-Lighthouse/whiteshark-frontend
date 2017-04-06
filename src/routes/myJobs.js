@@ -13,7 +13,7 @@ import MyJobsJumbotron from '../components/MyJobsJumbotron'
 const Currency = require('react-currency')
 
 import {
-  Table, Tabs, Tab, Button, ButtonGroup, Jumbotron, DropdownButton
+  Table, Tabs, Tab, Button, ButtonGroup, Jumbotron, DropdownButton, Badge
 } from 'react-bootstrap'
 
 const DeleteJob = (jobId) => {
@@ -32,10 +32,11 @@ class myJobs extends React.Component {
 
   render() {
     console.log('myJobs show jobs from store', this.props.job)
+    let current_client = this.props.client.current_client
     return (
       <div>
         <nav>
-          <Navbar />
+          <Navbar current_client={current_client.name}/>
         </nav>
         <div id="myJobsContainer">
           <Tabs defaultActiveKey={1} animation={false} id="myJobsContainer">

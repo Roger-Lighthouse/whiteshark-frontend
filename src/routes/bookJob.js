@@ -67,12 +67,23 @@ class BookJob extends Component {
      // }
   }
 
+  Client_name = () => {
+    let current_client = this.props.current_client
+    if (current_client) {
+      return (
+      <Navbar current_client={current_client.name} />
+      )
+    } else {
+      <Navbar />
+    }
+  }
+
   render() {
     let current_client = this.props.current_client
-   return (
+    return (
       <div>
         <nav>
-          <Navbar />
+          {this.Client_name()}
         </nav>
         <div className="main-container">
           {
