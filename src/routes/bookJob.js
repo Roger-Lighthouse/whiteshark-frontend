@@ -83,7 +83,6 @@ class BookJob extends Component {
     return (
       <div>
         <nav>
-          {this.Client_name()}
         </nav>
         <div className="main-container">
           {

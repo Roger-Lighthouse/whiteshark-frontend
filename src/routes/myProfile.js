@@ -58,6 +58,10 @@ class myProfile extends Component {
               <Well bsSize="small">
                 {current_client.address}
               </Well>
+              <p><strong>Source:</strong></p>
+              <Well bsSize="small">
+                i.e. Live, Web, Lead, card, Voicemail
+              </Well>
             </div>
           </div>
           <EditProfile client={current_client}

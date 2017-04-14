@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import img_W1 from '../images/w1.jpg'
+import img_W1 from '../images/W1.jpg'
 import img_W2 from '../images/w2.jpg'
 import img_W3 from '../images/w3.jpg'
 import img_W4 from '../images/w4.jpg'
