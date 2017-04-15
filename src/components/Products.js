@@ -5,11 +5,13 @@ import img_W2 from '../images/w2.jpg'
 import img_W3 from '../images/w3.jpg'
 import img_W4 from '../images/w4.jpg'
 import Eaves from '../images/eaves.jpg'
+import oddJobs from '../images/oddJobs.jpg'
+import lawnCare from '../images/lawnCare.jpg'
 import ExtraMilePainting from '../images/extraMilePainting.jpg'
 import BookJobModal from './BookJobModal'
 import BookPaintingModal from './BookPaintingModal'
 import BookEavesModal from './BookEavesModal'
-
+import BookOddJobModal from './BookOddJobModal'
 import VideoModal from './videoModal'
 import { Link } from 'react-router-dom'
 import { Image } from 'react-bootstrap'
@@ -20,23 +22,23 @@ const Products = (props) => (
     {console.log('products444', props.w2)}
     <div id="productsContainer">
       <div className="row">
-        <div id="side-bar" className="col-md-3">
+        {/* <div id="side-bar" className="col-md-4">
           <p className="lead"></p>
           <div className="list-group">
-            {/* <Link to="/window-cleaning" className="list-group-item">
+            <Link to="/window-cleaning" className="list-group-item">
               Window Cleaning
             </Link>
             <a href="#" className="list-group-item">Eavestrough Cleaning</a>
             <a href="#" className="list-group-item">Exra Mile Painting</a>
             <a href="#" className="list-group-item">Lawn Care</a>
-            <a href="#" className="list-group-item">Request Odd Job</a> */}
+            <a href="#" className="list-group-item">Request Odd Job</a>
           </div>
-          <div>
-            <VideoModal className="col-md-3"/>
-          </div>
+        </div> */}
+        <div>
+          <VideoModal block/>
         </div>
 
-        <div className="col-md-9">
+        <div className="col-md-12">
           {/* <div className="row carousel-holder">
             <div className="col-md-12">
               <div id="carousel-example-generic" className="carousel slide" data-ride="carousel">
@@ -68,7 +70,7 @@ const Products = (props) => (
           <div className="row">
           {/* <WindowJobs /> */}
 
-          <div className="col-sm-4 col-lg-4 col-md-4">
+          <div className="col-sm-4 col-lg-3 col-md-4">
             <div className="thumbnail">
               <div className="productImg">
                 <Image src={img_W1} rounded></Image>
@@ -88,7 +90,7 @@ const Products = (props) => (
             </div>
           </div>
 
-          <div className="col-sm-4 col-lg-4 col-md-4">
+          <div className="col-sm-4 col-lg-3 col-md-4">
             <div className="thumbnail">
               <div className="productImg">
                 <Image src={img_W2} rounded></Image>
@@ -108,7 +110,7 @@ const Products = (props) => (
             </div>
           </div>
 
-          <div className="col-sm-4 col-lg-4 col-md-4">
+          <div className="col-sm-4 col-lg-3 col-md-4">
             <div className="thumbnail">
               <div className="productImg">
                 <Image src={img_W3} rounded></Image>
@@ -128,7 +130,7 @@ const Products = (props) => (
             </div>
           </div>
 
-            <div className="col-sm-4 col-lg-4 col-md-4">
+            <div className="col-sm-4 col-lg-3 col-md-4">
               <div className="thumbnail">
                 <div className="productImg">
                   <Image src={img_W4} rounded></Image>
@@ -148,7 +150,7 @@ const Products = (props) => (
               </div>
             </div>
 
-            <div className="col-sm-4 col-lg-4 col-md-4">
+            <div className="col-sm-4 col-lg-3 col-md-4">
               <div className="thumbnail">
                 <div className="productImg">
                   <Image src={Eaves} rounded></Image>
@@ -166,7 +168,7 @@ const Products = (props) => (
               </div>
             </div>
 
-            <div className="col-sm-4 col-lg-4 col-md-4">
+            <div className="col-sm-4 col-lg-3 col-md-4">
               <div className="thumbnail">
                 <div className="productImg">
                   <Image src={ExtraMilePainting} rounded></Image>
@@ -180,7 +182,57 @@ const Products = (props) => (
                   </h2>
                   <p>The crews are comprised of full time painters who have years of experience in residential homes. We have painted over 2,500 homes in the Greater Toronto Area.</p>
                 </div>
-                <BookPaintingModal />
+                <BookPaintingModal/>
+              </div>
+            </div>
+
+            <div className="col-sm-4 col-lg-3 col-md-4">
+              <div className="thumbnail">
+                <div className="productImg">
+                  <Image src={oddJobs} rounded></Image>
+                </div>
+                <div className="caption">
+                  <h4>
+                    Odd Jobs
+                  </h4>
+                  <h2 className="pull-right">
+                    {/* <Currency symbol="$" value={ props.client.current_w1 * 100} /> */}
+                  </h2>
+                  <p>
+                    Need an odd job done by our more than competent workers? Not a problem, over 25 years WhiteShark has been catering to the odd jobs that our valued clients ask for.
+                  </p>
+                </div>
+                <BookOddJobModal
+                  jobTitle="Book an odd job"
+                  jobDesc="Our crews are more than happy to assist you with whatever odd job you need help with."
+                  textAreaTitle="Odd job details"
+                  placeholder="i.e. brief description of the job"
+                />
+              </div>
+            </div>
+
+            <div className="col-sm-4 col-lg-3 col-md-4">
+              <div className="thumbnail">
+                <div className="productImg">
+                  <Image src={lawnCare} rounded></Image>
+                </div>
+                <div className="caption">
+                  <h4>
+                    Lawn Care
+                  </h4>
+                  <h2 className="pull-right">
+                    {/* <Currency symbol="$" value={ props.client.current_w1 * 100} /> */}
+                  </h2>
+                  <p>
+                    Our lawn care service is designed to help encourage and develop thick, healthy, green lawns using industry leading equipment. Our focus is about creating healthy lawns using an ecology friendly approach to turf management.
+                  </p>
+                </div>
+                <BookOddJobModal
+                  jobTitle="Book a lawn care appointment"
+                  jobDesc="Get a fresh cut for your lawn today!"
+                  textAreaTitle="Additional lawn care details"
+                  placeholder=""
+                />
               </div>
             </div>
 
