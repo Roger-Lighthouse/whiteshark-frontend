@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import DateTime from 'react-datetime'
 const Currency = require('react-currency');
 import {editJob} from '../actions/job'
 
@@ -8,10 +7,14 @@ import {
   Button, FormGroup, FormControl, ControlLabel, Modal
 } from 'react-bootstrap'
 
-const yesterday = DateTime.moment().subtract( 1, 'day' );
-const valid = function( current ){
-    return current.isAfter( yesterday );
-};
+import InfiniteCalendar from 'react-infinite-calendar';
+import 'react-infinite-calendar/styles.css';
+
+const validBookDates = [ "2017-04-18", "2017-04-25" ]
+
+const today = new Date();
+const min = new Date( today.getFullYear(), today.getMonth() );
+const max = new Date( today.getFullYear() + 1, today.getMonth() );
 
 class EditMyJobForm extends React.Component {
   constructor(props) {
@@ -62,11 +65,6 @@ class EditMyJobForm extends React.Component {
               e.preventDefault()
               this.props.onSubmit(job_info)
               this.close()
-        // ----------------------------------------------------
-              //this.props.dispatch(bookJob(this.props.client.current_client))
-            //  console.log('Form Submitted: ',
-            //    "type", jobType, "date", this.state.selectedDate,
-            //    "price", jobPrice)
             }}>
               <FormGroup>
                 <ControlLabel>Job Type</ControlLabel>
@@ -86,15 +84,18 @@ class EditMyJobForm extends React.Component {
 
               <FormGroup>
                 <ControlLabel>Select Date:</ControlLabel>
-                  <DateTime onChange={(d)=>{
-                      this.setState({ selectedDate: d.toDate() })
-                    }} timeFormat={false} isValidDate={ valid }
-                  defaultValue={this.props.job.sdate}/>
-              {/* <DateTime onChange={(d)=>{
-                    this.setState({selectedTime: d.getHours()})
+                <InfiniteCalendar
+                  onSelect={(date) => {
+                    this.setState({ selectedDate: date })
                   }}
-                timeConstraints={ hours: { min: 8, max: 12, step: 2 }}
-                dateFormat={false}/> */}
+                  width={"95%"}
+                  height={225}
+                  selected={today}
+                  disabledDates={validBookDates}
+                  min={min}
+                  max={max}
+                  minDate={today}
+                />
               </FormGroup>
 
               <FormGroup controlId="formControlsSelectTime">
@@ -135,13 +136,5 @@ class EditMyJobForm extends React.Component {
     )
   }
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     job: state.job,
-//   }
-// }
-
-// export default connect(mapStateToProps)(EditMyJobForm);
 
 export default EditMyJobForm;

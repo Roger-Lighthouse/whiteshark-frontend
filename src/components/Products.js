@@ -86,7 +86,7 @@ const Products = (props) => (
               </div>
               <BookJobModal jobTitle="Exterior only [W1]"
                 jobDesc="No removal of window, storm or screen. Remove loose dirt and water from sills."
-                jobType="W1" price={props.w1}/>
+                jobType="W1" price={ props.w1 ? props.w1 : "TBD" }/>
             </div>
           </div>
 
@@ -106,7 +106,7 @@ const Products = (props) => (
               </div>
               <BookJobModal jobTitle="Two-sided job [W2]"
                 jobDesc="Interior and exterior of window or storm. No removal of window, storm or screen. Remove loose dirt and water from sills."
-                jobType="W2" price={props.w2}/>
+                jobType="W2" price={props.w2 ? props.w2 : "TBD"}/>
             </div>
           </div>
 

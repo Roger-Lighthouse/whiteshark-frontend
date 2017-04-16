@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import DateTime from 'react-datetime'
 const Currency = require('react-currency');
 import { bookJob } from '../actions/job'
 
@@ -8,35 +7,28 @@ import {
   Button, FormGroup, FormControl, ControlLabel
 } from 'react-bootstrap'
 
-// function FieldGroup({ id, label, help, ...props }) {
-//   return (
-//     <FormGroup controlId={id}>
-//       <ControlLabel>{label}</ControlLabel>
-//       <FormControl {...props} />
-//       {help && <HelpBlock>{help}</HelpBlock>}
-//     </FormGroup>
-//   );
-// }
+import InfiniteCalendar from 'react-infinite-calendar';
+import 'react-infinite-calendar/styles.css';
 
-const yesterday = DateTime.moment().subtract( 1, 'day' );
-const valid = function( current ){
-    return current.isAfter( yesterday );
-};
+const validBookDates = [ "2017-04-18", "2017-04-25" ]
+
+const today = new Date();
+const min = new Date( today.getFullYear(), today.getMonth() );
+const max = new Date( today.getFullYear() + 1, today.getMonth() );
 
 class BookEavesForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      eavesType: '',
-      selectedDate: '',
+      eavesType: null,
+      selectedDate: null,
       selectedTime: 'Anytime',
-      jobDetails: ''
+      jobDetails: null
     };
   }
 
   render () {
-    // let dateChange = () => this.setState({ selectedDate: this.state.value });
 
     return (
       <div>
@@ -53,11 +45,6 @@ class BookEavesForm extends Component {
           this.props.closeModal()
           console.log(job_info)
             this.props.dispatch(bookJob(job_info))
-    // ----------------------------------------------------
-          //this.props.dispatch(bookJob(this.props.client.current_client))
-        //  console.log('Form Submitted: ',
-        //    "type", jobType, "date", this.state.selectedDate,
-        //    "price", jobPrice)
         }}>
         <FormGroup controlId="formControlsSelect">
           <ControlLabel>Select Job Type:</ControlLabel>
@@ -82,14 +69,18 @@ class BookEavesForm extends Component {
           </FormGroup>
 
             <strong>Select date:</strong>
-            <DateTime onChange={(d)=>{
-                  this.setState({ selectedDate: d.toDate() })
-                }} timeFormat={false} isValidDate={ valid } />
-            {/* <DateTime onChange={(d)=>{
-                  this.setState({selectedTime: d.getHours()})
-                }}
-              timeConstraints={ hours: { min: 8, max: 12, step: 2 }}
-              dateFormat={false}/> */}
+            <InfiniteCalendar
+              onSelect={(date) => {
+                this.setState({ selectedDate: date })
+              }}
+              width={"95%"}
+              height={225}
+              selected={today}
+              disabledDates={validBookDates}
+              min={min}
+              max={max}
+              minDate={today}
+            />
           <FormGroup controlId="formControlsSelect">
             <ControlLabel>Select time:</ControlLabel>
             <FormControl componentClass="select" placeholder="select time"
