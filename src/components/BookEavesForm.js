@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import DateTime from 'react-datetime'
 const Currency = require('react-currency');
@@ -23,19 +23,17 @@ const valid = function( current ){
     return current.isAfter( yesterday );
 };
 
-const BookEavesForm = React.createClass({
-  componentDidMount () {
-    // this.props.dispatch(setW1Price(jobType, jobPrice))
-  },
+class BookEavesForm extends Component {
+  constructor(props) {
+    super(props)
 
-  getInitialState() {
-    return {
+    this.state = {
       eavesType: '',
       selectedDate: '',
       selectedTime: 'Anytime',
       jobDetails: ''
     };
-  },
+  }
 
   render () {
     // let dateChange = () => this.setState({ selectedDate: this.state.value });
@@ -125,7 +123,7 @@ const BookEavesForm = React.createClass({
       </div>
     )
   }
-})
+}
 
 const mapStateToProps = (state) => {
   return {

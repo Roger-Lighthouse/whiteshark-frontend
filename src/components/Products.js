@@ -224,7 +224,7 @@ const Products = (props) => (
                     {/* <Currency symbol="$" value={ props.client.current_w1 * 100} /> */}
                   </h2>
                   <p>
-                    Our lawn care service is designed to help encourage and develop thick, healthy, green lawns using industry leading equipment. Our focus is about creating healthy lawns using an ecology friendly approach to turf management.
+                    Our lawn care service is designed to encourage thick, healthy, green lawns using industry leading equipment.
                   </p>
                 </div>
                 <BookOddJobModal

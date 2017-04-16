@@ -4,19 +4,19 @@ import {
 } from 'react-bootstrap'
 import BookPaintingForm from './BookPaintingForm'
 
-const BookPaintingModal = React.createClass({
+class BookPaintingModal extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { showModal: false };
+  }
 
-  getInitialState() {
-    return { showModal: false };
-  },
-
-  close() {
+  close = () => {
     this.setState({ showModal: false });
-  },
+  }
 
-  open() {
+  open = () => {
     this.setState({ showModal: true });
-  },
+  }
 
   render() {
     return (
@@ -54,6 +54,6 @@ const BookPaintingModal = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default BookPaintingModal;

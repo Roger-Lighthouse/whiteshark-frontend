@@ -4,19 +4,20 @@ import {
 } from 'react-bootstrap'
 import BookOddJobForm from './BookOddJobForm'
 
-const BookOddJobModal = React.createClass({
+class BookOddJobModal extends React.Component {
+  constructor(props) {
+    super(props)
 
-  getInitialState() {
-    return { showModal: false };
-  },
+    this.state = { showModal: false };
+  }
 
-  close() {
+  close = () => {
     this.setState({ showModal: false });
-  },
+  }
 
-  open() {
+  open = () => {
     this.setState({ showModal: true });
-  },
+  }
 
   render() {
     return (
@@ -52,6 +53,6 @@ const BookOddJobModal = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default BookOddJobModal;

@@ -23,18 +23,15 @@ const valid = function( current ){
     return current.isAfter( yesterday );
 };
 
-const BookOddJobForm = React.createClass({
-  componentDidMount () {
-    // this.props.dispatch(setW1Price(jobType, jobPrice))
-  },
-
-  getInitialState() {
-    return {
+class BookOddJobForm extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       selectedDate: '',
       selectedTime: '',
       jobDetails: ''
     };
-  },
+  }
 
   render () {
     // let dateChange = () => this.setState({ selectedDate: this.state.value });
@@ -98,7 +95,7 @@ const BookOddJobForm = React.createClass({
       </div>
     )
   }
-})
+}
 
 const mapStateToProps = (state) => {
   return {

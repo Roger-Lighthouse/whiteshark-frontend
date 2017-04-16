@@ -20,11 +20,20 @@ import {
 // }
 // const jobType = "W1"
 //const jobPrice = 75
-const yesterday = DateTime.moment().subtract( 1, 'day' );
-const valid = function( current ){
-    return current.isAfter( yesterday );
-};
+// const yesterday = DateTime.moment().subtract( 1, 'day' );
+// const valid = function( current ){
+//     return current.isAfter( yesterday );
+// };
+const validBookDates = [ "2017-04-18", "2017-04-25" ]
 
+const valid = ( current ) => {
+    return current.isSame(validBookDates)
+}
+// const valid = ( current ) => {
+//   validBookDates.map( (current, date) => {
+//     return current.isSame(date)
+//   })
+// }
 
 class BookW1Form extends Component {
   constructor(props) {
@@ -92,11 +101,6 @@ class BookW1Form extends Component {
             <DateTime onChange={(d)=>{
                 this.setState({ selectedDate: d.toDate() })
               }} timeFormat={false} isValidDate={ valid } />
-            {/* <DateTime onChange={(d)=>{
-                  this.setState({selectedTime: d.getHours()})
-                }}
-              timeConstraints={ hours: { min: 8, max: 12, step: 2 }}
-              dateFormat={false}/> */}
           <FormGroup controlId="formControlsSelect">
             <ControlLabel>Select time:</ControlLabel>
             <FormControl componentClass="select" placeholder="select time"

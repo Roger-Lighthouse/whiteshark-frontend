@@ -3,7 +3,7 @@ import {
   Modal, ResponsiveEmbed, Button, ButtonToolbar
 } from 'react-bootstrap'
 
-const MyLargeModal = React.createClass({
+class MyLargeModal extends React.Component {
   render() {
     return (
       <Modal {...this.props} bsSize="large"
@@ -22,12 +22,15 @@ const MyLargeModal = React.createClass({
       </Modal>
     );
   }
-});
+}
 
-const videoModal = React.createClass({
-  getInitialState() {
-    return { lgShow: false };
-  },
+class videoModal extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { lgShow: false };
+  }
+
   render() {
     let lgClose = () => this.setState({ lgShow: false });
 
@@ -43,6 +46,6 @@ const videoModal = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default videoModal;

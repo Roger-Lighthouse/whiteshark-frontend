@@ -23,18 +23,16 @@ const valid = function( current ){
     return current.isAfter( yesterday );
 };
 
-const BookPaintingForm = React.createClass({
-  componentDidMount () {
-    // this.props.dispatch(setW1Price(jobType, jobPrice))
-  },
-
-  getInitialState() {
-    return {
+class BookPaintingForm extends React.Component {
+  constructor(props) {
+    super(props)
+    
+    this.state = {
       selectedDate: '',
       selectedTime: '',
       jobDetails: ''
     };
-  },
+  }
 
   render () {
     // let dateChange = () => this.setState({ selectedDate: this.state.value });
@@ -98,7 +96,7 @@ const BookPaintingForm = React.createClass({
       </div>
     )
   }
-})
+}
 
 const mapStateToProps = (state) => {
   return {

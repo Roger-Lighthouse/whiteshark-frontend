@@ -13,27 +13,24 @@ const valid = function( current ){
     return current.isAfter( yesterday );
 };
 
-const EditMyJobForm = React.createClass({
-  componentDidMount () {
-    // this.props.dispatch(setW1Price(jobType, jobPrice))
-  },
-
-  getInitialState() {
-    return {
+class EditMyJobForm extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       showModal: false,
       selectedDate: this.props.job.sdate,
       selectedTime: this.props.job.stime,
       jobDetails: this.props.job.notes
     };
-  },
+  }
 
-  close() {
+  close = () => {
     this.setState({ showModal: false });
-  },
+  }
 
-  open() {
+  open = () => {
     this.setState({ showModal: true });
-  },
+  }
 
   render () {
     let job_info = {
@@ -137,7 +134,7 @@ const EditMyJobForm = React.createClass({
       </div>
     )
   }
-})
+}
 
 // const mapStateToProps = (state) => {
 //   return {

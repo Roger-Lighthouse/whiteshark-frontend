@@ -4,19 +4,19 @@ import {
 } from 'react-bootstrap'
 import BookEavesForm from './BookEavesForm'
 
-const BookEavesModal = React.createClass({
+class BookEavesModal extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { showModal: false };
+  }
 
-  getInitialState() {
-    return { showModal: false };
-  },
-
-  close() {
+  close = () => {
     this.setState({ showModal: false });
-  },
+  }
 
-  open() {
+  open = () => {
     this.setState({ showModal: true });
-  },
+  }
 
   render() {
     return (
@@ -71,6 +71,6 @@ const BookEavesModal = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default BookEavesModal;
