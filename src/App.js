@@ -7,7 +7,6 @@ import { store, history } from './store'
 import Admin from './routes/Admin'
 import BookJob from './routes/bookJob'
 import MyJobs from './routes/myJobs'
-import W1 from './routes/W1'
 import MyProfile from './routes/myProfile'
 import './App.css'
 import '../node_modules/react-datetime/css/react-datetime.css'
@@ -17,9 +16,7 @@ const App = () => {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <div>
-          {/* <Route exact path='/' component={BookJob}/> */}
           <Route exact path='/clients/:id' component={BookJob}/>
-          {/* <Route path='/bookJob/w1' component={W1}/> */}
           <Route path='/clients/:id/myJobs' component={MyJobs}/>
           <Route path='/clients/:id/myProfile' component={MyProfile}/>
           <Route path='/clients/:id/admin' component={Admin}/>

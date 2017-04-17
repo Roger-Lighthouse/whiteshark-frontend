@@ -83,12 +83,12 @@ class BookJob extends Component {
     return (
       <div>
         <nav>
-          {/* <Navbar/> */}
-          {this.Client_name()}
+          <Navbar/>
+          {/* {this.Client_name()} */}
         </nav>
         <div className="main-container">
-          {/* <Products/> */}
-          {
+          <Products/>
+          {/* {
             (this.props.loading1 && this.props.loading2) ?
             <Products
               w1={this.props.current_w1}
@@ -99,7 +99,7 @@ class BookJob extends Component {
               src="http://www.lmholiday.com/images/loading.gif"
               alt="HTML5 Icon" width="128" height="128"
             />
-          }
+          } */}
         </div>
         <footer>
           <Footer />

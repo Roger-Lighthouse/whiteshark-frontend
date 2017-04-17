@@ -9,8 +9,13 @@ const Currency = require('react-currency');
 
 import InfiniteCalendar from 'react-infinite-calendar';
 import 'react-infinite-calendar/styles.css';
+import format from 'date-fns/format'
 
-const validBookDates = [ "2017-04-18", "2017-04-25" ]
+const disabledDates = ["2017-04-18", "2017-04-25"]
+
+const availableTimes = { "2017-04-24": ["Anytime","10 AM", "12 AM"], "2017-05-01": ["8 AM"] }
+
+
 
 const today = new Date();
 const min = new Date( today.getFullYear(), today.getMonth() );
@@ -21,16 +26,28 @@ class BookW1Form extends Component {
     super(props)
 
     this.state = {
-        selectedDate: null,
+        selectedDate: today,
         selectedTime: 'Anytime',
-        jobDetails: null
+        jobDetails: null,
+        dateTimes: [ 'Anytime', '8 AM', '10 AM', '12 PM' ]
     }
+  }
+
+  handleOnSelectDate = (date) => {
+    for (let d in availableTimes) {
+      console.log(d, date);
+      if (date === d) {
+        console.log('Match!');
+        return this.setState({dateTimes: availableTimes[d]})
+      }
+    }
+    this.setState({ selectedDate: date })
   }
 
   handleOnSubmit = (e) => {
     e.preventDefault()
     var job_info = {
-      clientId: this.props.client.current_client.id,
+      // clientId: this.props.client.current_client.id,
       jobType: this.props.jobType,
       jobPrice: this.props.price,  //this.props.client.current_w1,
       jobDate: this.state.selectedDate,
@@ -38,7 +55,7 @@ class BookW1Form extends Component {
       jobDetails: this.state.jobDetails
     }
     console.log(job_info)
-    this.props.dispatch(bookJob(job_info))
+    // this.props.dispatch(bookJob(job_info))
     this.props.closeModal()
   }
   render () {
@@ -63,13 +80,11 @@ class BookW1Form extends Component {
           <FormGroup>
             <strong>Select date:</strong>
             <InfiniteCalendar
-              onSelect={(date) => {
-                this.setState({ selectedDate: date })
-              }}
+              onSelect={(date) => { this.handleOnSelectDate(format(date, 'YYYY-MM-DD')) }}
               width={"95%"}
               height={225}
               selected={today}
-              disabledDates={validBookDates}
+              disabledDates={disabledDates}
               min={min}
               max={max}
               minDate={today}
@@ -83,10 +98,11 @@ class BookW1Form extends Component {
                 this.setState({selectedTime: ev.target.value})
               }
             }>
-              <option value="Anytime">Anytime</option>
-              <option value="8 AM">8 AM</option>
-              <option value="10 AM">10 AM</option>
-              <option value="12 PM">12 PM</option>
+            {
+              this.state.dateTimes.map( (time) => {
+              return <option key={time} value={time}>{time}</option>
+            })
+            }
             </FormControl>
           </FormGroup>
           <FormGroup controlId="formControlsTextarea">
