@@ -34,14 +34,20 @@ class BookW1Form extends Component {
   }
 
   handleOnSelectDate = (date) => {
+    this.setState({ selectedDate: date })
     for (let d in availableTimes) {
-      console.log(d, date);
+      // console.log(d, date);
       if (date === d) {
-        console.log('Match!');
-        return this.setState({dateTimes: availableTimes[d]})
+        // console.log('Match!');
+        return this.setState({
+          dateTimes: availableTimes[d],
+          selectedTime: availableTimes[d][0]
+        })
       }
     }
-    this.setState({ selectedDate: date })
+    this.setState({
+      dateTimes: [ 'Anytime', '8 AM', '10 AM', '12 PM' ]
+    })
   }
 
   handleOnSubmit = (e) => {
@@ -92,8 +98,7 @@ class BookW1Form extends Component {
           </FormGroup>
           <FormGroup controlId="formControlsSelect">
             <ControlLabel>Select time:</ControlLabel>
-            <FormControl componentClass="select" placeholder="select time"
-              value={this.state.value} defaultValue={this.state.selectedTime}
+            <FormControl componentClass="select"
               onChange={ (ev) => {
                 this.setState({selectedTime: ev.target.value})
               }
