@@ -8,6 +8,7 @@ let initialState = {
     completed_jobs: [],
     current_jobs: [],
     upcoming_jobs: [],
+    signs: [],
     error: null,
     loading: false,
 }
@@ -81,6 +82,15 @@ function jobReducer(state = initialState, action) {
                 completed_jobs: jobs.completed_jobs,
                 current_jobs: jobs.current_jobs,
                 upcoming_jobs: jobs.upcoming_jobs,
+                loading: true
+            }
+
+        case 'GET_SIGNS':
+            console.log("Payload Data:", action.payload.data)
+            let signs=action.payload.data
+            return {
+                ...state,
+                signs: signs,
                 loading: true
             }
 

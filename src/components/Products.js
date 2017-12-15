@@ -22,51 +22,11 @@ const Products = (props) => (
     {console.log('products444', props.w2)}
     <div id="productsContainer">
       <div className="row">
-        {/* <div id="side-bar" className="col-md-4">
-          <p className="lead"></p>
-          <div className="list-group">
-            <Link to="/window-cleaning" className="list-group-item">
-              Window Cleaning
-            </Link>
-            <a href="#" className="list-group-item">Eavestrough Cleaning</a>
-            <a href="#" className="list-group-item">Exra Mile Painting</a>
-            <a href="#" className="list-group-item">Lawn Care</a>
-            <a href="#" className="list-group-item">Request Odd Job</a>
-          </div>
-        </div> */}
         <div>
           <VideoModal block/>
         </div>
 
         <div className="col-md-12">
-          {/* <div className="row carousel-holder">
-            <div className="col-md-12">
-              <div id="carousel-example-generic" className="carousel slide" data-ride="carousel">
-                <ol className="carousel-indicators">
-                  <li data-target="#carousel-example-generic" data-slide-to="0" className="active"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                </ol>
-                <div className="carousel-inner">
-                  <div className="item active">
-                    <img className="slide-image" src="http://placehold.it/800x300" alt=""></img>
-                  </div>
-                  <div className="item">
-                    <img className="slide-image" src="http://placehold.it/800x300" alt=""></img>
-                  </div>
-                  <div className="item">
-                    <img className="slide-image" src="http://placehold.it/800x300" alt=""></img>
-                  </div>
-                </div>
-                <a className="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                  <span className="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a className="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span className="glyphicon glyphicon-chevron-right"></span>
-                </a>
-              </div>
-            </div>
-          </div> */}
           <div className="row">
           {/* <WindowJobs /> */}
 
@@ -84,9 +44,11 @@ const Products = (props) => (
                 </h2>
                 <p>No removal of window, storm or screen. Remove loose dirt and water from sills.</p>
               </div>
-              <BookJobModal jobTitle="Exterior only [W1]"
+              <BookJobModal
+                jobTitle="Exterior only [W1]"
                 jobDesc="No removal of window, storm or screen. Remove loose dirt and water from sills."
-                jobType="W1" price={ props.w1 ? props.w1 : "TBD" }/>
+                jobType="W1"
+                price={ props.w1 ? props.w1 : "TBD" }/>
             </div>
           </div>
 
@@ -104,9 +66,11 @@ const Products = (props) => (
                 </h2>
                 <p>Interior and exterior of window or storm. No removal of window, storm or screen. Remove loose dirt and water from sills.</p>
               </div>
-              <BookJobModal jobTitle="Two-sided job [W2]"
+              <BookJobModal
+                jobTitle="Two-sided job [W2]"
                 jobDesc="Interior and exterior of window or storm. No removal of window, storm or screen. Remove loose dirt and water from sills."
-                jobType="W2" price={props.w2 ? props.w2 : "TBD"}/>
+                jobType="W2"
+                price={props.w2 ? props.w2 : "TBD"}/>
             </div>
           </div>
 
@@ -124,9 +88,11 @@ const Products = (props) => (
                 </h2>
                 <p>Brush screens to remove loose dirt. Remove storm, clean both sides. Clean exterior window. Replace storm. Remove loose dirt and water form sills.</p>
               </div>
-              <BookJobModal jobTitle="Three sided job [W3]"
+              <BookJobModal
+                jobTitle="Three sided job [W3]"
                 jobDesc="Brush screens to remove loose dirt. Remove storm, clean both sides. Clean exterior window. Replace storm. Remove loose dirt and water form sills."
-                jobType="W3" price="TBD"/>
+                jobType="W3"
+                price="TBD"/>
             </div>
           </div>
 
@@ -144,9 +110,12 @@ const Products = (props) => (
                   </h2>
                   <p>Remove storm, clean both sides. Clean both sides of window. Brush screens to remove loose dirt. Replace storm. Remove loose dirt and water from sills.</p>
                 </div>
-                <BookJobModal jobTitle="Four sided job [W4]"
+                <BookJobModal
+                  jobTitle="Four sided job [W4]"
                   jobDesc="Remove storm, clean both sides. Clean both sides of window. Brush screens to remove loose dirt. Replace storm. Remove loose dirt and water from sills."
-                  jobType="W4" price="TBD"/>
+                  jobType="W4"
+                  price="TBD"
+                />
               </div>
             </div>
 

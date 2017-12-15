@@ -122,6 +122,18 @@ export function getJobs(id){
    }
 }
 
+export function getSigns(){
+   return dispatch => {
+      fetch(`http://localhost:3000/jobs/16/getSigns`)
+        .then(resp => resp.json())
+        .then(data => {
+           console.log('**Got Signs***', data)
+          return dispatch({ type: 'GET_SIGNS', payload: {data} })
+        })
+        .catch()
+   }
+}
+
 
 export function paidJob(id){
    return dispatch => {
@@ -149,6 +161,3 @@ export function invoicePdf(id){
         .catch()
    }
 }
-
-
-
