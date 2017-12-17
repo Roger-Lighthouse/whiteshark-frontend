@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   Modal, Table, Button
 } from 'react-bootstrap'
-import { logItem } from '../actions/job'
 
 class ShowJobLogs extends Component {
   constructor(props) {
@@ -74,5 +73,3 @@ class ShowJobLogs extends Component {
 
 
 export default ShowJobLogs;
-
-

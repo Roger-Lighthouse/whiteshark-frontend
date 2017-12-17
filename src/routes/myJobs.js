@@ -7,18 +7,17 @@ import JobLogModal from '../components/JobLogModal'
 import ShowJobLogs from '../components/ShowJobLogs'
 import { deleteJob, completedJob, editJob } from '../actions/job'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import TakeMoney from '../components/StripeCheckout'
 import MyJobsJumbotron from '../components/MyJobsJumbotron'
 const Currency = require('react-currency')
 
 import {
-  Table, Tabs, Tab, Button, ButtonGroup, Jumbotron, DropdownButton, Badge
+  Table, Tabs, Tab, Button, ButtonGroup, DropdownButton
 } from 'react-bootstrap'
 
-const DeleteJob = (jobId) => {
-  this.props.dispatch(deleteJob(jobId))
-}
+// const DeleteJob = (jobId) => {
+//   this.props.dispatch(deleteJob(jobId))
+// }
 
 class myJobs extends React.Component {
   MarkCompleted = (jobId) => {

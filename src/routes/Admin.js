@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import {
-  Table , Form, FormGroup, Col, ControlLabel, FormControl, Checkbox, Button
+  Form, FormGroup, Col, ControlLabel, FormControl, Button
 } from 'react-bootstrap'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Logo from '../images/WhiteShark.png'
 import { connect } from 'react-redux'
 import { getAllClients, adminLogIn, adminLogOut} from '../actions/client'
 

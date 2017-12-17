@@ -1,7 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
 const Currency = require('react-currency');
-import {editJob} from '../actions/job'
 
 import {
   Button, FormGroup, FormControl, ControlLabel, Modal

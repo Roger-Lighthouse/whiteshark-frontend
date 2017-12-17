@@ -2,20 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Navbar from '../components/Navbar'
 import Products from '../components/Products'
+import { getClient } from '../actions/client'
 import {
-  getClient, editClient, getAllClients, adminLogIn, adminLogOut
-} from '../actions/client'
-import {
-  clearJobs, deleteJob, invoicePdf, editJob, paidJob, logItem, getJobs
+  clearJobs, getJobs
 } from '../actions/job'
 import Footer from '../components/Footer'
-import { store, history } from '../store'
 
 class BookJob extends Component {
 
- constructor(props) {
-    super(props)
-  }
 
   componentWillMount () {
     let s=this.props.location.pathname
@@ -79,7 +73,6 @@ class BookJob extends Component {
   }
 
   render() {
-    let current_client = this.props.current_client
     return (
       <div>
         <nav>

@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux'
-import jobs from './jobs'
 import jobReducer from './job'
 import clientReducer from './client'
-import visibilityFilter from './visibilityFilter'
 
 const rootReducer = combineReducers({
   job: jobReducer,

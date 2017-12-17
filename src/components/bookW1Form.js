@@ -10,7 +10,7 @@ const Currency = require('react-currency');
 import InfiniteCalendar from 'react-infinite-calendar';
 import 'react-infinite-calendar/styles.css';
 
-const validBookDates = [ "2017-04-18", "2017-04-25" ]
+// const validBookDates = [ "2017-04-18", "2017-04-25" ]
 
 const today = new Date();
 const min = new Date( today.getFullYear(), today.getMonth() );
@@ -21,7 +21,7 @@ class BookW1Form extends Component {
     super(props)
 
     this.state = {
-        selectedDate: null,
+        selectedDate: today,
         selectedTime: 'Anytime',
         jobDetails: null
     }
@@ -69,7 +69,7 @@ class BookW1Form extends Component {
               width={"95%"}
               height={225}
               selected={today}
-              disabledDates={validBookDates}
+              // disabledDates={validBookDates}
               min={min}
               max={max}
               minDate={today}

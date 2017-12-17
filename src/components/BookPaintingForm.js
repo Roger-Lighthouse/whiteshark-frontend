@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bookJob } from '../actions/job'
-const Currency = require('react-currency');
 
 import {
   Button, FormGroup, FormControl, ControlLabel

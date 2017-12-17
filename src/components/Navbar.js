@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Badge, Image, Label } from 'react-bootstrap'
+import { Image, Label } from 'react-bootstrap'
 import WhiteShark from '../images/WhiteShark.png'
 import { connect } from 'react-redux'
 

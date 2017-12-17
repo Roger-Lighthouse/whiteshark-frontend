@@ -16,7 +16,7 @@ const Footer = () => {
             <div className="footer-social-icons">
               <h4 className="_14">Read our reviews on HomeStars</h4>
               <a target="_blank" href="https://homestars.com/companies/229833-white-shark-window-cleaning?service_area=1792369" className="social-icon">
-                <img src={HomeStars}/>
+                <img src={HomeStars} alt="HomeStars"/>
               </a>
             </div>
             <div className="col-lg-12">

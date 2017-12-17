@@ -1,23 +1,10 @@
 import React, { Component } from 'react';
-import { Table, Well } from 'react-bootstrap'
+import { Well } from 'react-bootstrap'
 import Navbar from '../components/Navbar'
 import EditProfile from '../components/editProfile'
 import Footer from '../components/Footer'
 import { connect } from 'react-redux'
 import { editClient } from "../actions/client"
-
-// import { FormGroup, FormControl, ControlLabel, HelpBlock, Button, Collapse
-// } from 'react-bootstrap'
-
-// function FieldGroup({ id, label, help, ...props }) {
-//   return (
-//     <FormGroup controlId={id}>
-//       <ControlLabel>{label}</ControlLabel>
-//       <FormControl {...props} />
-//       {help && <HelpBlock>{help}</HelpBlock>}
-//     </FormGroup>
-//   );
-// }
 
 class myProfile extends Component {
   constructor(props) {

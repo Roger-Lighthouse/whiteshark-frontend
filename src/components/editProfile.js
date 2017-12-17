@@ -1,8 +1,4 @@
 import React from 'react';
-// import { connect } from 'react-redux'
-import { editClient } from '../actions/client'
-import { push } from 'react-router-redux'
-
 import {
   Button, FormGroup, FormControl, ControlLabel, HelpBlock, Collapse, ButtonToolbar
 } from 'react-bootstrap'

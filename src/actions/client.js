@@ -1,5 +1,5 @@
 //import { push } from 'react-redux'
-adminLogIn, adminLogOut
+// adminLogIn, adminLogOut
 
 export function getClient(id){
    return dispatch => {

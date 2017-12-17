@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux'
 import img_W1 from '../images/W1.jpg'
 import img_W2 from '../images/w2.jpg'
 import img_W3 from '../images/w3.jpg'
@@ -13,9 +12,7 @@ import BookPaintingModal from './BookPaintingModal'
 import BookEavesModal from './BookEavesModal'
 import BookOddJobModal from './BookOddJobModal'
 import VideoModal from './videoModal'
-import { Link } from 'react-router-dom'
 import { Image } from 'react-bootstrap'
-const Currency = require('react-currency');
 
 const Products = (props) => (
   <div>
