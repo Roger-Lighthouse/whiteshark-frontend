@@ -9,6 +9,7 @@ import BookJob from './routes/bookJob'
 import MyJobs from './routes/myJobs'
 import W1 from './routes/W1'
 import MyProfile from './routes/myProfile'
+import sandbox from './routes/sandbox'
 import './App.css'
 import '../node_modules/react-datetime/css/react-datetime.css'
 
@@ -20,7 +21,8 @@ const App = () => {
           <Route exact path='/clients/:id' component={BookJob}/>
           <Route path='/clients/:id/myJobs' component={MyJobs}/>
           <Route path='/clients/:id/myProfile' component={MyProfile}/>
-          <Route path='/clients/:id/admin' component={Admin}/>
+          <Route path='/admin' component={Admin}/>
+          <Route path='/sandbox' component={sandbox}/>
         </div>
       </ConnectedRouter>
     </Provider>

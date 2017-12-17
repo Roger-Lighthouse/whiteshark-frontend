@@ -33,18 +33,17 @@ class Admin extends Component {
     && admin_cred.password === "password123") {
       this.props.dispatch(adminLogIn())
     }
-    else { alert("Your credentials are incorrect.") }
+    // else { alert("Your credentials are incorrect.") }
   }
 
   render() {
     let current_client = this.props.client.current_client
     return (
       <div id="admin-container">
-        <Navbar current_client={current_client.name} id={current_client.id} />
+        <Navbar />
         <Form horizontal show={this.state.showLogin}
           onSubmit={e => {
             e.preventDefault()
-            console.log(this.state)
             const admin_cred = {
               // clientId,
               email: this.state.email,

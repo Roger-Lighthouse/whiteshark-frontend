@@ -127,8 +127,8 @@ export function getSigns(){
       fetch(`http://localhost:3000/jobs/16/getSigns`)
         .then(resp => resp.json())
         .then(data => {
-           console.log('**Got Signs***', data)
-          return dispatch({ type: 'GET_SIGNS', payload: {data} })
+           console.log('Actions: data from server', data)
+          return dispatch({ type: 'GET_SIGNS', payload: {data: data} })
         })
         .catch()
    }
