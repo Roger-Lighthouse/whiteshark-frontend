@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import Count from '../components/Count'
-import CountHeader from '../components/CountHeader'
-import { fetchCount, increment, decrement } from '../actions/counter'
+// import Count from '../components/Count'
+// import CountHeader from '../components/CountHeader'
+// import { fetchCount, increment, decrement } from '../actions/counter'
 
 
-class NavBarContainer extends Component{
+class NavBar extends Component{
 
   componentDidMount(){
 
@@ -38,8 +38,8 @@ class NavBarContainer extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        count: state.counter.count
+        // count: state.counter.count
     }
 }
 
-export default connect(mapStateToProps)(NavBarContainer);
+export default connect(mapStateToProps)(NavBar);

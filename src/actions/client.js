@@ -15,6 +15,12 @@ export function getClient(id){
    }
 }
 
+export function clientLogIn(){
+   return dispatch => {
+          return dispatch({type: 'CLIENT_LOG_IN', payload: {data: null}})
+   }
+}
+
 export function adminLogIn(){
    return dispatch => {
           return dispatch({type: 'ADMIN_LOG_IN', payload: {data: null}})
